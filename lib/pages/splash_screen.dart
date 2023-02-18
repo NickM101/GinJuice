@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:ginjuice/components/bouncing_text.dart';
-import 'package:go_router/go_router.dart';
+import 'package:ginjuice/pages/index_page.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -31,7 +30,11 @@ class _SplashScreenState extends State<SplashScreen> {
   startTimer() {
     var duration = const Duration(seconds: 5);
     return Timer(duration, () {
-      GoRouter.of(context).go('/home');
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => const IndexPage(),
+          ));
     });
   }
 
@@ -56,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(
                 height: 10,
               ),
-              const BouncingText('GinJuice'),
+              // const BouncingText('GinJuice'),
             ],
           ),
         ),

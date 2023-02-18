@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/pages/favorite_page.dart';
 import 'package:ginjuice/pages/home_page.dart';
+import 'package:ginjuice/pages/search_page.dart';
 import 'package:ginjuice/pages/splash_screen.dart';
-import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
-/// The route configuration.
-final GoRouter _router = GoRouter(
-  routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) =>
-          const SplashScreen(),
-    ),
-    GoRoute(
-      path: '/home',
-      builder: (BuildContext context, GoRouterState state) => const HomePage(),
-    )
-  ],
-);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
+    return MaterialApp(
       title: 'GinJuice',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(
+        useMaterial3: true,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/home': (context) => const HomePage(),
+        '/favorite': (context) => const FavoritePage(),
+        '/search': (context) => const SearchPage(),
+      },
     );
   }
 }
