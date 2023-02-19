@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset('lib/assets/lottie/cocktail-mix.json'),
+              Lottie.asset('assets/lottie/cocktail-mix.json'),
               const SizedBox(
                 height: 10,
               ),
