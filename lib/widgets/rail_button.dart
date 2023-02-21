@@ -14,11 +14,12 @@ class RailButton extends StatelessWidget {
       child: CustomPaint(
         painter: _RailButtonPainter(),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Icon(icon, color: Colors.white),
-              const SizedBox(width: 8.0),
               Text(
                 text,
                 style: const TextStyle(color: Colors.white),
@@ -32,21 +33,21 @@ class RailButton extends StatelessWidget {
 }
 
 class _RailButtonPainter extends CustomPainter {
+  var selected_index = 1;
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..strokeWidth = 5
-      ..color = Colors.black
+      ..color = selected_index == 1 ? Colors.purple : Colors.black
       ..style = PaintingStyle.fill
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
-      ..strokeMiterLimit = 60;
+      ..strokeMiterLimit = 6.0;
 
     final path = Path()
       ..moveTo(0, -50)
-      ..lineTo(0, 80)
-      ..lineTo(size.width * 0.8, 50)
-      ..lineTo(size.width * 0.8, -20)
+      ..lineTo(0, 85)
+      ..lineTo(size.width * 0.9, 55)
+      ..lineTo(size.width * 0.9, -20)
       ..close();
 
     canvas.drawPath(path, paint);

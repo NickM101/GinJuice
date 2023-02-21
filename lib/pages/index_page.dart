@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/pages/Home/home_page.dart';
 import 'package:ginjuice/pages/favorite_page.dart';
-import 'package:ginjuice/pages/home_page.dart';
 import 'package:ginjuice/pages/search_page.dart';
 
 class IndexPage extends StatefulWidget {
