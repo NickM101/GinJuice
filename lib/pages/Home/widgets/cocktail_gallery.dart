@@ -5,41 +5,59 @@ class CocktailGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {print("Card Selected")},
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 5,
       child: Container(
-        height: 300,
-        padding: const EdgeInsets.only(right: 5, left: 15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          gradient: const LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.transparent, Colors.black54],
-          ),
-          image: const DecorationImage(
-              image: NetworkImage(
-                  "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg"),
-              fit: BoxFit.cover),
-        ),
-        child: Column(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Colors.black87,
+          Colors.transparent,
+          Colors.transparent,
+          Colors.black45,
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        child: Stack(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  'Long Island',
+            Ink.image(
+              image: const NetworkImage(
+                  "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg"),
+              height: 300,
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () => print('Card Selected'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Long Island',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  IconButton(
+                    onPressed: () => {print("Favorite Clicked")},
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const Positioned(
+              bottom: 0.0,
+              right: 0.0,
+              child: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Non-Alcoholic',
                   style: TextStyle(color: Colors.white),
                 ),
-                IconButton(
-                  onPressed: () => {print("Favorite Clicked")},
-                  icon: const Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                  ),
-                )
-              ],
+              ),
             ),
           ],
         ),
