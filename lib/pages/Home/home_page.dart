@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/models/cocktail.dart';
 import 'package:ginjuice/pages/Home/widgets/cocktail_gallery.dart';
+
+import '../../data/cocktail_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,29 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final int paneProportion = 100;
-
-  final List<String> items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10',
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +43,12 @@ class _HomePageState extends State<HomePage> {
         // Right Column
         Expanded(
           child: ListView.builder(
-            itemCount: items.length,
+            itemCount: CocktailData.drinks.length,
             itemBuilder: (BuildContext context, int index) {
-              return const ListTile(title: CocktailGallery());
+              final item = CocktailData.drinks[index];
+              final cocktail =
+                  Cocktail.fromMap(item); // convert Map to CocktailData
+              return ListTile(title: CocktailGallery(cocktail: cocktail));
             },
           ),
         ),

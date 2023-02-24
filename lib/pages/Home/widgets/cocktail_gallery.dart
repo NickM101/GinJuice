@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/models/cocktail.dart';
+import 'package:ginjuice/pages/Home/cocktail_page.dart';
 
 class CocktailGallery extends StatelessWidget {
-  const CocktailGallery({Key? key}) : super(key: key);
+  final Cocktail cocktail;
+  const CocktailGallery({Key? key, required this.cocktail}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +22,21 @@ class CocktailGallery extends StatelessWidget {
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: Stack(
           children: [
-            Ink.image(
-              image: const NetworkImage(
-                  "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg"),
-              height: 300,
-              fit: BoxFit.cover,
-              child: InkWell(
-                onTap: () => print('Card Selected'),
+            Hero(
+              tag: '${cocktail.idDrink}',
+              child: GestureDetector(
+                onTap: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CocktailPage(cocktail: cocktail))),
+                },
+                child: Image.network(
+                  '${cocktail.strDrinkThumb}',
+                  height: 400,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(
@@ -34,9 +45,12 @@ class CocktailGallery extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Long Island',
-                    style: TextStyle(color: Colors.white),
+                  SizedBox(
+                    width: 120,
+                    child: Text(
+                      '${cocktail.strDrink}',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   IconButton(
                     onPressed: () => {print("Favorite Clicked")},
@@ -46,17 +60,6 @@ class CocktailGallery extends StatelessWidget {
                     ),
                   )
                 ],
-              ),
-            ),
-            const Positioned(
-              bottom: 0.0,
-              right: 0.0,
-              child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text(
-                  'Non-Alcoholic',
-                  style: TextStyle(color: Colors.white),
-                ),
               ),
             ),
           ],
