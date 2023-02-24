@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'GinJuice',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(
-        useMaterial3: true,
+        useMaterial3: false,
       ),
       initialRoute: '/',
       routes: {
