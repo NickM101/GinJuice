@@ -6,9 +6,7 @@ class Cocktail {
   String? strGlass;
   String? strInstructions;
   String? strDrinkThumb;
-  String? strIngredient1;
-  String? strIngredient2;
-  String? strIngredient3;
+  List<String>? ingredients;
 
   Cocktail({
     this.idDrink,
@@ -18,23 +16,33 @@ class Cocktail {
     this.strGlass,
     this.strInstructions,
     this.strDrinkThumb,
-    this.strIngredient1,
-    this.strIngredient2,
-    this.strIngredient3,
+    this.ingredients,
   });
 
-  factory Cocktail.fromMap(Map<String, dynamic> map) {
+  factory Cocktail.fromJson(Map<String, dynamic> json) {
+    var ingredients = <String>[];
+    for (var i = 1; i <= 15; i++) {
+      var ingredientKey = 'strIngredient$i';
+      if (json.containsKey(ingredientKey) && json[ingredientKey] != null) {
+        ingredients.add(json[ingredientKey]);
+      } else {
+        break;
+      }
+    }
+
     return Cocktail(
-      idDrink: map['idDrink'],
-      strDrink: map['strDrink'],
-      strCategory: map['strCategory'],
-      strAlcoholic: map['strAlcoholic'],
-      strGlass: map['strGlass'],
-      strInstructions: map['strInstructions'],
-      strDrinkThumb: map['strDrinkThumb'],
-      strIngredient1: map['strIngredient1'],
-      strIngredient2: map['strIngredient2'],
-      strIngredient3: map['strIngredient3'],
+      idDrink: json['idDrink'],
+      strDrink: json['strDrink'],
+      strCategory: json['strCategory'],
+      strAlcoholic: json['strAlcoholic'],
+      strGlass: json['strGlass'],
+      strInstructions: json['strInstructions'],
+      strDrinkThumb: json['strDrinkThumb'],
+      ingredients: ingredients.isEmpty ? null : ingredients,
     );
+  }
+
+  List<String> getIngredients() {
+    return ingredients ?? [];
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:ginjuice/models/cocktail.dart';
 import 'package:ginjuice/pages/Home/cocktail_page.dart';
@@ -22,6 +24,10 @@ class CocktailGallery extends StatelessWidget {
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: Stack(
           children: [
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+              child: Container(),
+            ),
             Hero(
               tag: '${cocktail.idDrink}',
               child: GestureDetector(
@@ -40,7 +46,7 @@ class CocktailGallery extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +61,7 @@ class CocktailGallery extends StatelessWidget {
                   IconButton(
                     onPressed: () => {print("Favorite Clicked")},
                     icon: const Icon(
-                      Icons.favorite,
+                      Icons.favorite_border_rounded,
                       color: Colors.white,
                     ),
                   )

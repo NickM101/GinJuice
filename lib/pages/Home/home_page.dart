@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     return Row(
       children: [
         // Left Column
-        Container(
+        SizedBox(
           width: 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (BuildContext context, int index) {
               final item = CocktailData.drinks[index];
               final cocktail =
-                  Cocktail.fromMap(item); // convert Map to CocktailData
+                  Cocktail.fromJson(item); // convert Map to CocktailData
               return ListTile(title: CocktailGallery(cocktail: cocktail));
             },
           ),
