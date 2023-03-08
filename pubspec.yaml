@@ -50,9 +50,19 @@ dev_dependencies:
   go_router: ^6.0.8
   google_fonts: ^4.0.3
   flutter_svg: ^2.0.1
+  flutter_native_splash: ^2.2.19
+  sizer: ^2.0.15
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_native_splash:
+  color: "#1B1A1A"
+  image: assets/images/splash.png
+  android_12:
+    image: assets/images/splash.png
+    color: "#1B1A1A"
+    icon_background_color: "#1B1A1A"
+  android_gravity: center
 
 # The following section is specific to Flutter packages.
 flutter:

@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:ginjuice/features/search/search_bar.dart';
+
+class SilverAppBar extends StatefulWidget {
+  const SilverAppBar({Key? key}) : super(key: key);
+
+  @override
+  State<SilverAppBar> createState() => _SilverAppBarState();
+}
+
+class _SilverAppBarState extends State<SilverAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.only(bottom: 10),
+          sliver: SliverAppBar(
+            pinned: true,
+            snap: false,
+            floating: false,
+            expandedHeight: 230.0,
+            elevation: 5,
+            titleSpacing: 0,
+            backgroundColor: const Color(0xFF006874),
+            collapsedHeight: 100.0,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                child: Text('Choose a drink',
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge
+                        ?.apply(color: Colors.white70)),
+              ),
+            ),
+            bottom: const PreferredSize(
+                preferredSize: Size.fromHeight(0), child: SearchBar()),
+          ),
+        ),
+        SliverList(delegate: SliverChildBuilderDelegate((context, index) {
+          return Card(
+            elevation: 7,
+            child: Container(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: Text("Item $index",
+                    style: Theme.of(context).textTheme.bodyLarge)),
+          );
+        }))
+      ],
+    );
+  }
+}
