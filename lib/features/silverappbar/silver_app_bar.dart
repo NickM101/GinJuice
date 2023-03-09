@@ -37,7 +37,12 @@ class _SilverAppBarState extends State<SilverAppBar> {
               ),
             ),
             bottom: const PreferredSize(
-                preferredSize: Size.fromHeight(0), child: SearchBar()),
+                preferredSize: Size.fromHeight(0),
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  child: SearchBar(),
+                )),
           ),
         ),
         SliverPadding(
@@ -45,10 +50,10 @@ class _SilverAppBarState extends State<SilverAppBar> {
           sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext context, int index) {
-                return CocktailGallery();
-              })),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) => CocktailGallery(),
+                childCount: 10,
+              )),
         ),
       ],
     );

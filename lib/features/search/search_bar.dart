@@ -10,16 +10,15 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    return SizedBox(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
             decoration: InputDecoration(
-                suffixIcon: Icon(Icons.filter_list_rounded),
+                suffixIcon: const Icon(Icons.filter_list_rounded),
                 hintText: "Search drink",
-                prefixIcon: Icon(Icons.search_rounded),
+                prefixIcon: const Icon(Icons.search_rounded),
                 filled: true,
                 fillColor: Colors.pink.shade50,
                 border: OutlineInputBorder(
