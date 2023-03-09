@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/features/gallery/cocktail_gallery.dart';
 import 'package:ginjuice/features/search/search_bar.dart';
 
 class SilverAppBar extends StatefulWidget {
@@ -39,16 +40,16 @@ class _SilverAppBarState extends State<SilverAppBar> {
                 preferredSize: Size.fromHeight(0), child: SearchBar()),
           ),
         ),
-        SliverList(delegate: SliverChildBuilderDelegate((context, index) {
-          return Card(
-            elevation: 7,
-            child: Container(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                child: Text("Item $index",
-                    style: Theme.of(context).textTheme.bodyLarge)),
-          );
-        }))
+        SliverPadding(
+          padding: const EdgeInsets.all(10.0),
+          sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
+              delegate:
+                  SliverChildBuilderDelegate((BuildContext context, int index) {
+                return CocktailGallery();
+              })),
+        ),
       ],
     );
   }
