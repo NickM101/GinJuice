@@ -68,6 +68,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: const Color(0xFF261d1d),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,15 +90,24 @@ class _SplashScreenState extends State<SplashScreen>
                   animation: _animationController,
                   builder: (context, child) {
                     return Transform.scale(
-                      scale: _growAnimation.value,
-                      child: Text(
-                        'GinJuice',
-                        style: TextStyle(
-                          fontSize: 32 * _growAnimation.value,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    );
+                        scale: _growAnimation.value,
+                        child: RichText(
+                            text: TextSpan(
+                                text: 'Gin',
+                                style: TextStyle(
+                                  fontSize: 24 * _growAnimation.value,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                children: <TextSpan>[
+                              TextSpan(
+                                text: 'Juice',
+                                style: TextStyle(
+                                  fontSize: 24 * _growAnimation.value,
+                                  fontWeight: FontWeight.bold,
+                                  color: const Color(0xfff0576b),
+                                ),
+                              ),
+                            ])));
                   },
                 ),
               ),
