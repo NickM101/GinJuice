@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flex_color_scheme: ^7.1.1
+  flutter_native_splash: ^2.3.0
   auto_size_text: ^3.0.0
   cached_network_image: ^3.2.3
   google_fonts: ^4.0.4
@@ -41,3 +42,8 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
+# Flutter Native Splash Screen Configuration
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/logo.png
