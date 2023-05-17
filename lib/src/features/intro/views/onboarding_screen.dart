@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
 import 'package:ginjuice/src/features/intro/controller/indicator_controller.dart';
 import 'package:ginjuice/src/features/intro/models/onboard_model.dart';
 import 'package:ginjuice/src/features/intro/widgets/dot_indicator.dart';
 import 'package:ginjuice/src/features/intro/widgets/onboarding_content.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -37,7 +39,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           Row(
             children: [
               const Spacer(),
-              TextButton(onPressed: () {}, child: const Text('Skip'))
+              TextButton(
+                  onPressed: () {
+                    context.pushNamed(AppScreen.login.routeName);
+                  },
+                  child: const Text('Skip'))
             ],
           ),
           Expanded(

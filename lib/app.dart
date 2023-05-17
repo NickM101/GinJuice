@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_config.dart';
 import 'package:ginjuice/src/features/auth/views/email_link.dart';
 import 'package:ginjuice/src/features/auth/views/sent_link.dart';
 import 'package:sizer/sizer.dart';
@@ -16,12 +17,12 @@ class GinJuiceApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return DismissKeyboard(
-          child: MaterialApp(
+          child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: ThemeMode.dark,
-            home: const SentMagicLink(),
+            routerConfig: AppRouter().router,
           ),
         );
       },

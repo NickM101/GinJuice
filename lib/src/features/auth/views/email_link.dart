@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/widgets/custom_elevated_button.dart';
@@ -10,6 +12,13 @@ class EmailMagicLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+      ),
       body: Image(
         height: 60.h,
         image: const AssetImage('assets/images/bar.png'),
@@ -51,7 +60,11 @@ class EmailMagicLink extends StatelessWidget {
                 SizedBox(
                   height: 5.h,
                 ),
-                CustomElevatedButton(text: 'Get Magic Link', onPressed: () {})
+                CustomElevatedButton(
+                    text: 'Get Magic Link',
+                    onPressed: () {
+                      context.pushNamed(AppScreen.checkEmail.routeName);
+                    })
               ],
             ),
           );

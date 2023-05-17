@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -54,9 +56,8 @@ class _SplashScreenState extends State<SplashScreen>
       if (mounted) {
         _animationController.forward();
       }
-    })
-        .then((value) => Future.delayed(const Duration(seconds: 3)))
-        .then((value) => {debugPrint('Next Page')});
+    }).then((value) => Future.delayed(const Duration(seconds: 3))).then(
+        (value) => {context.replaceNamed(AppScreen.onboarding.routeName)});
   }
 
   @override
