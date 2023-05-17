@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/widgets/custom_elevated_button.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../../core/widgets/custom_elevated_button.dart';
 
 class EmailMagicLink extends StatelessWidget {
   EmailMagicLink({super.key});
   final TextEditingController _emailController = TextEditingController();
-
-  String? _validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter an email';
-    } else if (!value.contains('@')) {
-      return 'Invalid email address';
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
