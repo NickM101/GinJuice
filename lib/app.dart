@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/src/features/auth/views/email_magic.dart';
 import 'package:sizer/sizer.dart';
 
 import 'core/themes/themes.dart';
@@ -18,8 +19,8 @@ class GinJuiceApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            themeMode: ThemeMode.dark,
-            home: const OnboardingScreen(),
+            themeMode: ThemeMode.light,
+            home: EmailMagicLink(),
           ),
         );
       },
