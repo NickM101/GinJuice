@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
-import 'config/themes/themes.dart';
-import 'src/features/intro/views/splash_screen.dart';
-import 'package:ginjuice/src/features/intro/views/onboarding_screen.dart';
+import 'core/themes/themes.dart';
+import 'core/widgets/dismiss_keyboard.dart';
+import 'src/features/intro/views/onboarding_screen.dart';
 
 class GinJuiceApp extends StatelessWidget {
   const GinJuiceApp({super.key});
@@ -10,12 +11,18 @@ class GinJuiceApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.light,
-      home: const OnboardingScreen(),
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return DismissKeyboard(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: ThemeMode.dark,
+            home: const OnboardingScreen(),
+          ),
+        );
+      },
     );
   }
 }
