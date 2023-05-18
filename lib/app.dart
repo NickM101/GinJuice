@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ginjuice/core/routes/route_config.dart';
-import 'package:ginjuice/src/features/auth/views/email_link.dart';
-import 'package:ginjuice/src/features/auth/views/sent_link.dart';
+import 'package:ginjuice/features/favorite/views/favorite_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import 'core/themes/themes.dart';
-import 'core/widgets/dismiss_keyboard.dart';
-import 'src/features/intro/views/onboarding_screen.dart';
+import 'core/common/widgets/dismiss_keyboard.dart';
 
 class GinJuiceApp extends StatelessWidget {
   const GinJuiceApp({super.key});
@@ -21,7 +19,7 @@ class GinJuiceApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            themeMode: ThemeMode.dark,
+            themeMode: ThemeMode.light,
             routerConfig: AppRouter().router,
           ),
         );

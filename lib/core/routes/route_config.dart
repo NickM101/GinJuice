@@ -1,23 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:ginjuice/features/favorite/views/favorite_screen.dart';
+import 'package:ginjuice/features/profile/views/profile_screen.dart';
+import 'package:ginjuice/features/search/views/search_screen.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../src/features/auth/views/email_link.dart';
-import '../../src/features/auth/views/sent_link.dart';
-import '../../src/features/home/views/home_screen.dart';
-import '../../src/features/intro/views/onboarding_screen.dart';
-import '../../src/features/intro/views/splash_screen.dart';
+import '../../features/auth/views/email_link.dart';
+import '../../features/auth/views/sent_link.dart';
+import '../../features/home/views/home_screen.dart';
+import '../../features/intro/views/onboarding_screen.dart';
+import '../../features/intro/views/splash_screen.dart';
+import '../common/widgets/bottom_navigation_bar.dart';
 import 'route_utils.dart';
 
 class AppRouter {
   GoRouter get router => _goRouter;
 
+  final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
   late final GoRouter _goRouter = GoRouter(
-    initialLocation: AppScreen.splash.pathName,
-    routes: <GoRoute>[
-      GoRoute(
-        path: AppScreen.home.pathName,
-        name: AppScreen.home.routeName,
-        builder: (context, state) => const HomeScreen(),
-      ),
+    initialLocation: AppScreen.home.pathName,
+    navigatorKey: _rootNavigatorKey,
+    routes: [
+      ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) {
+            return BottomNavBar(child: child);
+          },
+          routes: [
+            GoRoute(
+              path: AppScreen.home.pathName,
+              name: AppScreen.home.routeName,
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: HomeScreen()),
+            ),
+            GoRoute(
+              path: AppScreen.search.pathName,
+              name: AppScreen.search.routeName,
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: SearchScreen()),
+            ),
+            GoRoute(
+              path: AppScreen.favorite.pathName,
+              name: AppScreen.favorite.routeName,
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: FavoriteScreen()),
+            ),
+            GoRoute(
+              path: AppScreen.account.pathName,
+              name: AppScreen.account.routeName,
+              pageBuilder: (context, state) =>
+                  const NoTransitionPage(child: ProfileScreen()),
+            ),
+          ]),
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,

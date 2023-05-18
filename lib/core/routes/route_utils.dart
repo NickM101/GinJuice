@@ -4,8 +4,11 @@ enum AppScreen {
   login,
   checkEmail,
   confirmation,
-  home,
   error,
+  home,
+  search,
+  favorite,
+  account,
 }
 
 extension AppScreenExtension on AppScreen {
@@ -20,7 +23,13 @@ extension AppScreenExtension on AppScreen {
       case AppScreen.checkEmail:
         return '/check_email';
       case AppScreen.home:
-        return '/';
+        return '/home';
+      case AppScreen.search:
+        return '/search';
+      case AppScreen.favorite:
+        return '/favorite';
+      case AppScreen.account:
+        return '/account';
       default:
         return '/';
     }
@@ -38,6 +47,12 @@ extension AppScreenExtension on AppScreen {
         return 'check_email';
       case AppScreen.home:
         return 'home';
+      case AppScreen.search:
+        return 'search';
+      case AppScreen.favorite:
+        return 'favorite';
+      case AppScreen.account:
+        return 'account';
       default:
         return 'home';
     }

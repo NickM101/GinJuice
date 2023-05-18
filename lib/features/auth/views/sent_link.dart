@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../core/widgets/custom_elevated_button.dart';
+import '../../../core/common/widgets/custom_elevated_button.dart';
 
 class SentMagicLink extends StatelessWidget {
   const SentMagicLink({super.key});
