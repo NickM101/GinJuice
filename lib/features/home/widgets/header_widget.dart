@@ -5,26 +5,29 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        RichText(
-          text: TextSpan(
-            text: 'Gin',
-            style: Theme.of(context).textTheme.titleLarge,
-            children: <TextSpan>[
-              TextSpan(
-                text: 'Juice',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.apply(color: const Color(0xfff0576b)),
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 1.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          RichText(
+            text: TextSpan(
+              text: 'Gin',
+              style: Theme.of(context).textTheme.titleLarge,
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Juice',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.apply(color: const Color(0xfff0576b)),
+                ),
+              ],
+            ),
           ),
-        ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.person))
-      ],
+          IconButton(onPressed: () {}, icon: const Icon(Icons.person))
+        ],
+      ),
     );
   }
 }

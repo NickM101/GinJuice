@@ -53,8 +53,6 @@ class _HomeScreenState extends State<HomeScreen>
                       child: TabBarView(
                         controller: controller,
                         children: List<Widget>.generate(26, (int index) {
-                          final letter =
-                              String.fromCharCode('A'.codeUnitAt(0) + index);
                           return const CocktailCard();
                         }),
                       ),
@@ -69,5 +67,4 @@ class _HomeScreenState extends State<HomeScreen>
 }
 
 
-// context.pushNamed(AppScreen.detail.routeName)
 // const Color(0xfff0576b)

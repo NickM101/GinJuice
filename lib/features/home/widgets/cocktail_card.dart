@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sizer/sizer.dart';
+
+import '../../../core/common/widgets/custom_elevated_button.dart';
 
 class CocktailCard extends StatefulWidget {
   const CocktailCard({super.key});
@@ -69,94 +74,103 @@ class _CocktailCardState extends State<CocktailCard> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: PageController(
-        viewportFraction: 0.8,
-      ),
-      padEnds: false,
-      onPageChanged: (index) {
-        setState(() {
-          pageSelectedIndex = index;
-        });
-      },
-      itemCount: cocktails.length,
-      itemBuilder: (context, index) {
-        var scale = pageSelectedIndex == index ? 1.0 : 0.8;
-        final cocktail = cocktails[index];
-        return TweenAnimationBuilder(
-          duration: const Duration(milliseconds: 500),
-          tween: Tween(begin: scale, end: scale),
-          curve: Curves.easeInOut,
-          builder: (context, value, child) => Transform.scale(
-            scale: value,
-            child: child,
-          ),
-          child: Card(
-            elevation: 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+    return SizedBox(
+      child: PageView.builder(
+        controller: PageController(
+          viewportFraction: 0.8,
+        ),
+        padEnds: false,
+        onPageChanged: (index) {
+          setState(() {
+            pageSelectedIndex = index;
+          });
+        },
+        itemCount: cocktails.length,
+        itemBuilder: (context, index) {
+          var scale = pageSelectedIndex == index ? 1.0 : 0.8;
+          final cocktail = cocktails[index];
+          return TweenAnimationBuilder(
+            duration: const Duration(milliseconds: 500),
+            tween: Tween(begin: scale, end: scale),
+            curve: Curves.easeInOut,
+            builder: (context, value, child) => Transform.scale(
+              scale: value,
+              child: child,
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: NetworkImage(cocktail['strDrinkThumb']),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.18,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Card(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Container(
+                    height: 50.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: NetworkImage(cocktail['strDrinkThumb']),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    alignment: Alignment.bottomCenter,
+                    child: Container(),
                   ),
                 ),
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    AutoSizeText(
-                      cocktail['strDrink'],
-                      maxLines: 2,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
-                          ?.apply(color: Colors.white),
-                    ),
-                    AutoSizeText(
-                      cocktail['strGlass'],
-                      maxLines: 2,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.apply(color: Colors.white),
-                    ),
-                    Row(
-                      children: [
-                        const Spacer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ),
-                              minimumSize: const Size(30, 40)),
-                          child: const Icon(Icons.arrow_forward),
+                Card(
+                  elevation: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SizedBox(
+                      height: 25.h,
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AutoSizeText(
+                              cocktail['strDrink'],
+                              maxLines: 2,
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                            AutoSizeText(
+                              cocktail['strGlass'],
+                              maxLines: 2,
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            Wrap(
+                              direction: Axis.horizontal,
+                              spacing: 10,
+                              children: [
+                                Chip(label: Text(cocktail['strCategory'])),
+                                Chip(label: Text(cocktail['strAlcoholic'])),
+                                const Chip(label: Text('Ingredients (5)')),
+                              ],
+                            ),
+                            CustomElevatedButton(
+                                text: 'View Details ',
+                                onPressed: () {
+                                  context.pushNamed(AppScreen.detail.routeName);
+                                })
+                          ],
                         ),
-                      ],
-                    )
-                  ],
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
+
+
+//context.pushNamed(AppScreen.detail.routeName);
