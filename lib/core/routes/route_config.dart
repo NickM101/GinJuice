@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/features/details/views/cocktail_detail.dart';
 import 'package:ginjuice/features/favorite/views/favorite_screen.dart';
 import 'package:ginjuice/features/profile/views/profile_screen.dart';
 import 'package:ginjuice/features/search/views/search_screen.dart';
@@ -19,21 +20,29 @@ class AppRouter {
   final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   late final GoRouter _goRouter = GoRouter(
+    debugLogDiagnostics: true,
     initialLocation: AppScreen.home.pathName,
     navigatorKey: _rootNavigatorKey,
-    routes: [
+    routes: <RouteBase>[
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) {
             return BottomNavBar(child: child);
           },
-          routes: [
+          routes: <RouteBase>[
             GoRoute(
-              path: AppScreen.home.pathName,
-              name: AppScreen.home.routeName,
-              pageBuilder: (context, state) =>
-                  const NoTransitionPage(child: HomeScreen()),
-            ),
+                path: AppScreen.home.pathName,
+                name: AppScreen.home.routeName,
+                pageBuilder: (context, state) =>
+                    const NoTransitionPage(child: HomeScreen()),
+                routes: [
+                  GoRoute(
+                    path: AppScreen.detail.pathName,
+                    name: AppScreen.detail.routeName,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    builder: (context, state) => const CocktailDetail(),
+                  )
+                ]),
             GoRoute(
               path: AppScreen.search.pathName,
               name: AppScreen.search.routeName,
