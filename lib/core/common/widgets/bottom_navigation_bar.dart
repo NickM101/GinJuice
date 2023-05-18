@@ -25,6 +25,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
       text: 'Home',
     ),
     NavItems(
+      initialLocation: AppScreen.explore.pathName,
+      icon: Icons.explore,
+      text: 'Explore',
+    ),
+    NavItems(
       initialLocation: AppScreen.search.pathName,
       icon: Icons.search,
       text: 'Search',
@@ -64,8 +69,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         tabMargin: const EdgeInsets.all(10),
         tabBackgroundColor: Theme.of(context).focusColor,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        gap: 8,
-        iconSize: 32,
+        iconSize: 28,
+        gap: 4,
         onTabChange: (value) => _onTabChange(context, value),
         tabs: tabs,
       ),

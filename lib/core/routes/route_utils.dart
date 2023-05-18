@@ -6,6 +6,7 @@ enum AppScreen {
   confirmation,
   error,
   home,
+  explore,
   search,
   favorite,
   account,
@@ -25,6 +26,8 @@ extension AppScreenExtension on AppScreen {
         return '/check_email';
       case AppScreen.home:
         return '/';
+      case AppScreen.explore:
+        return '/explore';
       case AppScreen.search:
         return '/search';
       case AppScreen.favorite:
@@ -50,6 +53,8 @@ extension AppScreenExtension on AppScreen {
         return 'check_email';
       case AppScreen.home:
         return 'home';
+      case AppScreen.explore:
+        return 'explore';
       case AppScreen.search:
         return 'search';
       case AppScreen.favorite:
