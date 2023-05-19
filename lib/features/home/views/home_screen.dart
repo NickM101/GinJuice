@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:ginjuice/features/explore/widgets/cocktail_card.dart';
-import 'package:ginjuice/features/home/widgets/feature_cocktail.dart';
-import 'package:ginjuice/features/home/widgets/header_widget.dart';
-import 'package:go_router/go_router.dart';
+
+import '../widgets/feature_cocktail.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
