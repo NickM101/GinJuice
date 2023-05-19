@@ -67,6 +67,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   (index) => Padding(
                         padding: const EdgeInsets.only(right: 4.0),
                         child: DotIndicator(
+                          color: Theme.of(context).primaryColor,
                           isActive: index == ref.watch(indicatorProvider),
                         ),
                       )),

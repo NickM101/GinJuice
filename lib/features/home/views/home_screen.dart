@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ginjuice/core/routes/route_utils.dart';
 import 'package:ginjuice/features/explore/widgets/cocktail_card.dart';
+import 'package:ginjuice/features/home/widgets/feature_cocktail.dart';
 import 'package:ginjuice/features/home/widgets/header_widget.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,11 +18,10 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Column(children: [
-        HeaderWidget(),
-      ]),
+    return const Column(
+      children: [
+        FeatureCocktail(),
+      ],
     );
   }
 }

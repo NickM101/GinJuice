@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class DotIndicator extends StatelessWidget {
   final bool isActive;
+  final Color color;
   const DotIndicator({
     Key? key,
+    required this.color,
     this.isActive = false,
   }) : super(key: key);
 
@@ -14,9 +16,7 @@ class DotIndicator extends StatelessWidget {
       height: isActive ? 20 : 10,
       width: isActive ? 6 : 3,
       decoration: BoxDecoration(
-          color: isActive
-              ? Theme.of(context).primaryColor
-              : Theme.of(context).primaryColor.withOpacity(0.4),
+          color: isActive ? color : color.withOpacity(0.4),
           borderRadius: const BorderRadius.all(Radius.circular(12))),
     );
   }

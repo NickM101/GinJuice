@@ -22,6 +22,7 @@ dependencies:
   open_mail_app: ^0.4.5
   shared_preferences: ^2.1.1
   google_nav_bar: ^5.0.6
+  glass: ^1.0.1+1
 
 
 dev_dependencies:
