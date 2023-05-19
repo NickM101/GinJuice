@@ -22,7 +22,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.search.pathName,
+    initialLocation: AppScreen.splash.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -72,7 +72,7 @@ class AppRouter {
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
-        builder: (context, state) => const SplashScreen(),
+        builder: (context, state) => const CocktailDetail(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,
