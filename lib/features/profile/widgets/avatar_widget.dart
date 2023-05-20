@@ -15,28 +15,29 @@ class AvatarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 24.h,
+      height: 20.h,
       child: Stack(
         children: [
           CircleAvatar(
-            radius: 70,
+            radius: 60,
             backgroundColor: Colors.transparent,
             backgroundImage: NetworkImage(image),
           ),
           Positioned(
-            bottom: 25,
-            left: 45,
-            child: Container(
-              height: 6.h,
-              width: 6.h,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.black,
-                  border: Border.all(color: Colors.white)),
-              child: IconButton(
-                onPressed: onPress,
-                icon: const Icon(Icons.edit),
-              ),
+            bottom: 20,
+            left: 40,
+            child: GestureDetector(
+              onTap: onPress,
+              child: Container(
+                  height: 5.h,
+                  width: 5.h,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.black,
+                      border: Border.all(color: Colors.white)),
+                  child: const Icon(
+                    Icons.edit,
+                  )),
             ),
           ),
         ],

@@ -21,9 +21,6 @@ class ProfileScreen extends StatelessWidget {
       child: Column(
         children: [
           const HeaderWidget(),
-          SizedBox(
-            height: 2.h,
-          ),
           AvatarWidget(
             image:
                 'https://em-content.zobj.net/thumbs/120/apple/354/smiling-face-with-sunglasses_1f60e.png',
@@ -38,6 +35,10 @@ class ProfileScreen extends StatelessWidget {
           ),
           SizedBox(
             height: 2.h,
+          ),
+          const ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
           ),
           const ListTile(
             leading: Icon(Icons.phone),
