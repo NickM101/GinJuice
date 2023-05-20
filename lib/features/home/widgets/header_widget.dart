@@ -25,7 +25,7 @@ class HeaderWidget extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.person))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
         ],
       ),
     );

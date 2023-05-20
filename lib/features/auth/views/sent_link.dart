@@ -32,14 +32,14 @@ class SentMagicLink extends StatelessWidget {
               ),
               Text(
                 'Magic Link Sent',
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               SizedBox(
                 height: 4.h,
               ),
               Text(
                 'Thank you for choosing our mobile app! We\'ve just sent you a magic link to securely confirm your access and unlock exciting features. Simply tap the link to validate your account and start exploring our app\'s amazing functionalities. Get ready to experience convenience at your fingertips!',
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
               SizedBox(

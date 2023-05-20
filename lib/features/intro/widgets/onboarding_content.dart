@@ -19,7 +19,7 @@ class OnboardContent extends StatelessWidget {
         const Spacer(),
         Text(
           title,
-          style: Theme.of(context).textTheme.displayMedium,
+          style: Theme.of(context).textTheme.headlineSmall,
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -27,7 +27,7 @@ class OnboardContent extends StatelessWidget {
         ),
         Text(
           description,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
         const Spacer(),

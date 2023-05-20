@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -26,6 +28,7 @@ class CustomElevatedButton extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8.0),
           child: ElevatedButton(
+            onLongPress: () => context.goNamed(AppScreen.home.routeName),
             onPressed: isDisabled || isLoading ? null : onPressed,
             style: ElevatedButton.styleFrom(
                 shape: const BeveledRectangleBorder(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/features/intro/views/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
@@ -22,7 +23,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.favorite.pathName,
+    initialLocation: AppScreen.splash.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -80,7 +81,7 @@ class AppRouter {
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
-        builder: (context, state) => const CocktailDetail(),
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,
