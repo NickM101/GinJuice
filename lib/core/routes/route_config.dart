@@ -22,7 +22,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.splash.pathName,
+    initialLocation: AppScreen.account.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
