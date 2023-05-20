@@ -22,7 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: double.infinity,
-        height: 7.h,
+        height: 10.h,
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 8.0),
           child: ElevatedButton(

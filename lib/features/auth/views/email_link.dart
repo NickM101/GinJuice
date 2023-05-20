@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/widgets/custom_elevated_button.dart';
+import '../../../core/routes/route_utils.dart';
 
 class EmailMagicLink extends StatelessWidget {
   EmailMagicLink({super.key});

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
 import 'package:ginjuice/features/profile/widgets/avatar_widget.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../home/widgets/header_widget.dart';
@@ -9,6 +11,11 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void editProfile() {
+      print('update');
+      context.pushNamed(AppScreen.updateAccount.routeName);
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -17,7 +24,12 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(
             height: 2.h,
           ),
-          const AvatarWidget(),
+          AvatarWidget(
+            image:
+                'https://em-content.zobj.net/thumbs/120/apple/354/smiling-face-with-sunglasses_1f60e.png',
+            icon: Icons.edit,
+            onPress: editProfile,
+          ),
           const Column(
             children: [
               Text('Mohammed Reza'),

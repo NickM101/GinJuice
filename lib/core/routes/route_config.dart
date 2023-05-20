@@ -3,6 +3,7 @@ import 'package:ginjuice/features/details/views/cocktail_detail.dart';
 import 'package:ginjuice/features/explore/views/explore_screen.dart';
 import 'package:ginjuice/features/favorite/views/favorite_screen.dart';
 import 'package:ginjuice/features/profile/views/profile_screen.dart';
+import 'package:ginjuice/features/profile/views/update_profile.dart';
 import 'package:ginjuice/features/search/views/search_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -63,11 +64,19 @@ class AppRouter {
                   const NoTransitionPage(child: FavoriteScreen()),
             ),
             GoRoute(
-              path: AppScreen.account.pathName,
-              name: AppScreen.account.routeName,
-              pageBuilder: (context, state) =>
-                  const NoTransitionPage(child: ProfileScreen()),
-            ),
+                path: AppScreen.account.pathName,
+                name: AppScreen.account.routeName,
+                pageBuilder: (context, state) =>
+                    const NoTransitionPage(child: ProfileScreen()),
+                routes: [
+                  GoRoute(
+                    path: AppScreen.updateAccount.pathName,
+                    name: AppScreen.updateAccount.routeName,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    pageBuilder: (context, state) =>
+                        NoTransitionPage(child: UpdateProfile()),
+                  ),
+                ]),
           ]),
       GoRoute(
         path: AppScreen.splash.pathName,

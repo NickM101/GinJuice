@@ -10,6 +10,7 @@ enum AppScreen {
   search,
   favorite,
   account,
+  updateAccount,
   detail
 }
 
@@ -34,6 +35,8 @@ extension AppScreenExtension on AppScreen {
         return '/favorite';
       case AppScreen.account:
         return '/account';
+      case AppScreen.updateAccount:
+        return 'update_account';
       case AppScreen.detail:
         return 'detail';
       default:
@@ -61,6 +64,8 @@ extension AppScreenExtension on AppScreen {
         return 'favorite';
       case AppScreen.account:
         return 'account';
+      case AppScreen.updateAccount:
+        return 'update_account';
       case AppScreen.detail:
         return 'detail';
       default:
