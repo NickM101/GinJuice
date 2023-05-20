@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/features/details/views/cocktail_detail.dart';
-import 'package:ginjuice/features/explore/views/explore_screen.dart';
-import 'package:ginjuice/features/favorite/views/favorite_screen.dart';
-import 'package:ginjuice/features/profile/views/profile_screen.dart';
-import 'package:ginjuice/features/profile/views/update_profile.dart';
-import 'package:ginjuice/features/search/views/search_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
 import '../../features/auth/views/sent_link.dart';
+import '../../features/details/views/cocktail_detail.dart';
+import '../../features/explore/views/explore_screen.dart';
+import '../../features/favorite/views/favorite_screen.dart';
 import '../../features/home/views/home_screen.dart';
 import '../../features/intro/views/onboarding_screen.dart';
-import '../../features/intro/views/splash_screen.dart';
+import '../../features/profile/views/profile_screen.dart';
+import '../../features/profile/views/update_profile.dart';
+import '../../features/search/views/search_screen.dart';
 import '../common/widgets/bottom_navigation_bar.dart';
 import 'route_utils.dart';
 
@@ -61,7 +60,7 @@ class AppRouter {
               path: AppScreen.favorite.pathName,
               name: AppScreen.favorite.routeName,
               pageBuilder: (context, state) =>
-                  const NoTransitionPage(child: FavoriteScreen()),
+                  NoTransitionPage(child: FavoriteScreen()),
             ),
             GoRoute(
                 path: AppScreen.account.pathName,

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../../core/common/widgets/custom_elevated_button.dart';
 
 class CocktailCard extends StatefulWidget {
   const CocktailCard({super.key});
@@ -98,7 +94,6 @@ class _CocktailCardState extends State<CocktailCard> {
               child: child,
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Card(
@@ -122,9 +117,9 @@ class _CocktailCardState extends State<CocktailCard> {
                 Card(
                   elevation: 0,
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: SizedBox(
-                      height: 25.h,
+                      height: 22.h,
                       width: double.infinity,
                       child: SingleChildScrollView(
                         child: Column(
@@ -152,11 +147,6 @@ class _CocktailCardState extends State<CocktailCard> {
                                 const Chip(label: Text('Ingredients (5)')),
                               ],
                             ),
-                            CustomElevatedButton(
-                                text: 'View Details ',
-                                onPressed: () {
-                                  context.pushNamed(AppScreen.detail.routeName);
-                                })
                           ],
                         ),
                       ),

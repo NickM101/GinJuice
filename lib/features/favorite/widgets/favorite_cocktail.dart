@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:glass/glass.dart';
 import 'package:sizer/sizer.dart';
 
 class FavoriteCocktail extends StatelessWidget {
@@ -37,8 +36,9 @@ class FavoriteCocktail extends StatelessWidget {
         const SizedBox(height: 4.0),
         AutoSizeText(
           name,
-          maxLines: 1,
-          style: Theme.of(context).textTheme.titleMedium,
+          maxLines: 2,
+          style: Theme.of(context).textTheme.titleSmall,
+          textAlign: TextAlign.center,
         ),
       ],
     );

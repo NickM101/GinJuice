@@ -48,47 +48,8 @@ class FeatureCocktail extends StatelessWidget {
             bottom: 16,
             left: 12,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"), // Replace with your own avatar image path
-                    ),
-                    const SizedBox(width: 8),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(3, 0, 10, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'John Doe',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.apply(
-                                    fontWeightDelta: 900, color: Colors.white),
-                          ),
-                          Text(
-                            'Timeline',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.apply(
-                                    fontWeightDelta: 300, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ).asGlass(
-                  tintColor: Colors.black,
-                  clipBorderRadius: BorderRadius.circular(15),
-                ),
-                SizedBox(
-                  width: 26.h,
-                ),
+                SizedBox(width: 85.w),
                 ...List.generate(
                   4,
                   (index) => Padding(
