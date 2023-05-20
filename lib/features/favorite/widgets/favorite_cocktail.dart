@@ -23,8 +23,8 @@ class FavoriteCocktail extends StatelessWidget {
         Container(
           margin: const EdgeInsets.all(8.0),
           padding: const EdgeInsets.all(4.0),
-          height: 35.h,
-          width: 45.w,
+          height: 30.h,
+          width: 40.w,
           decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.8),
               borderRadius: BorderRadius.circular(16.0),
