@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ginjuice/features/intro/views/splash_screen.dart';
+import 'package:ginjuice/features/profile/views/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
@@ -23,7 +24,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.splash.pathName,
+    initialLocation: AppScreen.home.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -75,6 +76,13 @@ class AppRouter {
                     parentNavigatorKey: _rootNavigatorKey,
                     pageBuilder: (context, state) =>
                         NoTransitionPage(child: UpdateProfile()),
+                  ),
+                  GoRoute(
+                    path: AppScreen.settings.pathName,
+                    name: AppScreen.settings.routeName,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: SettingsScreen()),
                   ),
                 ]),
           ]),

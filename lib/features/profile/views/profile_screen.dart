@@ -36,9 +36,10 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(
             height: 2.h,
           ),
-          const ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
+            onTap: () => context.pushNamed(AppScreen.settings.routeName),
           ),
           const ListTile(
             leading: Icon(Icons.phone),
