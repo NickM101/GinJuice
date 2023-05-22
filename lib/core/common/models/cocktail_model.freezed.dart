@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Cocktail _$CocktailFromJson(Map<String, dynamic> json) {
-  return _Cocktail.fromJson(json);
+CocktailModel _$CocktailModelFromJson(Map<String, dynamic> json) {
+  return _CocktailModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Cocktail {
+mixin _$CocktailModel {
   String get idDrink => throw _privateConstructorUsedError;
   String get strDrink => throw _privateConstructorUsedError;
   String? get strDrinkAlternate => throw _privateConstructorUsedError;
@@ -74,14 +74,15 @@ mixin _$Cocktail {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CocktailCopyWith<Cocktail> get copyWith =>
+  $CocktailModelCopyWith<CocktailModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CocktailCopyWith<$Res> {
-  factory $CocktailCopyWith(Cocktail value, $Res Function(Cocktail) then) =
-      _$CocktailCopyWithImpl<$Res, Cocktail>;
+abstract class $CocktailModelCopyWith<$Res> {
+  factory $CocktailModelCopyWith(
+          CocktailModel value, $Res Function(CocktailModel) then) =
+      _$CocktailModelCopyWithImpl<$Res, CocktailModel>;
   @useResult
   $Res call(
       {String idDrink,
@@ -138,9 +139,9 @@ abstract class $CocktailCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CocktailCopyWithImpl<$Res, $Val extends Cocktail>
-    implements $CocktailCopyWith<$Res> {
-  _$CocktailCopyWithImpl(this._value, this._then);
+class _$CocktailModelCopyWithImpl<$Res, $Val extends CocktailModel>
+    implements $CocktailModelCopyWith<$Res> {
+  _$CocktailModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -412,10 +413,11 @@ class _$CocktailCopyWithImpl<$Res, $Val extends Cocktail>
 }
 
 /// @nodoc
-abstract class _$$_CocktailCopyWith<$Res> implements $CocktailCopyWith<$Res> {
-  factory _$$_CocktailCopyWith(
-          _$_Cocktail value, $Res Function(_$_Cocktail) then) =
-      __$$_CocktailCopyWithImpl<$Res>;
+abstract class _$$_CocktailModelCopyWith<$Res>
+    implements $CocktailModelCopyWith<$Res> {
+  factory _$$_CocktailModelCopyWith(
+          _$_CocktailModel value, $Res Function(_$_CocktailModel) then) =
+      __$$_CocktailModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -473,11 +475,11 @@ abstract class _$$_CocktailCopyWith<$Res> implements $CocktailCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CocktailCopyWithImpl<$Res>
-    extends _$CocktailCopyWithImpl<$Res, _$_Cocktail>
-    implements _$$_CocktailCopyWith<$Res> {
-  __$$_CocktailCopyWithImpl(
-      _$_Cocktail _value, $Res Function(_$_Cocktail) _then)
+class __$$_CocktailModelCopyWithImpl<$Res>
+    extends _$CocktailModelCopyWithImpl<$Res, _$_CocktailModel>
+    implements _$$_CocktailModelCopyWith<$Res> {
+  __$$_CocktailModelCopyWithImpl(
+      _$_CocktailModel _value, $Res Function(_$_CocktailModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -535,7 +537,7 @@ class __$$_CocktailCopyWithImpl<$Res>
     Object? strCreativeCommonsConfirmed = freezed,
     Object? dateModified = null,
   }) {
-    return _then(_$_Cocktail(
+    return _then(_$_CocktailModel(
       idDrink: null == idDrink
           ? _value.idDrink
           : idDrink // ignore: cast_nullable_to_non_nullable
@@ -746,8 +748,8 @@ class __$$_CocktailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Cocktail implements _Cocktail {
-  const _$_Cocktail(
+class _$_CocktailModel implements _CocktailModel {
+  const _$_CocktailModel(
       {required this.idDrink,
       required this.strDrink,
       this.strDrinkAlternate,
@@ -800,8 +802,8 @@ class _$_Cocktail implements _Cocktail {
       this.strCreativeCommonsConfirmed,
       required this.dateModified});
 
-  factory _$_Cocktail.fromJson(Map<String, dynamic> json) =>
-      _$$_CocktailFromJson(json);
+  factory _$_CocktailModel.fromJson(Map<String, dynamic> json) =>
+      _$$_CocktailModelFromJson(json);
 
   @override
   final String idDrink;
@@ -908,14 +910,14 @@ class _$_Cocktail implements _Cocktail {
 
   @override
   String toString() {
-    return 'Cocktail(idDrink: $idDrink, strDrink: $strDrink, strDrinkAlternate: $strDrinkAlternate, strTags: $strTags, strVideo: $strVideo, strCategory: $strCategory, strIBA: $strIBA, strAlcoholic: $strAlcoholic, strGlass: $strGlass, strInstructions: $strInstructions, strInstructionsES: $strInstructionsES, strInstructionsDE: $strInstructionsDE, strInstructionsFR: $strInstructionsFR, strInstructionsIT: $strInstructionsIT, strInstructionsZH_HANS: $strInstructionsZH_HANS, strInstructionsZH_HANT: $strInstructionsZH_HANT, strDrinkThumb: $strDrinkThumb, strIngredient1: $strIngredient1, strIngredient2: $strIngredient2, strIngredient3: $strIngredient3, strIngredient4: $strIngredient4, strIngredient5: $strIngredient5, strIngredient6: $strIngredient6, strIngredient7: $strIngredient7, strIngredient8: $strIngredient8, strIngredient9: $strIngredient9, strIngredient10: $strIngredient10, strIngredient11: $strIngredient11, strIngredient12: $strIngredient12, strIngredient13: $strIngredient13, strIngredient14: $strIngredient14, strIngredient15: $strIngredient15, strMeasure1: $strMeasure1, strMeasure2: $strMeasure2, strMeasure3: $strMeasure3, strMeasure4: $strMeasure4, strMeasure5: $strMeasure5, strMeasure6: $strMeasure6, strMeasure7: $strMeasure7, strMeasure8: $strMeasure8, strMeasure9: $strMeasure9, strMeasure10: $strMeasure10, strMeasure11: $strMeasure11, strMeasure12: $strMeasure12, strMeasure13: $strMeasure13, strMeasure14: $strMeasure14, strMeasure15: $strMeasure15, strImageSource: $strImageSource, strImageAttribution: $strImageAttribution, strCreativeCommonsConfirmed: $strCreativeCommonsConfirmed, dateModified: $dateModified)';
+    return 'CocktailModel(idDrink: $idDrink, strDrink: $strDrink, strDrinkAlternate: $strDrinkAlternate, strTags: $strTags, strVideo: $strVideo, strCategory: $strCategory, strIBA: $strIBA, strAlcoholic: $strAlcoholic, strGlass: $strGlass, strInstructions: $strInstructions, strInstructionsES: $strInstructionsES, strInstructionsDE: $strInstructionsDE, strInstructionsFR: $strInstructionsFR, strInstructionsIT: $strInstructionsIT, strInstructionsZH_HANS: $strInstructionsZH_HANS, strInstructionsZH_HANT: $strInstructionsZH_HANT, strDrinkThumb: $strDrinkThumb, strIngredient1: $strIngredient1, strIngredient2: $strIngredient2, strIngredient3: $strIngredient3, strIngredient4: $strIngredient4, strIngredient5: $strIngredient5, strIngredient6: $strIngredient6, strIngredient7: $strIngredient7, strIngredient8: $strIngredient8, strIngredient9: $strIngredient9, strIngredient10: $strIngredient10, strIngredient11: $strIngredient11, strIngredient12: $strIngredient12, strIngredient13: $strIngredient13, strIngredient14: $strIngredient14, strIngredient15: $strIngredient15, strMeasure1: $strMeasure1, strMeasure2: $strMeasure2, strMeasure3: $strMeasure3, strMeasure4: $strMeasure4, strMeasure5: $strMeasure5, strMeasure6: $strMeasure6, strMeasure7: $strMeasure7, strMeasure8: $strMeasure8, strMeasure9: $strMeasure9, strMeasure10: $strMeasure10, strMeasure11: $strMeasure11, strMeasure12: $strMeasure12, strMeasure13: $strMeasure13, strMeasure14: $strMeasure14, strMeasure15: $strMeasure15, strImageSource: $strImageSource, strImageAttribution: $strImageAttribution, strCreativeCommonsConfirmed: $strCreativeCommonsConfirmed, dateModified: $dateModified)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Cocktail &&
+            other is _$_CocktailModel &&
             (identical(other.idDrink, idDrink) || other.idDrink == idDrink) &&
             (identical(other.strDrink, strDrink) ||
                 other.strDrink == strDrink) &&
@@ -1072,19 +1074,19 @@ class _$_Cocktail implements _Cocktail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CocktailCopyWith<_$_Cocktail> get copyWith =>
-      __$$_CocktailCopyWithImpl<_$_Cocktail>(this, _$identity);
+  _$$_CocktailModelCopyWith<_$_CocktailModel> get copyWith =>
+      __$$_CocktailModelCopyWithImpl<_$_CocktailModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CocktailToJson(
+    return _$$_CocktailModelToJson(
       this,
     );
   }
 }
 
-abstract class _Cocktail implements Cocktail {
-  const factory _Cocktail(
+abstract class _CocktailModel implements CocktailModel {
+  const factory _CocktailModel(
       {required final String idDrink,
       required final String strDrink,
       final String? strDrinkAlternate,
@@ -1135,9 +1137,10 @@ abstract class _Cocktail implements Cocktail {
       final String? strImageSource,
       final String? strImageAttribution,
       final String? strCreativeCommonsConfirmed,
-      required final String dateModified}) = _$_Cocktail;
+      required final String dateModified}) = _$_CocktailModel;
 
-  factory _Cocktail.fromJson(Map<String, dynamic> json) = _$_Cocktail.fromJson;
+  factory _CocktailModel.fromJson(Map<String, dynamic> json) =
+      _$_CocktailModel.fromJson;
 
   @override
   String get idDrink;
@@ -1243,6 +1246,6 @@ abstract class _Cocktail implements Cocktail {
   String get dateModified;
   @override
   @JsonKey(ignore: true)
-  _$$_CocktailCopyWith<_$_Cocktail> get copyWith =>
+  _$$_CocktailModelCopyWith<_$_CocktailModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

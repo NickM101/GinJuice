@@ -6,7 +6,8 @@ part of 'cocktail_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Cocktail _$$_CocktailFromJson(Map<String, dynamic> json) => _$_Cocktail(
+_$_CocktailModel _$$_CocktailModelFromJson(Map<String, dynamic> json) =>
+    _$_CocktailModel(
       idDrink: json['idDrink'] as String,
       strDrink: json['strDrink'] as String,
       strDrinkAlternate: json['strDrinkAlternate'] as String?,
@@ -61,7 +62,7 @@ _$_Cocktail _$$_CocktailFromJson(Map<String, dynamic> json) => _$_Cocktail(
       dateModified: json['dateModified'] as String,
     );
 
-Map<String, dynamic> _$$_CocktailToJson(_$_Cocktail instance) =>
+Map<String, dynamic> _$$_CocktailModelToJson(_$_CocktailModel instance) =>
     <String, dynamic>{
       'idDrink': instance.idDrink,
       'strDrink': instance.strDrink,

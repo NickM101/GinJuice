@@ -4,8 +4,8 @@ part 'cocktail_model.freezed.dart';
 part 'cocktail_model.g.dart';
 
 @freezed
-class Cocktail with _$Cocktail {
-  const factory Cocktail({
+class CocktailModel with _$CocktailModel {
+  const factory CocktailModel({
     required String idDrink,
     required String strDrink,
     String? strDrinkAlternate,
@@ -57,8 +57,8 @@ class Cocktail with _$Cocktail {
     String? strImageAttribution,
     String? strCreativeCommonsConfirmed,
     required String dateModified,
-  }) = _Cocktail;
+  }) = _CocktailModel;
 
-  factory Cocktail.fromJson(Map<String, dynamic> json) =>
-      _$CocktailFromJson(json);
+  factory CocktailModel.fromJson(Map<String, dynamic> json) =>
+      _$CocktailModelFromJson(json);
 }
