@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class OnboardContent extends StatelessWidget {
-  final String image, title, description;
+  final Image image;
+  final String title, description;
 
   const OnboardContent({
     super.key,
@@ -14,23 +16,23 @@ class OnboardContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Spacer(),
-        Image.network(image),
-        const Spacer(),
+        image,
+        SizedBox(
+          height: 5.h,
+        ),
         Text(
           title,
           style: Theme.of(context).textTheme.headlineSmall,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: 2.h,
         ),
         Text(
           description,
           style: Theme.of(context).textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
-        const Spacer(),
       ],
     );
   }

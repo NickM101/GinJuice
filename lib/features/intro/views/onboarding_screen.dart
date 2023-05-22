@@ -47,7 +47,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             ],
           ),
           Expanded(
-            flex: 4,
+            flex: 1,
             child: PageView.builder(
               controller: _pageController,
               itemCount: onboardData.length,
