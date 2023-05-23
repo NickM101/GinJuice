@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sizer/sizer.dart';
+import 'package:ginjuice/features/home/widgets/header_widget.dart';
 
 import '../controllers/home_controller.dart';
-import '../widgets/feature_cocktail.dart';
+import '../widgets/random_cocktail.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -19,23 +21,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   Widget build(BuildContext context) {
     final popularDrinksAsyncValue = ref.watch(popularDrinksProvider);
 
-    return popularDrinksAsyncValue.when(
-      data: (popularDrinks) {
-        // Display popular drinks
-        return ListView.builder(
-          itemCount: popularDrinks.length,
-          itemBuilder: (context, index) {
-            final drink = popularDrinks[index];
-            // Build UI for each drink item
-            return ListTile(
-              title: Text(drink.strDrink),
-              // ...
-            );
-          },
-        );
-      },
-      loading: () => CircularProgressIndicator(),
-      error: (error, stackTrace) => Text('Error: $error'),
+    return Column(
+      children: [
+        const HeaderWidget(),
+        SizedBox(
+          height: 1.h,
+        ),
+        const RandomCocktail(),
+      ],
     );
   }
 }
