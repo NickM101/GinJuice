@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/features/home/widgets/cocktail_feed.dart';
 import 'package:sizer/sizer.dart';
 import 'package:ginjuice/features/home/widgets/header_widget.dart';
 
@@ -21,14 +22,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   Widget build(BuildContext context) {
     final popularDrinksAsyncValue = ref.watch(popularDrinksProvider);
 
-    return Column(
-      children: [
-        const HeaderWidget(),
-        SizedBox(
-          height: 1.h,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const HeaderWidget(),
+            SizedBox(
+              height: 2.h,
+            ),
+            const RandomCocktail(),
+            SizedBox(
+              height: 2.h,
+            ),
+            CocktailFeed(),
+            CocktailFeed(),
+            CocktailFeed(),
+          ],
         ),
-        const RandomCocktail(),
-      ],
+      ),
     );
   }
 }

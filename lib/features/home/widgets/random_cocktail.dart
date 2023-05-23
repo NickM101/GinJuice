@@ -47,52 +47,54 @@ class RandomCocktail extends StatelessWidget {
               ),
               Positioned(
                 bottom: 12,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Column(
-                    children: [
-                      AutoSizeText(
-                        'Tuxedo Cocktail',
-                        maxLines: 1,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.apply(color: Colors.white),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 80.w,
+                      child: Center(
+                        child: AutoSizeText(
+                          'Tuxedo Cocktail',
+                          maxLines: 2,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.apply(color: Colors.white),
+                        ),
                       ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '▫️ Ordinary Drink',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Colors.white),
-                          ),
-                          Text(
-                            ' ▫️ Alcoholic',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Colors.white),
-                          ),
-                          Text(
-                            ' ▫️ Cocktail glass',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 1.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Ordinary Drink',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.apply(color: Colors.white),
+                        ),
+                        Text(
+                          ' ▫️ Alcoholic',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.apply(color: Colors.white),
+                        ),
+                        Text(
+                          ' ▫️ Cocktail glass',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.apply(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 1.h,
+                    ),
+                  ],
                 ),
               )
             ],
