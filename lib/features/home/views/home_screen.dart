@@ -20,9 +20,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    // final popular = ref.watch(popularDrinksProvider);
-    // final randomSelection = ref.watch(randomSelectionProvider);
-    // final latest = ref.watch(latestDrinksProvider);
+    final popular = ref.watch(popularDrinksProvider);
+    final randomSelection = ref.watch(randomSelectionProvider);
+    final latest = ref.watch(latestDrinksProvider);
 
     return SingleChildScrollView(
       child: Padding(
@@ -37,9 +37,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
             SizedBox(
               height: 2.h,
             ),
-            CocktailFeed(),
-            CocktailFeed(),
-            CocktailFeed(),
+            CocktailFeed(
+              title: 'Popular',
+              cocktails: popular,
+            ),
+            CocktailFeed(
+              title: 'Latest',
+              cocktails: latest,
+            ),
+            CocktailFeed(
+              title: 'Random Picks',
+              cocktails: randomSelection,
+            ),
           ],
         ),
       ),
