@@ -92,6 +92,10 @@ class CocktailFeed extends StatelessWidget {
                         width: 35.w,
                         height: 20.h,
                         fit: BoxFit.cover,
+                        errorBuilder: (BuildContext context, Object exception,
+                            StackTrace? stackTrace) {
+                          return Text('Failed to load image');
+                        },
                       ),
                     ),
                     const SizedBox(height: 8),

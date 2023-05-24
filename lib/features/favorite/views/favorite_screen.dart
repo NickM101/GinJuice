@@ -66,37 +66,40 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: 1,
-          child: Center(
-            child: Text(
-              'Favorites',
-              style: Theme.of(context).textTheme.displaySmall,
-              textAlign: TextAlign.start,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Center(
+              child: Text(
+                'Favorites',
+                style: Theme.of(context).textTheme.displaySmall,
+                textAlign: TextAlign.start,
+              ),
             ),
           ),
-        ),
-        Expanded(
-          flex: 9,
-          child: GridView.builder(
-            itemCount: favorite.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 40.w / 32.h,
+          Expanded(
+            flex: 9,
+            child: GridView.builder(
+              itemCount: favorite.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 30.w / 38.h,
+              ),
+              itemBuilder: (context, index) {
+                return FavoriteCocktail(
+                  imageUrl: favorite[index]['strDrinkThumb'],
+                  heartCount: 2,
+                  name: favorite[index]['strDrink'],
+                );
+              },
             ),
-            itemBuilder: (context, index) {
-              return FavoriteCocktail(
-                imageUrl: favorite[index]['strDrinkThumb'],
-                heartCount: 2,
-                name: favorite[index]['strDrink'],
-              );
-            },
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

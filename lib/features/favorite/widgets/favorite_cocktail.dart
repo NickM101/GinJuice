@@ -34,11 +34,14 @@ class FavoriteCocktail extends StatelessWidget {
                   fit: BoxFit.cover)),
         ),
         const SizedBox(height: 4.0),
-        AutoSizeText(
-          name,
-          maxLines: 2,
-          style: Theme.of(context).textTheme.titleSmall,
-          textAlign: TextAlign.center,
+        Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: AutoSizeText(
+            name,
+            maxLines: 2,
+            style: Theme.of(context).textTheme.titleSmall,
+            textAlign: TextAlign.center,
+          ),
         ),
       ],
     );

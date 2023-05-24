@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/common/controllers/theme_provider.dart';
-import 'package:ginjuice/core/routes/route_config.dart';
-import 'package:ginjuice/features/favorite/views/favorite_screen.dart';
 import 'package:sizer/sizer.dart';
 
-import 'core/themes/themes.dart';
+import 'core/common/controllers/theme_provider.dart';
 import 'core/common/widgets/dismiss_keyboard.dart';
+import 'core/routes/route_config.dart';
+import 'core/themes/themes.dart';
 
 class GinJuiceApp extends ConsumerWidget {
   const GinJuiceApp({super.key});

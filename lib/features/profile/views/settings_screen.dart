@@ -32,7 +32,7 @@ class SettingsScreen extends ConsumerWidget {
                     value: themeModeState == ThemeMode.dark, //false or true
                     onChanged: (value) {
                       print('value --- $value');
-                      ref.read(themesProvider.notifier).changeTheme(value);
+                      ref.read(themesProvider.notifier).updateTheme();
                     });
               },
             ),

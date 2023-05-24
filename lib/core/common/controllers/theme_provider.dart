@@ -7,7 +7,19 @@ final themesProvider = StateNotifierProvider<ThemesProvider, ThemeMode?>((ref) {
 
 class ThemesProvider extends StateNotifier<ThemeMode?> {
   ThemesProvider() : super(ThemeMode.system);
-  void changeTheme(bool isOn) {
-    state = isOn ? ThemeMode.dark : ThemeMode.light;
+
+  void updateTheme() {
+    final Brightness systemBrightness =
+        WidgetsBinding.instance.platformDispatcher.platformBrightness;
+    state =
+        systemBrightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
+  }
+
+  void toggleTheme() {
+    if (state == ThemeMode.light) {
+      state = ThemeMode.dark;
+    } else {
+      state = ThemeMode.light;
+    }
   }
 }

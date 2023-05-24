@@ -1,7 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:ginjuice/features/intro/widgets/dot_indicator.dart';
-import 'package:glass/glass.dart';
 import 'package:sizer/sizer.dart';
 
 class RandomCocktail extends StatelessWidget {
