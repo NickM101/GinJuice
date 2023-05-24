@@ -23,6 +23,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     final popular = ref.watch(popularDrinksProvider);
     final randomSelection = ref.watch(randomSelectionProvider);
     final latest = ref.watch(latestDrinksProvider);
+    final random = ref.watch(randomDrinksProvider);
 
     return SingleChildScrollView(
       child: Padding(
@@ -33,7 +34,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
             SizedBox(
               height: 2.h,
             ),
-            const RandomCocktail(),
+            RandomCocktail(
+              cocktail: random,
+            ),
             SizedBox(
               height: 2.h,
             ),

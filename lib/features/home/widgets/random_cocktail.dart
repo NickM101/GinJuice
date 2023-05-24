@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
-import '../controllers/home_controller.dart';
+class RandomCocktail extends StatelessWidget {
+  final AsyncValue cocktail;
 
-class RandomCocktail extends ConsumerWidget {
-  const RandomCocktail({super.key});
+  const RandomCocktail({
+    Key? key,
+    required this.cocktail,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final random = ref.watch(randomDrinksProvider);
-
-    return random.when(
+  Widget build(BuildContext context) {
+    return cocktail.when(
       data: (cocktails) {
         final item = cocktails[0];
         return Card(

@@ -22,7 +22,7 @@ class GinJuiceApp extends ConsumerWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             darkTheme: darkTheme,
-            themeMode: themeModeState,
+            themeMode: ThemeMode.dark,
             routerConfig: AppRouter().router,
           ),
         );
