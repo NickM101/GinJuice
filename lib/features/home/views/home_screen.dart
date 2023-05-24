@@ -20,7 +20,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final popularDrinksAsyncValue = ref.watch(popularDrinksProvider);
+    // final popular = ref.watch(popularDrinksProvider);
+    // final randomSelection = ref.watch(randomSelectionProvider);
+    // final latest = ref.watch(latestDrinksProvider);
 
     return SingleChildScrollView(
       child: Padding(

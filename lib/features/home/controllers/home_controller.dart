@@ -8,3 +8,21 @@ final popularDrinksProvider =
   final repository = ref.read(homeRepositoryProvider);
   return repository.fetchPopularDrinks();
 });
+
+final randomSelectionProvider =
+    FutureProvider.autoDispose<List<CocktailModel>>((ref) async {
+  final repository = ref.read(homeRepositoryProvider);
+  return repository.fetchRandomSelection();
+});
+
+final randomDrinksProvider =
+    FutureProvider.autoDispose<List<CocktailModel>>((ref) async {
+  final repository = ref.read(homeRepositoryProvider);
+  return repository.fetchRandom();
+});
+
+final latestDrinksProvider =
+    FutureProvider.autoDispose<List<CocktailModel>>((ref) async {
+  final repository = ref.read(homeRepositoryProvider);
+  return repository.fetchLatest();
+});

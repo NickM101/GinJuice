@@ -1,102 +1,114 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
-class RandomCocktail extends StatelessWidget {
+import '../controllers/home_controller.dart';
+
+class RandomCocktail extends ConsumerWidget {
   const RandomCocktail({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-          height: 50.h,
-          width: 90.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            image: const DecorationImage(
-              image: NetworkImage(
-                  "https://www.thecocktaildb.com/images/media/drink/4u0nbl1504352551.jpg"),
-              fit: BoxFit.cover,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final random = ref.watch(randomDrinksProvider);
+
+    return random.when(
+      data: (cocktails) {
+        final item = cocktails[0];
+        return Card(
+          elevation: 5,
+          child: Container(
+            height: 50.h,
+            width: 90.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                image: NetworkImage(item.strDrinkThumb),
+                fit: BoxFit.cover,
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withOpacity(0.6),
+                ],
+              ),
             ),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Colors.black.withOpacity(0.6),
-              ],
-            ),
-          ),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.transparent,
-                      Colors.black.withOpacity(0.6),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withOpacity(0.6),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 12,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: 80.w,
+                        child: Center(
+                          child: AutoSizeText(
+                            item.strDrink,
+                            maxLines: 2,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.apply(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            item.strCategory,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.apply(color: Colors.white),
+                          ),
+                          Text(
+                            ' ▫️ ${item.strAlcoholic}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.apply(color: Colors.white),
+                          ),
+                          Text(
+                            ' ▫️ ${item.strGlass}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.apply(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 1.h,
+                      ),
                     ],
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 12,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: 80.w,
-                      child: Center(
-                        child: AutoSizeText(
-                          'Tuxedo Cocktail',
-                          maxLines: 2,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.apply(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Ordinary Drink',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
-                              ?.apply(color: Colors.white),
-                        ),
-                        Text(
-                          ' ▫️ Alcoholic',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
-                              ?.apply(color: Colors.white),
-                        ),
-                        Text(
-                          ' ▫️ Cocktail glass',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
-                              ?.apply(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 1.h,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          )),
+              ],
+            ),
+          ),
+        );
+      },
+      error: (err, stack) => Text('Error: $err'),
+      loading: () => const CircularProgressIndicator(),
     );
   }
 }

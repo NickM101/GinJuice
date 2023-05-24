@@ -8,7 +8,7 @@ final dioProvider = Provider<Dio>((ref) {
   print('api_key ----- $apiKey');
 
   final options = BaseOptions(
-    baseUrl: 'https://thecocktaildb.com/api/json/v2/$apiKey',
+    baseUrl: 'https://thecocktaildb.com/api/json/v1/1',
     connectTimeout: const Duration(seconds: 5),
     receiveTimeout: const Duration(seconds: 5),
   );
