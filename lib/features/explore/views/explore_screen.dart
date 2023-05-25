@@ -33,7 +33,7 @@ class ExploreScreen extends ConsumerWidget {
                     flex: 11,
                     child: RotatedBox(
                       quarterTurns: 1,
-                      child: SearchedCocktails(items: searchResult),
+                      child: SearchedCocktails(value: searchResult),
                     ),
                   ),
                 ],

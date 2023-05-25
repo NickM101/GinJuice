@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sizer/sizer.dart';
 
-import '../widgets/cocktail_glasses.dart';
+import '../../../core/common/widgets/cocktail_list_widget.dart';
 import '../../../core/data/cocktail_data.dart';
+import '../controllers/search_controller.dart';
+import '../widgets/cocktail_glasses.dart';
 
-class SearchScreen extends StatelessWidget {
-  SearchScreen({super.key});
+class SearchScreen extends ConsumerStatefulWidget {
+  const SearchScreen({super.key});
 
+  @override
+  ConsumerState<SearchScreen> createState() => SearchScreenState();
+}
+
+class SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final searchResult = ref.watch(searchResultProvider);
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -22,7 +32,7 @@ class SearchScreen extends StatelessWidget {
               controller: _searchController,
               textInputAction: TextInputAction.search,
               onSubmitted: (value) {
-                print('value --- $value');
+                ref.read(searchCocktailProvider(value));
               },
               decoration: InputDecoration(
                 filled: true,
@@ -30,7 +40,11 @@ class SearchScreen extends StatelessWidget {
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: IconButton(
                   onPressed: () {
+                    // TODO: Store textfield value for history search feed
                     _searchController.clear();
+                    ref
+                        .read(searchResultProvider.notifier)
+                        .update((state) => []);
                   },
                   icon: const Icon(Icons.clear),
                 ),
@@ -41,13 +55,34 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           // Expanded(child: SearchedCocktails())
-
-          CocktailGlasses(
-            title: 'Cocktail Glasses',
-            list: cocktailGlasses,
-          ),
+          Expanded(
+              child: searchResult.isNotEmpty
+                  ? CocktailList(items: searchResult)
+                  : searchSuggestion())
         ],
       ),
     );
   }
+}
+
+Widget searchSuggestion() {
+  return SingleChildScrollView(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CocktailGlasses(
+          title: 'Cocktail Glasses',
+          list: cocktailGlasses,
+        ),
+        CocktailGlasses(
+          title: 'Cocktail Glasses',
+          list: cocktailGlasses,
+        ),
+        CocktailGlasses(
+          title: 'Cocktail Glasses',
+          list: cocktailGlasses,
+        ),
+      ],
+    ),
+  );
 }
