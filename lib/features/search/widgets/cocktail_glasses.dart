@@ -1,64 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import 'package:ginjuice/core/data/cocktail_data.dart';
+
 // ignore: must_be_immutable
 class CocktailGlasses extends StatelessWidget {
-  CocktailGlasses({super.key});
+  final String title;
+  final List list;
 
-  List<Map<String, String>> cocktailGlasses = [
-    {"strGlass": "Highball glass"},
-    {"strGlass": "Cocktail glass"},
-    {"strGlass": "Old-fashioned glass"},
-    {"strGlass": "Whiskey Glass"},
-    {"strGlass": "Collins glass"},
-    {"strGlass": "Pousse cafe glass"},
-    {"strGlass": "Champagne flute"},
-    {"strGlass": "Whiskey sour glass"},
-    {"strGlass": "Cordial glass"},
-    {"strGlass": "Brandy snifter"},
-    {"strGlass": "White wine glass"},
-    {"strGlass": "Nick and Nora Glass"},
-    {"strGlass": "Hurricane glass"},
-    {"strGlass": "Coffee mug"},
-    {"strGlass": "Shot glass"},
-    {"strGlass": "Jar"},
-    {"strGlass": "Irish coffee cup"},
-    {"strGlass": "Punch bowl"},
-    {"strGlass": "Pitcher"},
-    {"strGlass": "Pint glass"},
-    {"strGlass": "Copper Mug"},
-    {"strGlass": "Wine Glass"},
-    {"strGlass": "Beer mug"},
-    {"strGlass": "Margarita/Coupette glass"},
-    {"strGlass": "Beer pilsner"},
-    {"strGlass": "Beer Glass"},
-    {"strGlass": "Parfait glass"},
-    {"strGlass": "Mason jar"},
-    {"strGlass": "Margarita glass"},
-    {"strGlass": "Martini Glass"},
-    {"strGlass": "Balloon Glass"},
-    {"strGlass": "Coupe Glass"}
-  ];
+  const CocktailGlasses({
+    Key? key,
+    required this.title,
+    required this.list,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
-      scrollDirection: Axis.horizontal,
-      mainAxisSpacing: 8.0,
-      childAspectRatio: 0.4,
-      children: List.generate(cocktailGlasses.length, (index) {
-        final glasses = cocktailGlasses[index];
-        return InkWell(
-          customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          onTap: () => print('glasses -- ${glasses['strGlass']}'),
-          child: Chip(
-            label: Text(glasses['strGlass']!),
-          ),
-        );
-      }),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const Spacer(),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'View More',
+                style: Theme.of(context).textTheme.labelSmall?.apply(
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 1.h,
+        ),
+        SizedBox(
+          height: 5.h,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                final item = list[index];
+                return Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(5.0),
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: Theme.of(context).primaryColor.withOpacity(0.7),
+                    ),
+                  ),
+                  child: Text(
+                    item['constant']!,
+                  ),
+                );
+              }),
+        ),
+      ],
     );
   }
 }
