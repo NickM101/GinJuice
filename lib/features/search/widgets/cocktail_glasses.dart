@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import 'package:ginjuice/core/data/cocktail_data.dart';
-
-// ignore: must_be_immutable
 class CocktailGlasses extends StatelessWidget {
   final String title;
   final List list;

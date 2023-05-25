@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/data/cocktail_data.dart';
-import 'package:sizer/sizer.dart';
-import '../widgets/cocktail_glasses.dart';
 
-import '../widgets/searched_cocktails.dart';
+import '../widgets/cocktail_glasses.dart';
+import '../../../core/data/cocktail_data.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
@@ -20,9 +18,23 @@ class SearchScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: TextField(
+              keyboardType: TextInputType.text,
               controller: _searchController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
+              textInputAction: TextInputAction.search,
+              onSubmitted: (value) {
+                print('value --- $value');
+              },
+              decoration: InputDecoration(
+                filled: true,
+                hintText: 'margarita...',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    _searchController.clear();
+                  },
+                  icon: const Icon(Icons.clear),
+                ),
+                border: const OutlineInputBorder(
                   borderSide: BorderSide(),
                 ),
               ),
