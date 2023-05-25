@@ -11,10 +11,10 @@ class CocktailModel with _$CocktailModel {
     String? strDrinkAlternate,
     String? strTags,
     String? strVideo,
-    required String strCategory,
+    String? strCategory,
     String? strIBA,
-    required String strAlcoholic,
-    required String strGlass,
+    String? strAlcoholic,
+    String? strGlass,
     String? strInstructions,
     String? strInstructionsES,
     String? strInstructionsDE,
@@ -22,7 +22,7 @@ class CocktailModel with _$CocktailModel {
     String? strInstructionsIT,
     String? strInstructionsZH_HANS,
     String? strInstructionsZH_HANT,
-    required String strDrinkThumb,
+    String? strDrinkThumb,
     String? strIngredient1,
     String? strIngredient2,
     String? strIngredient3,
@@ -56,7 +56,7 @@ class CocktailModel with _$CocktailModel {
     String? strImageSource,
     String? strImageAttribution,
     String? strCreativeCommonsConfirmed,
-    required String dateModified,
+    String? dateModified,
   }) = _CocktailModel;
 
   factory CocktailModel.fromJson(Map<String, dynamic> json) =>

@@ -5,7 +5,7 @@ import 'package:ginjuice/features/explore/repositories/explore_repo.dart';
 final selectedLetterProvider = StateProvider<String>((ref) => 'A');
 
 final searchCategoryProvider = FutureProvider.autoDispose
-    .family<List<CocktailModel>, String?>((ref, letter) async {
+    .family<List<CocktailModel>, String>((ref, letter) async {
   final repository = ref.read(exploreRepositoryProvider);
 
   return repository.getSelectedCategory(letter);

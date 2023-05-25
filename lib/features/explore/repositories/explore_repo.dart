@@ -18,13 +18,9 @@ class ExploreRepository {
     required this.dio,
   });
 
-  Future<List<CocktailModel>> getSelectedCategory(
-    String? letter,
-  ) async {
+  Future<List<CocktailModel>> getSelectedCategory(String letter) async {
     try {
-      final response = await dio.get(
-        '/search.php?f=$letter',
-      );
+      final response = await dio.get('/search.php?f=$letter');
       final data = await response.data['drinks'] as List<dynamic>;
       return data.map((json) => CocktailModel.fromJson(json)).toList();
     } catch (e) {

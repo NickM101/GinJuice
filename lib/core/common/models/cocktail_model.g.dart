@@ -13,10 +13,10 @@ _$_CocktailModel _$$_CocktailModelFromJson(Map<String, dynamic> json) =>
       strDrinkAlternate: json['strDrinkAlternate'] as String?,
       strTags: json['strTags'] as String?,
       strVideo: json['strVideo'] as String?,
-      strCategory: json['strCategory'] as String,
+      strCategory: json['strCategory'] as String?,
       strIBA: json['strIBA'] as String?,
-      strAlcoholic: json['strAlcoholic'] as String,
-      strGlass: json['strGlass'] as String,
+      strAlcoholic: json['strAlcoholic'] as String?,
+      strGlass: json['strGlass'] as String?,
       strInstructions: json['strInstructions'] as String?,
       strInstructionsES: json['strInstructionsES'] as String?,
       strInstructionsDE: json['strInstructionsDE'] as String?,
@@ -24,7 +24,7 @@ _$_CocktailModel _$$_CocktailModelFromJson(Map<String, dynamic> json) =>
       strInstructionsIT: json['strInstructionsIT'] as String?,
       strInstructionsZH_HANS: json['strInstructionsZH_HANS'] as String?,
       strInstructionsZH_HANT: json['strInstructionsZH_HANT'] as String?,
-      strDrinkThumb: json['strDrinkThumb'] as String,
+      strDrinkThumb: json['strDrinkThumb'] as String?,
       strIngredient1: json['strIngredient1'] as String?,
       strIngredient2: json['strIngredient2'] as String?,
       strIngredient3: json['strIngredient3'] as String?,
@@ -59,7 +59,7 @@ _$_CocktailModel _$$_CocktailModelFromJson(Map<String, dynamic> json) =>
       strImageAttribution: json['strImageAttribution'] as String?,
       strCreativeCommonsConfirmed:
           json['strCreativeCommonsConfirmed'] as String?,
-      dateModified: json['dateModified'] as String,
+      dateModified: json['dateModified'] as String?,
     );
 
 Map<String, dynamic> _$$_CocktailModelToJson(_$_CocktailModel instance) =>

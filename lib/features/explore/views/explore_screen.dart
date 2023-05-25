@@ -5,13 +5,15 @@ import 'package:ginjuice/features/search/widgets/searched_cocktails.dart';
 
 import '../../home/widgets/header_widget.dart';
 import '../controllers/alphabet_controller.dart';
-import '../widgets/cocktail_card.dart';
 
-class ExploreScreen extends StatelessWidget {
+class ExploreScreen extends ConsumerWidget {
   const ExploreScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final letter = ref.watch(selectedLetterProvider);
+
+    final searchResult = ref.watch(searchCategoryProvider(letter));
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -31,15 +33,7 @@ class ExploreScreen extends StatelessWidget {
                     flex: 11,
                     child: RotatedBox(
                       quarterTurns: 1,
-                      child: Consumer(
-                        builder: (context, ref, child) {
-                          final letter = ref.watch(selectedLetterProvider);
-
-                          final searchResult =
-                              ref.watch(searchCategoryProvider(letter));
-                          return SearchedCocktails(items: searchResult);
-                        },
-                      ),
+                      child: SearchedCocktails(items: searchResult),
                     ),
                   ),
                 ],
