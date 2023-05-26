@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class RandomCocktail extends StatelessWidget {
@@ -108,8 +109,31 @@ class RandomCocktail extends StatelessWidget {
           ),
         );
       },
-      error: (err, stack) => Text('Error: $err'),
-      loading: () => const CircularProgressIndicator(),
+      error: (error, stack) {
+        return Text(
+          'Error loading cocktails:',
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.red,
+          ),
+        );
+      },
+      loading: () => Shimmer.fromColors(
+        baseColor: Theme.of(context).primaryColor.withOpacity(0.3),
+        highlightColor: Theme.of(context).primaryColor.withOpacity(0.1),
+        child: Card(
+          elevation: 5,
+          child: Container(
+            height: 50.h,
+            width: 90.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -22,8 +22,6 @@ class CustomImage extends StatelessWidget {
         fit: BoxFit.cover,
         key: ValueKey(id),
         progressIndicatorBuilder: (context, url, progress) {
-          final progressInKB = (progress.downloaded / 1024).round().toDouble();
-
           return Container(
             decoration: BoxDecoration(
               color:
@@ -34,16 +32,14 @@ class CustomImage extends StatelessWidget {
                       : const AssetImage('assets/images/dark_placeholder.png'),
                   fit: BoxFit.cover),
             ),
-            child: Align(
-                alignment: Alignment.bottomCenter,
-                child: CircularProgressIndicator(
-                  value: progressInKB,
-                )),
+            child: const Align(
+              alignment: Alignment.bottomCenter,
+              child: Text('Loading...'),
+            ),
           );
         },
         errorWidget: (context, url, error) {
           final statusCode = (error as dynamic).statusCode;
-          print('statusCode ---- $statusCode');
 
           return Container(
             decoration: BoxDecoration(
