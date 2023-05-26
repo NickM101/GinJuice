@@ -25,13 +25,15 @@ class FavoriteCocktail extends StatelessWidget {
           height: 30.h,
           width: 40.w,
           decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.8),
-              borderRadius: BorderRadius.circular(16.0),
-              image: DecorationImage(
-                  image: NetworkImage(
-                    imageUrl,
-                  ),
-                  fit: BoxFit.cover)),
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Image.network(
+              imageUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         const SizedBox(height: 4.0),
         Padding(

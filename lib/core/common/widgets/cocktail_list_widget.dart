@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/common/widgets/custom_image.dart';
 import 'package:sizer/sizer.dart';
 
 class CocktailList extends StatelessWidget {
@@ -20,16 +21,18 @@ class CocktailList extends StatelessWidget {
             child: Row(
               children: [
                 Card(
-                  child: Image.network(
-                    cocktail.strDrinkThumb,
-                    height: 20.h,
-                    width: 35.w,
-                    fit: BoxFit.cover,
-                    errorBuilder: (BuildContext context, Object exception,
-                        StackTrace? stackTrace) {
-                      return const Text('Failed to load image');
-                    },
-                  ),
+                  child: CustomImage(
+                      src: cocktail.strDrinkThumb, id: cocktail.idDrink),
+                  // child: Image.network(
+                  //   cocktail.strDrinkThumb,
+                  // height: 20.h,
+                  // width: 35.w,
+                  //   fit: BoxFit.cover,
+                  //   errorBuilder: (BuildContext context, Object exception,
+                  //       StackTrace? stackTrace) {
+                  //     return const Text('Failed to load image');
+                  //   },
+                  // ),
                 ),
                 SizedBox(
                   width: 1.h,
