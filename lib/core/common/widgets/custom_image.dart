@@ -24,6 +24,7 @@ class CustomImage extends StatelessWidget {
         progressIndicatorBuilder: (context, url, progress) {
           return Container(
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
               color:
                   themeMode ? const Color(0xd9d9d9) : const Color(0x00000000),
               image: DecorationImage(
@@ -39,8 +40,6 @@ class CustomImage extends StatelessWidget {
           );
         },
         errorWidget: (context, url, error) {
-          final statusCode = (error as dynamic).statusCode;
-
           return Container(
             decoration: BoxDecoration(
               color:
@@ -56,7 +55,7 @@ class CustomImage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 100.0),
                 child: Text(
-                  statusCode.toString(),
+                  'Error loading image',
                   style: Theme.of(context).textTheme.bodyLarge?.apply(
                         color: themeMode ? Colors.grey.shade600 : Colors.black,
                         fontWeightDelta: 800,

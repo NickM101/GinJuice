@@ -89,7 +89,10 @@ class CocktailFeed extends StatelessWidget {
               child: Container(
                 height: 4.h,
                 width: 30.w,
-                color: Colors.white,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -112,7 +115,10 @@ class CocktailFeed extends StatelessWidget {
                         child: Container(
                           height: 15.h,
                           width: 35.w,
-                          color: Colors.white,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 8.0),
@@ -124,7 +130,10 @@ class CocktailFeed extends StatelessWidget {
                         child: Container(
                           height: 3.h,
                           width: 10.w,
-                          color: Colors.white,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 2.0),
@@ -136,7 +145,10 @@ class CocktailFeed extends StatelessWidget {
                         child: Container(
                           height: 2.h,
                           width: 5.w,
-                          color: Colors.white,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],

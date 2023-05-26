@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/features/explore/widgets/alphabet_row.dart';
-import 'package:ginjuice/features/search/widgets/searched_cocktails.dart';
 
 import '../../home/widgets/header_widget.dart';
+import '../../search/widgets/searched_cocktails.dart';
 import '../controllers/alphabet_controller.dart';
+import '../widgets/alphabet_row.dart';
 
 class ExploreScreen extends ConsumerWidget {
   const ExploreScreen({super.key});
