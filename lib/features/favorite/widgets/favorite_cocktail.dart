@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../core/common/widgets/custom_image.dart';
+
 class FavoriteCocktail extends StatelessWidget {
   final String imageUrl;
   final int heartCount;
@@ -29,9 +31,9 @@ class FavoriteCocktail extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
+            child: CustomImage(
+              src: imageUrl,
+              id: 'hojiasdcjsihh23c',
             ),
           ),
         ),

@@ -14,6 +14,7 @@ class CoverImageWithText extends StatelessWidget {
         // fit: StackFit.expand,
         children: [
           // Cover Image
+
           Image.network(
             'https://www.thecocktaildb.com/images/media/drink/x894cs1504388670.jpg',
             fit: BoxFit.cover,

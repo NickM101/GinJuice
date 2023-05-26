@@ -32,7 +32,7 @@ class CustomImage extends StatelessWidget {
                   image: themeMode
                       ? const AssetImage('assets/images/light_placeholder.png')
                       : const AssetImage('assets/images/dark_placeholder.png'),
-                  fit: BoxFit.contain),
+                  fit: BoxFit.cover),
             ),
             child: Align(
                 alignment: Alignment.bottomCenter,
@@ -42,18 +42,31 @@ class CustomImage extends StatelessWidget {
           );
         },
         errorWidget: (context, url, error) {
+          final statusCode = (error as dynamic).statusCode;
+          print('statusCode ---- $statusCode');
+
           return Container(
             decoration: BoxDecoration(
               color:
                   themeMode ? const Color(0x00000000) : const Color(0xd9d9d9),
               image: DecorationImage(
                   image: themeMode
-                      ? const AssetImage('assets/image/dark_placeholder.png')
-                      : const AssetImage('assets/image/light_placeholder.png'),
-                  fit: BoxFit.contain),
+                      ? const AssetImage('assets/images/dark_placeholder.png')
+                      : const AssetImage('assets/images/light_placeholder.png'),
+                  fit: BoxFit.cover),
             ),
-            child: Text(
-              error.toString(),
+            child: Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 100.0),
+                child: Text(
+                  statusCode.toString(),
+                  style: Theme.of(context).textTheme.bodyLarge?.apply(
+                        color: themeMode ? Colors.grey.shade600 : Colors.black,
+                        fontWeightDelta: 800,
+                      ),
+                ),
+              ),
             ),
           );
         });

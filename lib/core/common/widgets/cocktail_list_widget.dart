@@ -22,17 +22,9 @@ class CocktailList extends StatelessWidget {
               children: [
                 Card(
                   child: CustomImage(
-                      src: cocktail.strDrinkThumb, id: cocktail.idDrink),
-                  // child: Image.network(
-                  //   cocktail.strDrinkThumb,
-                  // height: 20.h,
-                  // width: 35.w,
-                  //   fit: BoxFit.cover,
-                  //   errorBuilder: (BuildContext context, Object exception,
-                  //       StackTrace? stackTrace) {
-                  //     return const Text('Failed to load image');
-                  //   },
-                  // ),
+                    src: cocktail.strDrinkThumb,
+                    id: cocktail.idDrink,
+                  ),
                 ),
                 SizedBox(
                   width: 1.h,
