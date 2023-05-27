@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/common/models/cocktail_model.dart';
 import 'package:ginjuice/features/details/views/cocktail_steps.dart';
 import 'package:ginjuice/features/intro/views/splash_screen.dart';
 import 'package:ginjuice/features/profile/views/settings_screen.dart';
@@ -45,8 +46,9 @@ class AppRouter {
                       name: AppScreen.detail.routeName,
                       parentNavigatorKey: _rootNavigatorKey,
                       builder: (context, state) {
+                        CocktailModel item = state.extra as CocktailModel;
                         return CocktailDetail(
-                          item: state.extra,
+                          item: item,
                         );
                       },
                       routes: [
