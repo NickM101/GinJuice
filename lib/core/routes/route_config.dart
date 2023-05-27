@@ -47,17 +47,17 @@ class AppRouter {
                       parentNavigatorKey: _rootNavigatorKey,
                       builder: (context, state) {
                         CocktailModel item = state.extra as CocktailModel;
-                        return CocktailDetail(
-                          item: item,
-                        );
+                        return CocktailDetail(item: item);
                       },
                       routes: [
                         GoRoute(
-                          path: AppScreen.steps.pathName,
-                          name: AppScreen.steps.routeName,
-                          parentNavigatorKey: _rootNavigatorKey,
-                          builder: (context, state) => CocktailSteps(),
-                        )
+                            path: AppScreen.steps.pathName,
+                            name: AppScreen.steps.routeName,
+                            parentNavigatorKey: _rootNavigatorKey,
+                            builder: (context, state) {
+                              CocktailModel item = state.extra as CocktailModel;
+                              return CocktailSteps(item: item);
+                            })
                       ])
                 ]),
             GoRoute(

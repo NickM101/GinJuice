@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
@@ -58,8 +60,10 @@ class CocktailDetail extends StatelessWidget {
           const SizedBox(height: 8.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:
-                ingredients.map((ingredient) => Text(ingredient)).toList(),
+            children: ingredients
+                .where((ingredient) => ingredient.isNotEmpty == true)
+                .map((ingredient) => Text(ingredient))
+                .toList(),
           ),
         ],
       );
@@ -185,7 +189,7 @@ class CocktailDetail extends StatelessWidget {
             child: GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               mainAxisSpacing: 1.0, // Adjust the spacing between the rows
               crossAxisSpacing: 8.0, // Adjust the spacing between the columns
               childAspectRatio: 1.5,
@@ -198,7 +202,9 @@ class CocktailDetail extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(AppScreen.steps.routeName, extra: item);
+                    },
                     style: ElevatedButton.styleFrom(fixedSize: Size(60.w, 8.h)),
                     child: const Text('Start Mixing'),
                   ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sizer/sizer.dart';
 
 import '../../../core/common/widgets/cocktail_list_widget.dart';
 import '../../../core/data/cocktail_data.dart';
