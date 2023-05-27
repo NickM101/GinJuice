@@ -25,7 +25,7 @@ mixin _$CocktailModel {
   String? get strDrinkAlternate => throw _privateConstructorUsedError;
   String? get strTags => throw _privateConstructorUsedError;
   String? get strVideo => throw _privateConstructorUsedError;
-  String? get strCategory => throw _privateConstructorUsedError;
+  String get strCategory => throw _privateConstructorUsedError;
   String? get strIBA => throw _privateConstructorUsedError;
   String? get strAlcoholic => throw _privateConstructorUsedError;
   String? get strGlass => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CocktailModel {
   String? get strInstructionsIT => throw _privateConstructorUsedError;
   String? get strInstructionsZH_HANS => throw _privateConstructorUsedError;
   String? get strInstructionsZH_HANT => throw _privateConstructorUsedError;
-  String? get strDrinkThumb => throw _privateConstructorUsedError;
+  String get strDrinkThumb => throw _privateConstructorUsedError;
   String? get strIngredient1 => throw _privateConstructorUsedError;
   String? get strIngredient2 => throw _privateConstructorUsedError;
   String? get strIngredient3 => throw _privateConstructorUsedError;
@@ -90,7 +90,7 @@ abstract class $CocktailModelCopyWith<$Res> {
       String? strDrinkAlternate,
       String? strTags,
       String? strVideo,
-      String? strCategory,
+      String strCategory,
       String? strIBA,
       String? strAlcoholic,
       String? strGlass,
@@ -101,7 +101,7 @@ abstract class $CocktailModelCopyWith<$Res> {
       String? strInstructionsIT,
       String? strInstructionsZH_HANS,
       String? strInstructionsZH_HANT,
-      String? strDrinkThumb,
+      String strDrinkThumb,
       String? strIngredient1,
       String? strIngredient2,
       String? strIngredient3,
@@ -156,7 +156,7 @@ class _$CocktailModelCopyWithImpl<$Res, $Val extends CocktailModel>
     Object? strDrinkAlternate = freezed,
     Object? strTags = freezed,
     Object? strVideo = freezed,
-    Object? strCategory = freezed,
+    Object? strCategory = null,
     Object? strIBA = freezed,
     Object? strAlcoholic = freezed,
     Object? strGlass = freezed,
@@ -167,7 +167,7 @@ class _$CocktailModelCopyWithImpl<$Res, $Val extends CocktailModel>
     Object? strInstructionsIT = freezed,
     Object? strInstructionsZH_HANS = freezed,
     Object? strInstructionsZH_HANT = freezed,
-    Object? strDrinkThumb = freezed,
+    Object? strDrinkThumb = null,
     Object? strIngredient1 = freezed,
     Object? strIngredient2 = freezed,
     Object? strIngredient3 = freezed,
@@ -224,10 +224,10 @@ class _$CocktailModelCopyWithImpl<$Res, $Val extends CocktailModel>
           ? _value.strVideo
           : strVideo // ignore: cast_nullable_to_non_nullable
               as String?,
-      strCategory: freezed == strCategory
+      strCategory: null == strCategory
           ? _value.strCategory
           : strCategory // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       strIBA: freezed == strIBA
           ? _value.strIBA
           : strIBA // ignore: cast_nullable_to_non_nullable
@@ -268,10 +268,10 @@ class _$CocktailModelCopyWithImpl<$Res, $Val extends CocktailModel>
           ? _value.strInstructionsZH_HANT
           : strInstructionsZH_HANT // ignore: cast_nullable_to_non_nullable
               as String?,
-      strDrinkThumb: freezed == strDrinkThumb
+      strDrinkThumb: null == strDrinkThumb
           ? _value.strDrinkThumb
           : strDrinkThumb // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       strIngredient1: freezed == strIngredient1
           ? _value.strIngredient1
           : strIngredient1 // ignore: cast_nullable_to_non_nullable
@@ -426,7 +426,7 @@ abstract class _$$_CocktailModelCopyWith<$Res>
       String? strDrinkAlternate,
       String? strTags,
       String? strVideo,
-      String? strCategory,
+      String strCategory,
       String? strIBA,
       String? strAlcoholic,
       String? strGlass,
@@ -437,7 +437,7 @@ abstract class _$$_CocktailModelCopyWith<$Res>
       String? strInstructionsIT,
       String? strInstructionsZH_HANS,
       String? strInstructionsZH_HANT,
-      String? strDrinkThumb,
+      String strDrinkThumb,
       String? strIngredient1,
       String? strIngredient2,
       String? strIngredient3,
@@ -490,7 +490,7 @@ class __$$_CocktailModelCopyWithImpl<$Res>
     Object? strDrinkAlternate = freezed,
     Object? strTags = freezed,
     Object? strVideo = freezed,
-    Object? strCategory = freezed,
+    Object? strCategory = null,
     Object? strIBA = freezed,
     Object? strAlcoholic = freezed,
     Object? strGlass = freezed,
@@ -501,7 +501,7 @@ class __$$_CocktailModelCopyWithImpl<$Res>
     Object? strInstructionsIT = freezed,
     Object? strInstructionsZH_HANS = freezed,
     Object? strInstructionsZH_HANT = freezed,
-    Object? strDrinkThumb = freezed,
+    Object? strDrinkThumb = null,
     Object? strIngredient1 = freezed,
     Object? strIngredient2 = freezed,
     Object? strIngredient3 = freezed,
@@ -558,10 +558,10 @@ class __$$_CocktailModelCopyWithImpl<$Res>
           ? _value.strVideo
           : strVideo // ignore: cast_nullable_to_non_nullable
               as String?,
-      strCategory: freezed == strCategory
+      strCategory: null == strCategory
           ? _value.strCategory
           : strCategory // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       strIBA: freezed == strIBA
           ? _value.strIBA
           : strIBA // ignore: cast_nullable_to_non_nullable
@@ -602,10 +602,10 @@ class __$$_CocktailModelCopyWithImpl<$Res>
           ? _value.strInstructionsZH_HANT
           : strInstructionsZH_HANT // ignore: cast_nullable_to_non_nullable
               as String?,
-      strDrinkThumb: freezed == strDrinkThumb
+      strDrinkThumb: null == strDrinkThumb
           ? _value.strDrinkThumb
           : strDrinkThumb // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       strIngredient1: freezed == strIngredient1
           ? _value.strIngredient1
           : strIngredient1 // ignore: cast_nullable_to_non_nullable
@@ -755,7 +755,7 @@ class _$_CocktailModel implements _CocktailModel {
       this.strDrinkAlternate,
       this.strTags,
       this.strVideo,
-      this.strCategory,
+      required this.strCategory,
       this.strIBA,
       this.strAlcoholic,
       this.strGlass,
@@ -766,7 +766,7 @@ class _$_CocktailModel implements _CocktailModel {
       this.strInstructionsIT,
       this.strInstructionsZH_HANS,
       this.strInstructionsZH_HANT,
-      this.strDrinkThumb,
+      required this.strDrinkThumb,
       this.strIngredient1,
       this.strIngredient2,
       this.strIngredient3,
@@ -816,7 +816,7 @@ class _$_CocktailModel implements _CocktailModel {
   @override
   final String? strVideo;
   @override
-  final String? strCategory;
+  final String strCategory;
   @override
   final String? strIBA;
   @override
@@ -838,7 +838,7 @@ class _$_CocktailModel implements _CocktailModel {
   @override
   final String? strInstructionsZH_HANT;
   @override
-  final String? strDrinkThumb;
+  final String strDrinkThumb;
   @override
   final String? strIngredient1;
   @override
@@ -1092,7 +1092,7 @@ abstract class _CocktailModel implements CocktailModel {
       final String? strDrinkAlternate,
       final String? strTags,
       final String? strVideo,
-      final String? strCategory,
+      required final String strCategory,
       final String? strIBA,
       final String? strAlcoholic,
       final String? strGlass,
@@ -1103,7 +1103,7 @@ abstract class _CocktailModel implements CocktailModel {
       final String? strInstructionsIT,
       final String? strInstructionsZH_HANS,
       final String? strInstructionsZH_HANT,
-      final String? strDrinkThumb,
+      required final String strDrinkThumb,
       final String? strIngredient1,
       final String? strIngredient2,
       final String? strIngredient3,
@@ -1153,7 +1153,7 @@ abstract class _CocktailModel implements CocktailModel {
   @override
   String? get strVideo;
   @override
-  String? get strCategory;
+  String get strCategory;
   @override
   String? get strIBA;
   @override
@@ -1175,7 +1175,7 @@ abstract class _CocktailModel implements CocktailModel {
   @override
   String? get strInstructionsZH_HANT;
   @override
-  String? get strDrinkThumb;
+  String get strDrinkThumb;
   @override
   String? get strIngredient1;
   @override

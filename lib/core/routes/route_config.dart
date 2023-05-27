@@ -25,7 +25,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.splash.pathName,
+    initialLocation: AppScreen.home.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -41,11 +41,22 @@ class AppRouter {
                     const NoTransitionPage(child: HomeScreen()),
                 routes: [
                   GoRoute(
-                    path: AppScreen.detail.pathName,
-                    name: AppScreen.detail.routeName,
-                    parentNavigatorKey: _rootNavigatorKey,
-                    builder: (context, state) => CocktailDetail(),
-                  )
+                      path: AppScreen.detail.pathName,
+                      name: AppScreen.detail.routeName,
+                      parentNavigatorKey: _rootNavigatorKey,
+                      builder: (context, state) {
+                        return CocktailDetail(
+                          item: state.extra,
+                        );
+                      },
+                      routes: [
+                        GoRoute(
+                          path: AppScreen.steps.pathName,
+                          name: AppScreen.steps.routeName,
+                          parentNavigatorKey: _rootNavigatorKey,
+                          builder: (context, state) => CocktailSteps(),
+                        )
+                      ])
                 ]),
             GoRoute(
               path: AppScreen.explore.pathName,
@@ -57,7 +68,7 @@ class AppRouter {
               path: AppScreen.search.pathName,
               name: AppScreen.search.routeName,
               pageBuilder: (context, state) =>
-                  NoTransitionPage(child: SearchScreen()),
+                  const NoTransitionPage(child: SearchScreen()),
             ),
             GoRoute(
               path: AppScreen.favorite.pathName,
@@ -90,7 +101,7 @@ class AppRouter {
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
-        builder: (context, state) => CocktailSteps(),
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,

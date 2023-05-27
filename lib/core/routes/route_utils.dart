@@ -12,6 +12,7 @@ enum AppScreen {
   account,
   updateAccount,
   detail,
+  steps,
   settings,
 }
 
@@ -40,6 +41,8 @@ extension AppScreenExtension on AppScreen {
         return 'update_account';
       case AppScreen.detail:
         return 'detail';
+      case AppScreen.steps:
+        return 'steps';
       case AppScreen.settings:
         return 'settings';
       default:
@@ -71,6 +74,8 @@ extension AppScreenExtension on AppScreen {
         return 'update_account';
       case AppScreen.detail:
         return 'detail';
+      case AppScreen.steps:
+        return 'steps';
       case AppScreen.settings:
         return 'settings';
       default:
