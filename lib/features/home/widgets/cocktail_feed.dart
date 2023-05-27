@@ -42,6 +42,7 @@ class CocktailFeed extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Card(
+                          color: const Color(0xd9d9d9),
                           child: cocktail['strDrinkThumb'] != null
                               ? CustomImage(
                                   src: cocktail['strDrinkThumb'],

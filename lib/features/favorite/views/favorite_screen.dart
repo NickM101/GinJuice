@@ -53,15 +53,6 @@ class FavoriteScreen extends StatelessWidget {
       "strDrinkThumb":
           "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg"
     },
-    {
-      "idDrink": "178332",
-      "strDrink": "Smashed Watermelon Margarita",
-      "strCategory": "Cocktail",
-      "strAlcoholic": "Alcoholic",
-      "strGlass": "Margarita glass",
-      "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/trvwpu1454515129.jpg"
-    }
   ];
 
   @override

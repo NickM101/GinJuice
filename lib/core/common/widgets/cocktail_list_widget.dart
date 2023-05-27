@@ -21,6 +21,7 @@ class CocktailList extends StatelessWidget {
             child: Row(
               children: [
                 Card(
+                  color: const Color(0xd9d9d9),
                   child: CustomImage(
                     src: cocktail.strDrinkThumb,
                     id: cocktail.idDrink,

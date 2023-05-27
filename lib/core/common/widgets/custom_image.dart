@@ -40,6 +40,7 @@ class CustomImage extends StatelessWidget {
           );
         },
         errorWidget: (context, url, error) {
+          print('Error --- $error');
           return Container(
             decoration: BoxDecoration(
               color:
