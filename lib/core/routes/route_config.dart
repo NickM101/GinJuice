@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/features/details/views/cocktail_steps.dart';
 import 'package:ginjuice/features/intro/views/splash_screen.dart';
 import 'package:ginjuice/features/profile/views/settings_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -89,7 +90,7 @@ class AppRouter {
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
-        builder: (context, state) => CocktailDetail(),
+        builder: (context, state) => CocktailSteps(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,
