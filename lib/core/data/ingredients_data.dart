@@ -18,6 +18,10 @@ final List<IngredientCategory> categorizedIngredients = [
       "Tequila",
       "Whiskey",
       "Brandy",
+      "Spiced rum",
+      "Light rum",
+      "Dark rum",
+      "Añejo rum",
     ],
   ),
   IngredientCategory(
@@ -62,7 +66,7 @@ final List<IngredientCategory> categorizedIngredients = [
     ingredients: [
       "Soda water",
       "Tonic water",
-      "Cola",
+      "Coca-Cola",
       "Ginger ale",
       "Ginger beer",
     ],

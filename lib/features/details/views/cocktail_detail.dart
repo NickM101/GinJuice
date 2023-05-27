@@ -2,39 +2,41 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../core/data/ingredients_data.dart';
+
 // ignore: must_be_immutable
 class CocktailDetail extends StatelessWidget {
   CocktailDetail({super.key});
 
   List<Map<String, dynamic>> favorite = [
     {
-      "idDrink": "11118",
-      "strDrink": "Blue Margarita",
+      "idDrink": "17204",
+      "strDrink": "Long Island Iced Tea",
       "strDrinkAlternate": null,
-      "strTags": null,
+      "strTags": "IBA,ContemporaryClassic",
       "strVideo": null,
       "strCategory": "Ordinary Drink",
-      "strIBA": null,
+      "strIBA": "Contemporary Classics",
       "strAlcoholic": "Alcoholic",
-      "strGlass": "Cocktail glass",
+      "strGlass": "Highball glass",
       "strInstructions":
-          "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt. Shake tequila, blue curacao, and lime juice with ice, strain into the salt-rimmed glass, and serve.",
+          "Mix all contents in a highball glass and sitr gently. Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist.",
       "strInstructionsES": null,
       "strInstructionsDE":
-          "Den Rand des Cocktailglases mit Limettensaft einreiben. Den Rand in grobes Salz tauchen. Tequila, blauen Curacao und Limettensaft mit Eis schütteln, in das mit Salz umhüllte Glas abseihen und servieren.",
+          "Den gesamten Inhalt in einem Highball-Glas mischen und vorsichtig umrühren. Für die Farbgebung einen Schuss Coca-Cola hinzufügen und mit Zitronen- oder Limettenspirale garnieren.",
       "strInstructionsFR": null,
       "strInstructionsIT":
-          "Strofinare il bordo del bicchiere da cocktail con succo di lime. Immergere il bordo nel sale grosso. Shakerare tequila, blue curacao e succo di lime con ghiaccio, filtrare nel bicchiere bordato di sale e servire.",
+          "Mescolare tutto il contenuto in un bicchiere highball e mescolare delicatamente.\r\nAggiungere un pizzico di Coca-Cola per la colorazione e guarnire con una scorza di limone o lime.",
       "strInstructionsZH-HANS": null,
       "strInstructionsZH-HANT": null,
       "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg",
-      "strIngredient1": "Tequila",
-      "strIngredient2": "Blue Curacao",
-      "strIngredient3": "Lime juice",
-      "strIngredient4": "Salt",
-      "strIngredient5": null,
-      "strIngredient6": null,
+          "https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg",
+      "strIngredient1": "Vodka",
+      "strIngredient2": "Tequila",
+      "strIngredient3": "Light rum",
+      "strIngredient4": "Gin",
+      "strIngredient5": "Coca-Cola",
+      "strIngredient6": "Lemon peel",
       "strIngredient7": null,
       "strIngredient8": null,
       "strIngredient9": null,
@@ -44,12 +46,12 @@ class CocktailDetail extends StatelessWidget {
       "strIngredient13": null,
       "strIngredient14": null,
       "strIngredient15": null,
-      "strMeasure1": "1 1/2 oz ",
-      "strMeasure2": "1 oz ",
-      "strMeasure3": "1 oz ",
-      "strMeasure4": "Coarse ",
-      "strMeasure5": null,
-      "strMeasure6": null,
+      "strMeasure1": "1/2 oz ",
+      "strMeasure2": "1/2 oz ",
+      "strMeasure3": "1/2 oz ",
+      "strMeasure4": "1/2 oz ",
+      "strMeasure5": "1 dash ",
+      "strMeasure6": "Twist of ",
       "strMeasure7": null,
       "strMeasure8": null,
       "strMeasure9": null,
@@ -61,8 +63,8 @@ class CocktailDetail extends StatelessWidget {
       "strMeasure15": null,
       "strImageSource": null,
       "strImageAttribution": null,
-      "strCreativeCommonsConfirmed": "Yes",
-      "dateModified": "2015-08-18 14:51:53"
+      "strCreativeCommonsConfirmed": "No",
+      "dateModified": "2017-09-02 17:41:50"
     },
     {
       "idDrink": "11118",
@@ -79,9 +81,56 @@ class CocktailDetail extends StatelessWidget {
     print('Close  Button pressed');
   }
 
+  String getCategory(String ingredientName) {
+    for (final category in categorizedIngredients) {
+      if (category.ingredients.contains(ingredientName)) {
+        return category.name;
+      }
+    }
+
+    return 'Other';
+  }
+
   @override
   Widget build(BuildContext context) {
     final item = favorite[0];
+    final Map<String, List<String>> categorizedIngredients = {};
+
+    for (int i = 1; i <= 15; i++) {
+      final ingredientName = item['strIngredient$i'];
+      final measure = item['strMeasure$i'];
+
+      if (ingredientName != null && measure != null) {
+        final ingredientCategory = getCategory(ingredientName);
+
+        if (categorizedIngredients.containsKey(ingredientCategory)) {
+          categorizedIngredients[ingredientCategory]!
+              .add('$measure $ingredientName');
+        } else {
+          categorizedIngredients[ingredientCategory] = [
+            '$measure $ingredientName'
+          ];
+        }
+      }
+    }
+
+    final List<Widget> categoryWidgets = [];
+
+    categorizedIngredients.forEach((category, ingredients) {
+      final categoryWidget = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(category, style: const TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8.0),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:
+                ingredients.map((ingredient) => Text(ingredient)).toList(),
+          ),
+        ],
+      );
+      categoryWidgets.add(categoryWidget);
+    });
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -196,7 +245,31 @@ class CocktailDetail extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text('Ingredients'),
-          )
+          ),
+          Expanded(
+            flex: 2,
+            child: GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              padding: EdgeInsets.all(8.0),
+              mainAxisSpacing: 1.0, // Adjust the spacing between the rows
+              crossAxisSpacing: 8.0, // Adjust the spacing between the columns
+              childAspectRatio: 1.5,
+              children: categoryWidgets,
+            ),
+          ),
+          Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(fixedSize: Size(60.w, 8.h)),
+                    child: const Text('Start Mixing'),
+                  ),
+                ),
+              ))
         ],
       ),
     );
