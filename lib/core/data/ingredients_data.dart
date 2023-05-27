@@ -39,8 +39,8 @@ final List<IngredientCategory> categorizedIngredients = [
   IngredientCategory(
     name: "Vermouths",
     ingredients: [
-      "Dry vermouth",
-      "Sweet vermouth",
+      "Dry Vermouth",
+      "Sweet Vermouth",
     ],
   ),
   IngredientCategory(
@@ -96,6 +96,7 @@ final List<IngredientCategory> categorizedIngredients = [
     ingredients: [
       "Lime wedge",
       "Lemon twist",
+      "Lemon peel",
       "Orange slice",
       "Cherry",
       "Mint sprig",

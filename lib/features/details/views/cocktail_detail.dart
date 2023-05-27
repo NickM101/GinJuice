@@ -16,14 +16,12 @@ class CocktailDetail extends StatelessWidget {
     required this.item,
   }) : super(key: key);
 
-  void closeButton() {
-    print('Close  Button pressed');
-  }
-
-  String getCategory(String ingredientName) {
-    for (final category in categorizedIngredients) {
-      if (category.ingredients.contains(ingredientName)) {
-        return category.name;
+  String getCategory(String? ingredientName) {
+    if (ingredientName != null) {
+      for (final category in categorizedIngredients) {
+        if (category.ingredients.contains(ingredientName)) {
+          return category.name;
+        }
       }
     }
 
@@ -32,11 +30,23 @@ class CocktailDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, List<String>> categorizedIngredients = {};
+    final List<String> ingredients = [];
+    final List<String> measurements = [];
 
     for (int i = 1; i <= 15; i++) {
       final ingredientName = item.getIngredient(i);
       final measure = item.getMeasure(i);
+
+      if (ingredientName != null && measure != null) {
+        ingredients.add(ingredientName);
+        measurements.add(measure);
+      }
+    }
+    final Map<String, List<String>> categorizedIngredients = {};
+
+    for (int i = 0; i < ingredients.length; i++) {
+      final ingredientName = ingredients[i];
+      final measure = measurements[i];
 
       final ingredientCategory = getCategory(ingredientName);
 
@@ -60,22 +70,19 @@ class CocktailDetail extends StatelessWidget {
           const SizedBox(height: 8.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: ingredients
-                .where((ingredient) => ingredient.isNotEmpty == true)
-                .map((ingredient) => Text(ingredient))
-                .toList(),
+            children:
+                ingredients.map((ingredient) => Text(ingredient)).toList(),
           ),
         ],
       );
       categoryWidgets.add(categoryWidget);
     });
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          onPressed: closeButton,
+          onPressed: () => context.pop(),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(
                 Colors.black26), // Set the background color here
