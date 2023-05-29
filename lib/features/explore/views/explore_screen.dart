@@ -12,8 +12,8 @@ class ExploreScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final letter = ref.watch(selectedLetterProvider);
-
     final searchResult = ref.watch(searchCategoryProvider(letter));
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

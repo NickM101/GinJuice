@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import 'custom_image.dart';
@@ -20,6 +22,7 @@ class CocktailList extends StatelessWidget {
         return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
                   color: const Color(0xd9d9d9),
@@ -35,6 +38,9 @@ class CocktailList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 2.h,
+                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -74,9 +80,19 @@ class CocktailList extends StatelessWidget {
                     ],
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_right),
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.favorite, size: 18.0),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        context.pushNamed(AppScreen.detail.routeName);
+                      },
+                      icon: const Icon(Icons.arrow_right),
+                    ),
+                  ],
                 )
               ],
             ));

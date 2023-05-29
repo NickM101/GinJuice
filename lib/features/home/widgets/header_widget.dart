@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/common/widgets/text_logo_widget.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -10,21 +11,7 @@ class HeaderWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RichText(
-            text: TextSpan(
-              text: 'Gin',
-              style: Theme.of(context).textTheme.titleLarge,
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Juice',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.apply(color: const Color(0xfff0576b)),
-                ),
-              ],
-            ),
-          ),
+          const TextLogoWidget(),
           IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
         ],
       ),
