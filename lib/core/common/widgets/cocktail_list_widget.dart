@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/common/widgets/custom_image.dart';
 import 'package:sizer/sizer.dart';
+
+import 'custom_image.dart';
 
 class CocktailList extends StatelessWidget {
   final List items;

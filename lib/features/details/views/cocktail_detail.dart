@@ -18,8 +18,11 @@ class CocktailDetail extends StatelessWidget {
 
   String getCategory(String? ingredientName) {
     if (ingredientName != null) {
+      final lowercaseIngredient = ingredientName.toLowerCase();
       for (final category in categorizedIngredients) {
-        if (category.ingredients.contains(ingredientName)) {
+        final lowercaseIngredients =
+            category.ingredients.map((i) => i.toLowerCase());
+        if (lowercaseIngredients.contains(lowercaseIngredient)) {
           return category.name;
         }
       }
@@ -97,6 +100,7 @@ class CocktailDetail extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // TODO - replace container with card, elevation 5 + good padding
           Container(
             height: 50.h,
             width: double.infinity,
@@ -199,7 +203,7 @@ class CocktailDetail extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               mainAxisSpacing: 1.0, // Adjust the spacing between the rows
               crossAxisSpacing: 8.0, // Adjust the spacing between the columns
-              childAspectRatio: 1.5,
+              childAspectRatio: 1.8,
               children: categoryWidgets,
             ),
           ),

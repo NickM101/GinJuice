@@ -24,7 +24,7 @@ class CustomImage extends StatelessWidget {
         progressIndicatorBuilder: (context, url, progress) {
           return Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(13),
               color:
                   themeMode ? const Color(0xd9d9d9) : const Color(0x00000000),
               image: DecorationImage(

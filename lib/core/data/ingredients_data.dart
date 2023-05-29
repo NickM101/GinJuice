@@ -69,6 +69,7 @@ final List<IngredientCategory> categorizedIngredients = [
       "Coca-Cola",
       "Ginger ale",
       "Ginger beer",
+      "Lemonade"
     ],
   ),
   IngredientCategory(
@@ -79,6 +80,7 @@ final List<IngredientCategory> categorizedIngredients = [
       "Agave syrup",
       "Honey",
       "Maple syrup",
+      "Sugar syrup",
     ],
   ),
   IngredientCategory(

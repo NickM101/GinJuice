@@ -15,6 +15,8 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
+// TODO persit navigation state - avoids reloading
+
 class _BottomNavBarState extends State<BottomNavBar> {
   int get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
 

@@ -1,62 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/core/common/models/cocktail_model.dart';
+import 'package:ginjuice/features/favorite/controllers/favorite_controller.dart';
 import 'package:sizer/sizer.dart';
 
 import '../widgets/favorite_cocktail.dart';
 
 // ignore: must_be_immutable
-class FavoriteScreen extends StatelessWidget {
-  FavoriteScreen({super.key});
-
-  List<Map<String, dynamic>> favorite = [
-    {
-      "idDrink": "11007",
-      "strDrink": "Margarita",
-      "strCategory": "Ordinary Drink",
-      "strAlcoholic": "Alcoholic",
-      "strGlass": "Cocktail glass",
-      "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
-    },
-    {
-      "idDrink": "11118",
-      "strDrink": "Blue Margarita",
-      "strCategory": "Ordinary Drink",
-      "strAlcoholic": "Alcoholic",
-      "strGlass": "Cocktail glass",
-      "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg"
-    },
-    {
-      "idDrink": "17216",
-      "strDrink": "Tommy's Margarita",
-      "strCategory": "Ordinary Drink",
-      "strAlcoholic": "Alcoholic",
-      "strGlass": "Old-Fashioned glass",
-      "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/loezxn1504373874.jpg"
-    },
-    {
-      "idDrink": "16158",
-      "strDrink": "Whitecap Margarita",
-      "strCategory": "Other / Unknown",
-      "strAlcoholic": "Alcoholic",
-      "strGlass": "Margarita/Coupette glass",
-      "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg"
-    },
-    {
-      "idDrink": "12322",
-      "strDrink": "Strawberry Margarita",
-      "strCategory": "Ordinary Drink",
-      "strAlcoholic": "Alcoholic",
-      "strGlass": "Cocktail glass",
-      "strDrinkThumb":
-          "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg"
-    },
-  ];
+class FavoriteScreen extends ConsumerWidget {
+  const FavoriteScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    List<CocktailModel> favorites = ref.watch(favoriteProvider).favoriteItems;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -75,16 +32,18 @@ class FavoriteScreen extends StatelessWidget {
           Expanded(
             flex: 9,
             child: GridView.builder(
-              itemCount: favorite.length,
+              itemCount: favorites.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 30.w / 38.h,
               ),
               itemBuilder: (context, index) {
+                final favorite = favorites[index];
+
                 return FavoriteCocktail(
-                  imageUrl: favorite[index]['strDrinkThumb'],
+                  imageUrl: favorite.strDrinkThumb,
                   heartCount: 2,
-                  name: favorite[index]['strDrink'],
+                  name: favorite.strDrink,
                 );
               },
             ),

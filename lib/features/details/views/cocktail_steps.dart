@@ -19,16 +19,15 @@ class CocktailSteps extends StatelessWidget {
     instructionList.removeWhere((instruction) => instruction.isEmpty);
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 1.h,
-          ),
-          Card(
-            elevation: 5,
-            child: SizedBox(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
               height: 20.h,
               width: 90.w,
               child: Center(
@@ -38,21 +37,26 @@ class CocktailSteps extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: instructionList.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(
-                  child: Text('${index + 1}'),
+            const SizedBox(height: 8),
+            Card(
+              elevation: 5,
+              child: Center(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: instructionList.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: CircleAvatar(
+                        child: Text('${index + 1}'),
+                      ),
+                      title: Text(instructionList[index]),
+                    );
+                  },
                 ),
-                title: Text(instructionList[index]),
-              );
-            },
-          ),
-        ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
