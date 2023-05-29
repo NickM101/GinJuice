@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:ginjuice/features/favorite/controllers/favorite_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
@@ -82,10 +84,28 @@ class CocktailList extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.favorite, size: 18.0),
-                    ),
+                    Consumer(builder: (
+                      BuildContext context,
+                      WidgetRef ref,
+                      Widget? child,
+                    ) {
+                      final active =
+                          ref.watch(favoriteProvider).isFavorite(cocktail);
+                      final favoriteAction =
+                          ref.read(favoriteProvider.notifier);
+                      return IconButton(
+                        onPressed: () {
+                          active
+                              ? favoriteAction.removeFromFavorites(cocktail)
+                              : favoriteAction.addToFavorites(cocktail);
+                        },
+                        icon: active
+                            ? const Icon(Icons.favorite, size: 18.0)
+                            : const Icon(Icons.favorite_border_outlined,
+                                size: 18.0),
+                        color: active ? Colors.red : Colors.black,
+                      );
+                    }),
                     IconButton(
                       onPressed: () {
                         context.pushNamed(AppScreen.detail.routeName);

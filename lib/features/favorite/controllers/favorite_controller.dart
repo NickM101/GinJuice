@@ -15,6 +15,14 @@ class FavoriteController extends ChangeNotifier {
     favoriteItems.remove(item);
     notifyListeners();
   }
+
+  bool isFavorite(CocktailModel item) {
+    return favoriteItems.contains(item);
+  }
+
+  int getFavoritesCount() {
+    return favoriteItems.length;
+  }
 }
 
 final favoriteProvider = ChangeNotifierProvider((ref) => FavoriteController());
