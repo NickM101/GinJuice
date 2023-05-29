@@ -108,7 +108,10 @@ class CocktailList extends StatelessWidget {
                     }),
                     IconButton(
                       onPressed: () {
-                        context.pushNamed(AppScreen.detail.routeName);
+                        context.pushNamed(
+                          AppScreen.detail.routeName,
+                          extra: cocktail,
+                        );
                       },
                       icon: const Icon(Icons.arrow_right),
                     ),
