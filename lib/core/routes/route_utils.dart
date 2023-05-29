@@ -14,6 +14,8 @@ enum AppScreen {
   detail,
   steps,
   settings,
+  privacy,
+  about,
 }
 
 extension AppScreenExtension on AppScreen {
@@ -45,6 +47,10 @@ extension AppScreenExtension on AppScreen {
         return 'steps';
       case AppScreen.settings:
         return 'settings';
+      case AppScreen.privacy:
+        return 'privacy';
+      case AppScreen.about:
+        return 'about';
       default:
         return '/';
     }
@@ -78,6 +84,10 @@ extension AppScreenExtension on AppScreen {
         return 'steps';
       case AppScreen.settings:
         return 'settings';
+      case AppScreen.privacy:
+        return 'privacy';
+      case AppScreen.about:
+        return 'about';
       default:
         return 'home';
     }

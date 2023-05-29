@@ -1,11 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:ginjuice/features/details/widgets/detail_card_image.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../core/routes/route_utils.dart';
+import '../../details/widgets/detail_card_image.dart';
 
 class RandomCocktail extends StatelessWidget {
   final AsyncValue cocktail;
@@ -21,10 +21,8 @@ class RandomCocktail extends StatelessWidget {
       data: (cocktails) {
         final item = cocktails[0];
         return InkWell(
-            onTap: () => context.pushNamed(
-                  AppScreen.detail.routeName,
-                  extra: item,
-                ),
+            onTap: () =>
+                context.pushNamed(AppScreen.detail.routeName, extra: item),
             child: DetailCardImage(item: item));
       },
       error: (error, stack) {

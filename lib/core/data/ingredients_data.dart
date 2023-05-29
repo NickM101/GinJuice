@@ -34,6 +34,9 @@ final List<IngredientCategory> defaultCategorizedIngredients = [
       "Kahlua",
       "Frangelico",
       "Grand Marnier",
+      "Grain alcohol",
+      "Midori melon liqueur"
+          "Jack daniel"
     ],
   ),
   IngredientCategory(
@@ -41,6 +44,7 @@ final List<IngredientCategory> defaultCategorizedIngredients = [
     ingredients: [
       "Dry Vermouth",
       "Sweet Vermouth",
+      "Rosso Vermouth",
     ],
   ),
   IngredientCategory(
@@ -51,8 +55,18 @@ final List<IngredientCategory> defaultCategorizedIngredients = [
     ],
   ),
   IngredientCategory(
+    name: "Spice/Seasoning",
+    ingredients: [
+      "Cloves",
+      "Nutmeg",
+      "Cinnamon",
+      "Ginger",
+    ],
+  ),
+  IngredientCategory(
     name: "Fruit Juices",
     ingredients: [
+      "Apple juice",
       "Orange juice",
       "Pineapple juice",
       "Cranberry juice",
@@ -69,7 +83,9 @@ final List<IngredientCategory> defaultCategorizedIngredients = [
       "Coca-Cola",
       "Ginger ale",
       "Ginger beer",
-      "Lemonade"
+      "Lemonade",
+      "Apple cider"
+          "Coffee"
     ],
   ),
   IngredientCategory(
@@ -81,6 +97,8 @@ final List<IngredientCategory> defaultCategorizedIngredients = [
       "Honey",
       "Maple syrup",
       "Sugar syrup",
+      "Brown sugar",
+      "Elderflower cordial"
     ],
   ),
   IngredientCategory(

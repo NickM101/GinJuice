@@ -1,19 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/common/models/cocktail_model.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/widgets/custom_image.dart';
+import '../../../core/routes/route_utils.dart';
 
 class FavoriteCocktail extends StatelessWidget {
-  final String imageUrl;
-  final int heartCount;
-  final String name;
+  final CocktailModel item;
 
   const FavoriteCocktail({
     Key? key,
-    required this.imageUrl,
-    required this.heartCount,
-    required this.name,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -21,19 +20,25 @@ class FavoriteCocktail extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          margin: const EdgeInsets.all(8.0),
-          padding: const EdgeInsets.all(4.0),
-          height: 30.h,
-          width: 40.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
+        InkWell(
+          onTap: () => context.pushNamed(
+            AppScreen.detail.routeName,
+            extra: item,
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
-            child: CustomImage(
-              src: imageUrl,
-              id: 'hojiasdcjsihh23c',
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
+            height: 30.h,
+            width: 40.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16.0),
+              child: CustomImage(
+                src: item.strDrinkThumb,
+                id: item.idDrink,
+              ),
             ),
           ),
         ),
@@ -41,7 +46,7 @@ class FavoriteCocktail extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(2.0),
           child: AutoSizeText(
-            name,
+            item.strDrink,
             maxLines: 2,
             style: Theme.of(context).textTheme.titleSmall,
             textAlign: TextAlign.center,

@@ -23,6 +23,10 @@ class FavoriteController extends ChangeNotifier {
   int getFavoritesCount() {
     return favoriteItems.length;
   }
+
+  void clearFavorite() {
+    return favoriteItems.clear();
+  }
 }
 
 final favoriteProvider = ChangeNotifierProvider((ref) => FavoriteController());

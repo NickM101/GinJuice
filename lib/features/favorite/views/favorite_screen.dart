@@ -54,11 +54,8 @@ class FavoriteScreen extends ConsumerWidget {
               ),
               itemBuilder: (context, index) {
                 final favorite = favorites[index];
-
                 return FavoriteCocktail(
-                  imageUrl: favorite.strDrinkThumb,
-                  heartCount: 2,
-                  name: favorite.strDrink,
+                  item: favorite,
                 );
               },
             ),

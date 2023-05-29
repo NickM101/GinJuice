@@ -103,7 +103,9 @@ class CocktailList extends StatelessWidget {
                             ? const Icon(Icons.favorite, size: 18.0)
                             : const Icon(Icons.favorite_border_outlined,
                                 size: 18.0),
-                        color: active ? Colors.red : Colors.black,
+                        color: active
+                            ? Colors.red
+                            : Theme.of(context).primaryColor,
                       );
                     }),
                     IconButton(

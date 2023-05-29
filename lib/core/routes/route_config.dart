@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/common/models/cocktail_model.dart';
-import 'package:ginjuice/features/details/views/cocktail_steps.dart';
-import 'package:ginjuice/features/intro/views/splash_screen.dart';
-import 'package:ginjuice/features/profile/views/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
 import '../../features/auth/views/sent_link.dart';
 import '../../features/details/views/cocktail_detail.dart';
+import '../../features/details/views/cocktail_steps.dart';
 import '../../features/explore/views/explore_screen.dart';
 import '../../features/favorite/views/favorite_screen.dart';
 import '../../features/home/views/home_screen.dart';
 import '../../features/intro/views/onboarding_screen.dart';
+import '../../features/intro/views/splash_screen.dart';
+import '../../features/profile/views/about_screen.dart';
+import '../../features/profile/views/privacy_screen.dart';
 import '../../features/profile/views/profile_screen.dart';
-import '../../features/profile/views/update_profile.dart';
+import '../../features/profile/views/customize_avatar.dart';
 import '../../features/search/views/search_screen.dart';
+import '../common/models/cocktail_model.dart';
 import '../common/widgets/bottom_navigation_bar.dart';
 import 'route_utils.dart';
 
@@ -26,7 +27,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.explore.pathName,
+    initialLocation: AppScreen.home.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -39,7 +40,7 @@ class AppRouter {
                 path: AppScreen.home.pathName,
                 name: AppScreen.home.routeName,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: HomeScreen()),
+                    const NoTransitionPage(child: CustomizeAvatar()),
                 routes: [
                   GoRoute(
                       path: AppScreen.detail.pathName,
@@ -89,21 +90,28 @@ class AppRouter {
                     name: AppScreen.updateAccount.routeName,
                     parentNavigatorKey: _rootNavigatorKey,
                     pageBuilder: (context, state) =>
-                        NoTransitionPage(child: UpdateProfile()),
+                        NoTransitionPage(child: CustomizeAvatar()),
                   ),
                   GoRoute(
-                    path: AppScreen.settings.pathName,
-                    name: AppScreen.settings.routeName,
+                    path: AppScreen.privacy.pathName,
+                    name: AppScreen.privacy.routeName,
                     parentNavigatorKey: _rootNavigatorKey,
                     pageBuilder: (context, state) =>
-                        const NoTransitionPage(child: SettingsScreen()),
+                        const NoTransitionPage(child: PrivacyScreen()),
+                  ),
+                  GoRoute(
+                    path: AppScreen.about.pathName,
+                    name: AppScreen.about.routeName,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: AboutScreen()),
                   ),
                 ]),
           ]),
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
-        builder: (context, state) => const SplashScreen(),
+        builder: (context, state) => const AboutScreen(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,
