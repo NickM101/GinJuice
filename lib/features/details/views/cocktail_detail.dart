@@ -1,14 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:ginjuice/features/details/controllers/recipe_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
-import '../../../core/data/ingredients_data.dart';
 
-// ignore: must_be_immutable
-class CocktailDetail extends StatelessWidget {
+class CocktailDetail extends ConsumerWidget {
   final CocktailModel item;
 
   const CocktailDetail({
@@ -16,70 +16,10 @@ class CocktailDetail extends StatelessWidget {
     required this.item,
   }) : super(key: key);
 
-  String getCategory(String? ingredientName) {
-    if (ingredientName != null) {
-      final lowercaseIngredient = ingredientName.toLowerCase();
-      for (final category in categorizedIngredients) {
-        final lowercaseIngredients =
-            category.ingredients.map((i) => i.toLowerCase());
-        if (lowercaseIngredients.contains(lowercaseIngredient)) {
-          return category.name;
-        }
-      }
-    }
-
-    return 'Other';
-  }
-
   @override
-  Widget build(BuildContext context) {
-    final List<String> ingredients = [];
-    final List<String> measurements = [];
+  Widget build(BuildContext context, WidgetRef ref) {
+    final recipeController = ref.watch(recipeProvider);
 
-    for (int i = 1; i <= 15; i++) {
-      final ingredientName = item.getIngredient(i);
-      final measure = item.getMeasure(i);
-
-      if (ingredientName != null && measure != null) {
-        ingredients.add(ingredientName);
-        measurements.add(measure);
-      }
-    }
-    final Map<String, List<String>> categorizedIngredients = {};
-
-    for (int i = 0; i < ingredients.length; i++) {
-      final ingredientName = ingredients[i];
-      final measure = measurements[i];
-
-      final ingredientCategory = getCategory(ingredientName);
-
-      if (categorizedIngredients.containsKey(ingredientCategory)) {
-        categorizedIngredients[ingredientCategory]!
-            .add('$measure $ingredientName');
-      } else {
-        categorizedIngredients[ingredientCategory] = [
-          '$measure $ingredientName'
-        ];
-      }
-    }
-
-    final List<Widget> categoryWidgets = [];
-
-    categorizedIngredients.forEach((category, ingredients) {
-      final categoryWidget = Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(category, style: const TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8.0),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children:
-                ingredients.map((ingredient) => Text(ingredient)).toList(),
-          ),
-        ],
-      );
-      categoryWidgets.add(categoryWidget);
-    });
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -101,93 +41,7 @@ class CocktailDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // TODO - replace container with card, elevation 5 + good padding
-          Container(
-            height: 50.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(item.strDrinkThumb),
-                fit: BoxFit.cover,
-              ),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.6),
-                ],
-              ),
-            ),
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.transparent,
-                        Colors.black.withOpacity(0.6),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 12,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: 80.w,
-                        child: Center(
-                          child: AutoSizeText(
-                            item.strDrink,
-                            maxLines: 2,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
-                                ?.apply(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            item.strCategory,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Colors.white),
-                          ),
-                          Text(
-                            ' ▫️ ${item.strAlcoholic}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Colors.white),
-                          ),
-                          Text(
-                            ' ▫️ ${item.strGlass}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          DetailCardImage(item: item),
           SizedBox(
             height: 2.h,
           ),
@@ -204,7 +58,7 @@ class CocktailDetail extends StatelessWidget {
               mainAxisSpacing: 1.0, // Adjust the spacing between the rows
               crossAxisSpacing: 8.0, // Adjust the spacing between the columns
               childAspectRatio: 1.8,
-              children: categoryWidgets,
+              children: recipeController.processIngredients(item),
             ),
           ),
           Expanded(
@@ -221,6 +75,106 @@ class CocktailDetail extends StatelessWidget {
                   ),
                 ),
               ))
+        ],
+      ),
+    );
+  }
+}
+
+class DetailCardImage extends StatelessWidget {
+  const DetailCardImage({
+    super.key,
+    required this.item,
+  });
+
+  final CocktailModel item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50.h,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(item.strDrinkThumb),
+          fit: BoxFit.cover,
+        ),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.transparent,
+            Colors.black.withOpacity(0.6),
+          ],
+        ),
+      ),
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withOpacity(0.6),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 12,
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 80.w,
+                  child: Center(
+                    child: AutoSizeText(
+                      item.strDrink,
+                      maxLines: 2,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
+                          ?.apply(color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      item.strCategory,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall
+                          ?.apply(color: Colors.white),
+                    ),
+                    Text(
+                      ' ▫️ ${item.strAlcoholic}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall
+                          ?.apply(color: Colors.white),
+                    ),
+                    Text(
+                      ' ▫️ ${item.strGlass}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall
+                          ?.apply(color: Colors.white),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

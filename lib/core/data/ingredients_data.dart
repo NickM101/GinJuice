@@ -8,7 +8,7 @@ class IngredientCategory {
   });
 }
 
-final List<IngredientCategory> categorizedIngredients = [
+final List<IngredientCategory> defaultCategorizedIngredients = [
   IngredientCategory(
     name: "Base Spirits",
     ingredients: [
