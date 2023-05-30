@@ -10,6 +10,8 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: const Text('About'),
       ),
       body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -34,10 +36,12 @@ class AboutScreen extends StatelessWidget {
               SizedBox(
                 height: 3.h,
               ),
-              Text(
-                'Elevate your mixology game with Gin Juice. Discover a world of exquisite gin-based cocktails crafted to perfection. From classic gin and tonics to innovative creations, our extensive library of recipes offers something for every taste. Our user-friendly interface makes cocktail creation a breeze, allowing you to explore, mix, and master the art of mixology. Whether you\'re a seasoned bartender or a home enthusiast, Gin Juice is your go-to app for inspiration, guidance, and unforgettable cocktail experiences. Cheers to a world of gin-infused delight!',
-                // textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+              SizedBox(
+                width: 85.w,
+                child: const Text(
+                  'Elevate your mixology game with Gin Juice. Discover a world of exquisite gin-based cocktails crafted to perfection. From classic gin and tonics to innovative creations, our extensive library of recipes offers something for every taste. Our user-friendly interface makes cocktail creation a breeze, allowing you to explore, mix, and master the art of mixology. Whether you\'re a seasoned bartender or a home enthusiast, Gin Juice is your go-to app for inspiration, guidance, and unforgettable cocktail experiences. Cheers to a world of gin-infused delight!',
+                  textAlign: TextAlign.center,
+                ),
               ),
               SizedBox(
                 height: 2.h,

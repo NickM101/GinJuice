@@ -40,15 +40,20 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('johndoe@gmail.com'),
+                      Text(
+                        'johndoe@gmail.com',
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
                       FilledButton(
                         style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all<Size>(
                             Size(60.w, 5.h),
                           ),
                         ),
-                        onPressed: () {},
-                        child: const Text('Edit Profile'),
+                        onPressed: () {
+                          context.pushNamed(AppScreen.updateAccount.routeName);
+                        },
+                        child: const Text('Edit Avatar'),
                       )
                     ],
                   )

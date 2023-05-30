@@ -18,10 +18,11 @@ class CustomizeAvatar extends StatelessWidget {
             radius: 20,
             theme: FluttermojiThemeData(
               iconColor: Theme.of(context).primaryColor,
-              tileMargin: const EdgeInsets.symmetric(horizontal: 3.0),
-              tilePadding: const EdgeInsets.symmetric(horizontal: 3.0),
             ),
           ),
+          SizedBox(
+            width: 3.w,
+          )
         ],
       ),
       body: Column(
@@ -29,7 +30,8 @@ class CustomizeAvatar extends StatelessWidget {
         children: [
           Center(
             child: FluttermojiCircleAvatar(
-              radius: 70,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              radius: 120,
             ),
           ),
           SizedBox(
