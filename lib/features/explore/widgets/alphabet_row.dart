@@ -35,7 +35,7 @@ class AlphabetRow extends ConsumerWidget {
                 child: Container(
                   height: 5.h,
                   width: 4.h,
-                  padding: const EdgeInsets.all(8),
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: isSelected ? Theme.of(context).focusColor : null,
                     borderRadius: BorderRadius.circular(8),

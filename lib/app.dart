@@ -19,12 +19,11 @@ class GinJuiceApp extends ConsumerWidget {
       builder: (context, orientation, deviceType) {
         return DismissKeyboard(
           child: MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            themeMode: themeModeState,
-            routerConfig: AppRouter().router,
-          ),
+              debugShowCheckedModeBanner: false,
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              themeMode: themeModeState,
+              routerConfig: AppRouter().router),
         );
       },
     );
