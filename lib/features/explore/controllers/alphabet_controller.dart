@@ -8,6 +8,6 @@ final selectedLetterProvider = StateProvider<String>((ref) => 'A');
 final searchCategoryProvider = FutureProvider.autoDispose
     .family<List<CocktailModel>, String>((ref, letter) async {
   final repository = ref.read(exploreRepositoryProvider);
-
+  ref.keepAlive();
   return repository.getSelectedCategory(letter);
 });

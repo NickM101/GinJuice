@@ -7,21 +7,13 @@ import '../widgets/cocktail_feed.dart';
 import '../widgets/header_widget.dart';
 import '../widgets/random_cocktail.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends ConsumerState<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController controller = TabController(length: 26, vsync: this);
-
-  @override
-  Widget build(BuildContext context) {
-    final popular = ref.watch(popularDrinksProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
     final randomSelection = ref.watch(randomSelectionProvider);
+    final popular = ref.watch(popularDrinksProvider);
     final latest = ref.watch(latestDrinksProvider);
     final random = ref.watch(randomDrinksProvider);
 
