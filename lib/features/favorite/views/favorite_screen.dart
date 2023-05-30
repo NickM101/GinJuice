@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:ginjuice/features/favorite/widgets/empty_favorite_widget.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
@@ -19,14 +22,19 @@ class FavoriteScreen extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const Text('Favorites'),
+        actions: [
+          IconButton(
+            onPressed: () => context.goNamed(AppScreen.search.routeName),
+            icon: const Icon(Icons.search),
+          )
+        ],
       ),
       body: Stack(
         children: [
           Visibility(
             visible: favorites.isEmpty,
-            child: Container(
-              alignment: Alignment.center,
-              child: Text('Empty State'),
+            child: const Center(
+              child: EmptyFavoriteWidget(),
             ),
           ),
           Visibility(

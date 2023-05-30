@@ -40,7 +40,7 @@ class AppRouter {
                 path: AppScreen.home.pathName,
                 name: AppScreen.home.routeName,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: HomeScreen()),
+                    const NoTransitionPage(child: FavoriteScreen()),
                 routes: [
                   GoRoute(
                       path: AppScreen.detail.pathName,
