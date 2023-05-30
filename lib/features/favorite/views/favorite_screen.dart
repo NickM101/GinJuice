@@ -58,7 +58,7 @@ class FavoriteScreen extends ConsumerWidget {
               itemCount: favorites.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 30.w / 38.h,
+                childAspectRatio: 35.w / 38.h,
               ),
               itemBuilder: (context, index) {
                 final favorite = favorites[index];

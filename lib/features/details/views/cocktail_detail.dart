@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/core/common/widgets/custom_elevated_button.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
@@ -48,15 +49,12 @@ class CocktailDetail extends ConsumerWidget {
           Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      context.pushNamed(AppScreen.steps.routeName, extra: item);
-                    },
-                    style: ElevatedButton.styleFrom(fixedSize: Size(60.w, 8.h)),
-                    child: const Text('Start Mixing'),
-                  ),
+                padding: const EdgeInsets.all(16.0),
+                child: CustomElevatedButton(
+                  onPressed: () {
+                    context.pushNamed(AppScreen.steps.routeName, extra: item);
+                  },
+                  text: 'Start Mixing',
                 ),
               ))
         ],

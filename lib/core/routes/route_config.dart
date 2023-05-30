@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/common/widgets/notification_widget.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
@@ -40,7 +41,7 @@ class AppRouter {
                 path: AppScreen.home.pathName,
                 name: AppScreen.home.routeName,
                 pageBuilder: (context, state) =>
-                    const NoTransitionPage(child: FavoriteScreen()),
+                    const NoTransitionPage(child: HomeScreen()),
                 routes: [
                   GoRoute(
                       path: AppScreen.detail.pathName,
@@ -112,6 +113,11 @@ class AppRouter {
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        path: AppScreen.notification.pathName,
+        name: AppScreen.notification.routeName,
+        builder: (context, state) => const NotificationWidget(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,
