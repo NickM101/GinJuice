@@ -13,7 +13,7 @@ class GinJuiceApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeModeState = ref.watch(themesProvider);
+    final themeMode = ref.watch(themesProvider);
 
     return Sizer(
       builder: (context, orientation, deviceType) {
@@ -22,7 +22,7 @@ class GinJuiceApp extends ConsumerWidget {
               debugShowCheckedModeBanner: false,
               theme: lightTheme,
               darkTheme: darkTheme,
-              themeMode: themeModeState,
+              themeMode: themeMode,
               routerConfig: AppRouter().router),
         );
       },

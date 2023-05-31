@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/core/common/controllers/theme_provider.dart';
+import 'package:ginjuice/features/profile/controller/profile_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:fluttermoji/fluttermoji.dart';
@@ -63,23 +66,44 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
-            ListTile(
-              leading: const Icon(Icons.color_lens_rounded),
-              title: const Text('Theme Mode'),
-              subtitle: const Text('System mode'),
-              onTap: () => context.pushNamed(AppScreen.settings.routeName),
-              trailing: Switch(
-                value: true,
-                onChanged: (value) {},
-              ),
+            Consumer(
+              builder: (context, ref, child) {
+                final themeMode = ref.watch(themesProvider);
+
+                return ListTile(
+                  leading: const Icon(Icons.color_lens_rounded),
+                  title: const Text('Theme Mode'),
+                  subtitle: Text(getThemeModeText(themeMode)),
+                  trailing: Switch(
+                      value: themeMode != ThemeMode.light,
+                      onChanged: (value) {
+                        if (value) {
+                          ref
+                              .read(themesProvider.notifier)
+                              .setThemeMode(ThemeMode.dark);
+                        } else {
+                          ref
+                              .read(themesProvider.notifier)
+                              .setThemeMode(ThemeMode.light);
+                        }
+                      }),
+                );
+              },
             ),
-            ListTile(
-              leading: const Icon(Icons.notifications_active),
-              title: const Text('Notifications'),
-              trailing: Switch(
-                value: true,
-                onChanged: (value) {},
-              ),
+            Consumer(
+              builder: (context, ref, child) {
+                final notification = ref.watch(profileNotificationProvider);
+                return ListTile(
+                  leading: const Icon(Icons.notifications_active),
+                  title: const Text('Notifications'),
+                  trailing: Switch(
+                    value: notification,
+                    onChanged: (value) => ref
+                        .read(profileNotificationProvider.notifier)
+                        .update((state) => !state),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.privacy_tip),
@@ -101,5 +125,17 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+String getThemeModeText(ThemeMode? themeMode) {
+  if (themeMode == ThemeMode.system) {
+    return 'System Mode ';
+  } else if (themeMode == ThemeMode.light) {
+    return 'Light Mode';
+  } else if (themeMode == ThemeMode.dark) {
+    return 'Dark Mode';
+  } else {
+    return '';
   }
 }
