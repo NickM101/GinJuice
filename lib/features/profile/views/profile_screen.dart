@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.phone),
+              leading: const Icon(Icons.notifications_active),
               title: const Text('Notifications'),
               trailing: Switch(
                 value: true,

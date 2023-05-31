@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/common/widgets/custom_image.dart';
+import '../../../core/routes/route_utils.dart';
 
 class CocktailFeed extends StatelessWidget {
   final AsyncValue cocktails;
@@ -19,7 +21,6 @@ class CocktailFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     return cocktails.when(
       data: (items) {
-        print("$title cocktails --- $items");
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,33 +38,39 @@ class CocktailFeed extends StatelessWidget {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   final cocktail = items[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Card(
-                          color: const Color(0xd9d9d9),
-                          child: cocktail.strDrinkThumb != null
-                              ? CustomImage(
-                                  src: cocktail.strDrinkThumb,
-                                  id: cocktail.idDrink,
-                                )
-                              : _buildShimmerImage(),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          cocktail.strDrink ?? 'Drink Name',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        Text(
-                          cocktail.strAlcoholic ?? 'Alcoholic',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
-                              ?.apply(color: Theme.of(context).hintColor),
-                        ),
-                      ],
+                  return InkWell(
+                    onTap: () => context.pushNamed(
+                      AppScreen.detail.routeName,
+                      extra: cocktail,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Card(
+                            color: const Color(0xd9d9d9),
+                            child: cocktail.strDrinkThumb != null
+                                ? CustomImage(
+                                    src: cocktail.strDrinkThumb,
+                                    id: cocktail.idDrink,
+                                  )
+                                : _buildShimmerImage(),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            cocktail.strDrink ?? 'Drink Name',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          Text(
+                            cocktail.strAlcoholic ?? 'Alcoholic',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.apply(color: Theme.of(context).hintColor),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
