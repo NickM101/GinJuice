@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/features/home/widgets/cocktail_feed.dart';
 import 'package:ginjuice/features/search/views/search_empty_screen.dart';
 
 import '../../../core/common/widgets/cocktail_list_widget.dart';
@@ -20,6 +21,7 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final searchResult = ref.watch(searchResultProvider);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -43,9 +45,9 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
                   onPressed: () {
                     // TODO: Store textfield value for history search feed
                     _searchController.clear();
-                    ref
-                        .read(searchResultProvider.notifier)
-                        .update((state) => []);
+                    // ref
+                    //     .read(searchResultProvider.notifier)
+                    //     .update((state) => []);
                   },
                   icon: const Icon(Icons.clear),
                 ),
@@ -55,11 +57,25 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ),
           ),
-          // Expanded(child: SearchedCocktails())
+          // Expanded(
+          //     child: searchResult.isNotEmpty
+          //         ? CocktailList(items: searchResult)
+          //         : const SearchEmptyScreen())
           Expanded(
-              child: searchResult.isNotEmpty
-                  ? CocktailList(items: searchResult)
-                  : const SearchEmptyScreen())
+              child: Stack(
+            children: [
+              Visibility(
+                visible: !searchResult.hasValue,
+                child: const SearchEmptyScreen(),
+              ),
+              Visibility(
+                  visible: searchResult.hasValue,
+                  child: CocktailFeed(
+                    title: 'Search history',
+                    cocktails: searchResult,
+                  )),
+            ],
+          )),
         ],
       ),
     );

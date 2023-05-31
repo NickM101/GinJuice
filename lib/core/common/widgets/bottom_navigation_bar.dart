@@ -15,8 +15,6 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-// TODO persit navigation state - avoids reloading
-
 class _BottomNavBarState extends State<BottomNavBar> {
   int get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
 
@@ -65,6 +63,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: widget.child,
       bottomNavigationBar: GNav(
         selectedIndex: _currentIndex,
