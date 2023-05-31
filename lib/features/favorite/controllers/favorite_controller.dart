@@ -25,7 +25,8 @@ class FavoriteController extends ChangeNotifier {
   }
 
   void clearFavorite() {
-    return favoriteItems.clear();
+    favoriteItems.clear();
+    notifyListeners();
   }
 }
 

@@ -16,7 +16,7 @@ class EmptyFavoriteWidget extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          Lottie.asset('assets/json/empty.json', height: 40.h),
+          Lottie.asset('assets/json/turbine_empty.json', height: 40.h),
           Text(
             'Create Your Dream Cocktail Collection!',
             textAlign: TextAlign.center,

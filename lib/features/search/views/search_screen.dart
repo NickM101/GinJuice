@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/features/search/views/search_empty_screen.dart';
 
 import '../../../core/common/widgets/cocktail_list_widget.dart';
 import '../../../core/data/cocktail_data.dart';
@@ -34,6 +35,7 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
                 ref.read(searchCocktailProvider(value));
               },
               decoration: InputDecoration(
+                label: const Text('Find Your Perfect Cocktail'),
                 filled: true,
                 hintText: 'margarita...',
                 prefixIcon: const Icon(Icons.search),
@@ -57,31 +59,9 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
           Expanded(
               child: searchResult.isNotEmpty
                   ? CocktailList(items: searchResult)
-                  : searchSuggestion())
+                  : const SearchEmptyScreen())
         ],
       ),
     );
   }
-}
-
-Widget searchSuggestion() {
-  return SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CocktailGlasses(
-          title: 'Cocktail Glasses',
-          list: cocktailGlasses,
-        ),
-        CocktailGlasses(
-          title: 'Cocktail Glasses',
-          list: cocktailGlasses,
-        ),
-        CocktailGlasses(
-          title: 'Cocktail Glasses',
-          list: cocktailGlasses,
-        ),
-      ],
-    ),
-  );
 }

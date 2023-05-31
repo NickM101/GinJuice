@@ -11,5 +11,7 @@ final searchCocktailProvider = FutureProvider.autoDispose
     .family<List<CocktailModel>, String>((ref, letter) async {
   final repository = ref.read(searchRepositoryProvider);
 
+  // TODO isEmpty dont run search
+
   return repository.getSearchResult(letter, ref);
 });

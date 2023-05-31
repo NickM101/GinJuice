@@ -37,7 +37,7 @@ class PrivacyScreen extends StatelessWidget {
             Consumer(
               builder: (context, ref, child) {
                 final favoriteController =
-                    ref.read(favoriteProvider).clearFavorite;
+                    ref.read(favoriteProvider).clearFavorite();
                 return ListTile(
                   title: const Text('Clear favorite cocktails'),
                   onTap: () => favoriteController,

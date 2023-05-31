@@ -17,22 +17,12 @@ class CocktailGlasses extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
-            const Spacer(),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'View More',
-                style: Theme.of(context).textTheme.labelSmall?.apply(
-                      decoration: TextDecoration.underline,
-                    ),
-              ),
-            )
           ],
         ),
         SizedBox(
@@ -56,10 +46,13 @@ class CocktailGlasses extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    item['constant']!,
+                    item['item']!,
                   ),
                 );
               }),
+        ),
+        SizedBox(
+          height: 3.h,
         ),
       ],
     );
