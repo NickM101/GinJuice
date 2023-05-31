@@ -78,7 +78,7 @@ class AppRouter {
               path: AppScreen.favorite.pathName,
               name: AppScreen.favorite.routeName,
               pageBuilder: (context, state) =>
-                  NoTransitionPage(child: FavoriteScreen()),
+                  const NoTransitionPage(child: FavoriteScreen()),
             ),
             GoRoute(
                 path: AppScreen.account.pathName,
@@ -91,7 +91,7 @@ class AppRouter {
                     name: AppScreen.updateAccount.routeName,
                     parentNavigatorKey: _rootNavigatorKey,
                     pageBuilder: (context, state) =>
-                        NoTransitionPage(child: CustomizeAvatar()),
+                        const NoTransitionPage(child: CustomizeAvatar()),
                   ),
                   GoRoute(
                     path: AppScreen.privacy.pathName,
@@ -112,7 +112,7 @@ class AppRouter {
       GoRoute(
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
-        builder: (context, state) => const AboutScreen(),
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
         path: AppScreen.notification.pathName,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../core/common/controllers/cocktail_provider.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/cocktail_feed.dart';
 import '../widgets/header_widget.dart';
@@ -12,9 +13,9 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final randomSelection = ref.watch(randomSelectionProvider);
-    final popular = ref.watch(popularDrinksProvider);
-    final latest = ref.watch(latestDrinksProvider);
+    final randomSelection = ref.watch(adventureCocktailProvider);
+    final popular = ref.watch(popularCocktailProvider);
+    final latest = ref.watch(latestCocktailProvider);
     final random = ref.watch(randomDrinksProvider);
 
     return SingleChildScrollView(
@@ -33,15 +34,15 @@ class HomeScreen extends ConsumerWidget {
               height: 2.h,
             ),
             CocktailFeed(
-              title: 'Popular',
+              title: "Signature Sips",
               cocktails: popular,
             ),
             CocktailFeed(
-              title: 'Latest',
+              title: "Fresh Pour",
               cocktails: latest,
             ),
             CocktailFeed(
-              title: 'Random Picks',
+              title: "Cocktail Concoctions",
               cocktails: randomSelection,
             ),
           ],

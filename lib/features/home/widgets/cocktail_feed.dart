@@ -19,6 +19,7 @@ class CocktailFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     return cocktails.when(
       data: (items) {
+        print("$title cocktails --- $items");
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -43,20 +44,20 @@ class CocktailFeed extends StatelessWidget {
                       children: [
                         Card(
                           color: const Color(0xd9d9d9),
-                          child: cocktail['strDrinkThumb'] != null
+                          child: cocktail.strDrinkThumb != null
                               ? CustomImage(
-                                  src: cocktail['strDrinkThumb'],
-                                  id: cocktail['idDrink'],
+                                  src: cocktail.strDrinkThumb,
+                                  id: cocktail.idDrink,
                                 )
                               : _buildShimmerImage(),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          cocktail['strDrink'] ?? 'Drink Name',
+                          cocktail.strDrink ?? 'Drink Name',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Text(
-                          cocktail['strAlcoholic'] ?? 'Alcoholic',
+                          cocktail.strAlcoholic ?? 'Alcoholic',
                           style: Theme.of(context)
                               .textTheme
                               .labelSmall
@@ -71,14 +72,18 @@ class CocktailFeed extends StatelessWidget {
           ],
         );
       },
-      error: (err, stack) => Text(
-        'Error loading cocktails:',
-        style: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.bold,
-          color: Colors.red,
-        ),
-      ),
+      error: (err, stack) {
+        print("$title Error ---- ${err.toString()}");
+        print("$title Error ---- ${stack.toString()}");
+        return Text(
+          'Error loading cocktails:',
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.red,
+          ),
+        );
+      },
       loading: () => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
