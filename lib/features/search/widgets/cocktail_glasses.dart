@@ -35,18 +35,21 @@ class CocktailGlasses extends StatelessWidget {
               itemCount: list.length,
               itemBuilder: (context, index) {
                 final item = list[index];
-                return Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(5.0),
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: Theme.of(context).primaryColor.withOpacity(0.7),
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(5.0),
+                    margin: const EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                        color: Theme.of(context).primaryColor.withOpacity(0.7),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    item['item']!,
+                    child: Text(
+                      item['item']!,
+                    ),
                   ),
                 );
               }),

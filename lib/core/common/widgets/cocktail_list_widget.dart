@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:ginjuice/features/favorite/controllers/favorite_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../features/favorite/controllers/favorite_controller.dart';
+import '../../routes/route_utils.dart';
 import 'custom_image.dart';
 
 class CocktailList extends StatelessWidget {
@@ -27,7 +27,7 @@ class CocktailList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
-                  color: const Color(0xd9d9d9),
+                  color: const Color.fromRGBO(217, 217, 217, 0),
                   child: CustomImage(
                     src: cocktail.strDrinkThumb,
                     id: cocktail.idDrink,
