@@ -28,7 +28,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppScreen.home.pathName,
+    initialLocation: AppScreen.splash.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -41,7 +41,7 @@ class AppRouter {
                 path: AppScreen.home.pathName,
                 name: AppScreen.home.routeName,
                 pageBuilder: (context, state) =>
-                    NoTransitionPage(child: SearchScreen()),
+                    const NoTransitionPage(child: HomeScreen()),
                 routes: [
                   GoRoute(
                       path: AppScreen.detail.pathName,

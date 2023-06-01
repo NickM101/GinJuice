@@ -18,8 +18,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.cocktailGlass.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 75.w,
+      height: 40.h,
+      width: 65.w,
     ),
     title: 'Explore Limitless Possibilities',
     description:
@@ -28,8 +28,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.clinkingGlasses.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 75.w,
+      height: 40.h,
+      width: 65.w,
     ),
     title: 'Master Mixology',
     description:
@@ -38,8 +38,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.beatingHeart.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 75.w,
+      height: 40.h,
+      width: 65.w,
     ),
     title: 'Personalize Your Favorites',
     description:
@@ -48,8 +48,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.camera.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 75.w,
+      height: 40.h,
+      width: 65.w,
     ),
     title: 'Share Your Signature Sips',
     description:
@@ -58,8 +58,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.partyPopper.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 75.w,
+      height: 40.h,
+      width: 65.w,
     ),
     title: 'Ingredient Made Easy',
     description:

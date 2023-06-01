@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color(0xFF261d1d),
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -98,6 +98,8 @@ class _SplashScreenState extends State<SplashScreen>
                                 style: TextStyle(
                                   fontSize: 24 * _growAnimation.value,
                                   fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).unselectedWidgetColor,
                                 ),
                                 children: <TextSpan>[
                               TextSpan(

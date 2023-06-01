@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:ginjuice/features/intro/controller/indicator_controller.dart';
-import 'package:ginjuice/features/intro/models/onboard_model.dart';
-import 'package:ginjuice/features/intro/widgets/dot_indicator.dart';
-import 'package:ginjuice/features/intro/widgets/onboarding_content.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../core/routes/route_utils.dart';
+import '../controller/indicator_controller.dart';
+import '../models/onboard_model.dart';
+import '../widgets/dot_indicator.dart';
+import '../widgets/onboarding_content.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -31,6 +32,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final indicatorState = ref.watch(indicatorProvider);
+
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.all(16.0),
@@ -68,25 +71,53 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         padding: const EdgeInsets.only(right: 4.0),
                         child: DotIndicator(
                           color: Theme.of(context).primaryColor,
-                          isActive: index == ref.watch(indicatorProvider),
+                          isActive: index == indicatorState,
                         ),
                       )),
               const Spacer(),
-              ElevatedButton(
-                onPressed: () {
-                  _pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease);
-                },
-                style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    minimumSize: const Size(60, 60)),
-                child: const Icon(Icons.arrow_forward),
+              Visibility(
+                visible: _isLastPage(indicatorState),
+                child: ArrowButton(
+                  onPress: () => {context.pushNamed(AppScreen.login.routeName)},
+                ),
+              ),
+              Visibility(
+                visible: !_isLastPage(indicatorState),
+                child: ArrowButton(
+                  onPress: () {
+                    _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease);
+                  },
+                ),
               ),
             ],
           ),
         ],
       ),
     ));
+  }
+}
+
+bool _isLastPage(int currentIndex) {
+  return currentIndex == onboardData.length - 1;
+}
+
+class ArrowButton extends StatelessWidget {
+  final VoidCallback onPress;
+
+  const ArrowButton({
+    super.key,
+    required this.onPress,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPress,
+      style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(), minimumSize: const Size(60, 60)),
+      child: const Icon(Icons.arrow_forward),
+    );
   }
 }
