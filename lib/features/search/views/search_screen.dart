@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/features/home/widgets/cocktail_feed.dart';
 import 'package:ginjuice/features/search/views/search_empty_screen.dart';
 
-import '../../../core/common/widgets/cocktail_list_widget.dart';
-import '../../../core/data/cocktail_data.dart';
 import '../controllers/search_controller.dart';
-import '../widgets/cocktail_glasses.dart';
+import '../widgets/searched_cocktails.dart';
 
-class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({super.key});
+// class SearchScreen extends ConsumerStatefulWidget {
+//   const SearchScreen({super.key});
 
-  @override
-  ConsumerState<SearchScreen> createState() => SearchScreenState();
-}
+//   @override
+//   ConsumerState<SearchScreen> createState() => SearchScreenState();
+// }
 
-class SearchScreenState extends ConsumerState<SearchScreen> {
+// class SearchScreenState extends ConsumerState<SearchScreen> {
+//   final TextEditingController _searchController = TextEditingController();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final searchResult = ref.watch(searchResultProvider);
+
+class SearchScreen extends ConsumerWidget {
+  SearchScreen({super.key});
   final TextEditingController _searchController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    final searchResult = ref.watch(searchResultProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final searchController = ref.watch(searchControllerProvider);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -34,7 +39,9 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
               controller: _searchController,
               textInputAction: TextInputAction.search,
               onSubmitted: (value) {
-                ref.read(searchCocktailProvider(value));
+                ref
+                    .read(searchControllerProvider.notifier)
+                    .performSearch(value);
               },
               decoration: InputDecoration(
                 label: const Text('Find Your Perfect Cocktail'),
@@ -45,9 +52,7 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
                   onPressed: () {
                     // TODO: Store textfield value for history search feed
                     _searchController.clear();
-                    // ref
-                    //     .read(searchResultProvider.notifier)
-                    //     .update((state) => []);
+                    ref.read(searchControllerProvider.notifier).clearSearch();
                   },
                   icon: const Icon(Icons.clear),
                 ),
@@ -57,25 +62,20 @@ class SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ),
           ),
-          // Expanded(
-          //     child: searchResult.isNotEmpty
-          //         ? CocktailList(items: searchResult)
-          //         : const SearchEmptyScreen())
           Expanded(
-              child: Stack(
-            children: [
-              Visibility(
-                visible: !searchResult.hasValue,
-                child: const SearchEmptyScreen(),
-              ),
-              Visibility(
-                  visible: searchResult.hasValue,
-                  child: CocktailFeed(
-                    title: 'Search history',
-                    cocktails: searchResult,
-                  )),
-            ],
-          )),
+            child: searchController.when(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (error, stackTrace) =>
+                  Center(child: Text('Error: $error')),
+              data: (results) {
+                if (results.isEmpty) {
+                  return const SearchEmptyScreen(history: []);
+                } else {
+                  return SearchedCocktails(value: searchController);
+                }
+              },
+            ),
+          ),
         ],
       ),
     );

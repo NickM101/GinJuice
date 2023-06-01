@@ -3,13 +3,20 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
+import 'package:ginjuice/core/common/models/cocktail_model.dart';
+
 import '../../../core/common/widgets/custom_elevated_button.dart';
 import '../../../core/data/cocktail_data.dart';
 import '../../../core/routes/route_utils.dart';
 import '../widgets/cocktail_glasses.dart';
 
 class SearchEmptyScreen extends StatelessWidget {
-  const SearchEmptyScreen({super.key});
+  const SearchEmptyScreen({
+    Key? key,
+    required this.history,
+  }) : super(key: key);
+
+  final List<CocktailModel> history;
 
   @override
   Widget build(BuildContext context) {
