@@ -65,7 +65,7 @@ class EmailMagicLink extends StatelessWidget {
                     onPressed: () {
                       context.pushNamed(AppScreen.checkEmail.routeName);
                     }),
-                const Text('Note: Long press the button to login.')
+                const Text('Hold the button to simulate login')
               ],
             ),
           );

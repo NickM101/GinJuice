@@ -67,9 +67,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
           ),
-          SizedBox(
-            height: 10.h,
-            width: 85.w,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
             child: Row(
               children: [
                 ...List.generate(

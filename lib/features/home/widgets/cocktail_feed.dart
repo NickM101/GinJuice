@@ -29,7 +29,7 @@ class CocktailFeed extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             SizedBox(
@@ -59,12 +59,18 @@ class CocktailFeed extends StatelessWidget {
                                 : _buildShimmerImage(),
                           ),
                           const SizedBox(height: 8),
-                          AutoSizeText(
-                            cocktail.strDrink ?? 'Drink Name',
-                            style: Theme.of(context).textTheme.titleMedium,
+                          SizedBox(
+                            width: 18.h,
+                            child: Center(
+                              child: AutoSizeText(
+                                cocktail.strDrink,
+                                style: Theme.of(context).textTheme.titleSmall,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                           ),
                           Text(
-                            cocktail.strAlcoholic ?? 'Alcoholic',
+                            cocktail.strAlcoholic,
                             style: Theme.of(context)
                                 .textTheme
                                 .labelSmall
