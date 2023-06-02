@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/common/providers/dio_provider.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
+import '../../../core/common/providers/dio_provider.dart';
 
 final homeRepositoryProvider = Provider<HomeRepository>(
     (ref) => HomeRepository(dio: ref.read(dioProvider)));

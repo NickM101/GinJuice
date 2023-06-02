@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/features/favorite/controllers/favorite_controller.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../favorite/controllers/favorite_controller.dart';
 
 class PrivacyScreen extends StatelessWidget {
   const PrivacyScreen({super.key});

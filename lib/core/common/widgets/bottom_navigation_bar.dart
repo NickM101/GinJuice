@@ -71,7 +71,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         tabMargin: const EdgeInsets.all(10),
         tabBackgroundColor: Theme.of(context).focusColor,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-        gap: 5,
+        gap: 2,
         onTabChange: (value) => _onTabChange(context, value),
         tabs: tabs,
       ),

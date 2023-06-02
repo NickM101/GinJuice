@@ -74,7 +74,7 @@ class SearchScreen extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Card(
-                                color: const Color(0xd9d9d9),
+                                color: Theme.of(context).primaryColor,
                                 child: CustomImage(
                                   src: cocktail.strDrinkThumb,
                                   id: cocktail.idDrink,

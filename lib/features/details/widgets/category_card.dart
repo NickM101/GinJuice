@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
               name,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: ingredients

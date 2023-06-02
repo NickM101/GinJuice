@@ -27,7 +27,7 @@ class CocktailList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
-                  color: const Color.fromRGBO(217, 217, 217, 0),
+                  color: Theme.of(context).primaryColor,
                   child: CustomImage(
                     src: cocktail.strDrinkThumb,
                     id: cocktail.idDrink,

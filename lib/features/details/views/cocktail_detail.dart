@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/common/widgets/custom_elevated_button.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../core/common/widgets/custom_elevated_button.dart';
 import '../../../core/common/models/cocktail_model.dart';
 import '../../../core/routes/route_utils.dart';
 import '../controllers/recipe_controller.dart';

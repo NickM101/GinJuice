@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../core/common/widgets/custom_elevated_button.dart';
+import 'custom_elevated_button.dart';
 
-class EmptyFavoriteWidget extends StatelessWidget {
-  const EmptyFavoriteWidget({super.key});
+class ErrorScreen extends StatelessWidget {
+  final VoidCallback onPress;
+  final String title, description, label;
+
+  const ErrorScreen({
+    Key? key,
+    required this.onPress,
+    required this.label,
+    required this.title,
+    required this.description,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +25,23 @@ class EmptyFavoriteWidget extends StatelessWidget {
           const Spacer(),
           Lottie.asset('assets/json/turbine_empty.json', height: 40.h),
           Text(
-            'Create Your Dream Cocktail Collection!',
+            title,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           SizedBox(
             height: 1.h,
           ),
-          const Text(
-            "It looks like your favorite cocktail list is empty. Start adding your beloved drinks and keep them close at hand!",
+          Text(
+            description,
             textAlign: TextAlign.center,
           ),
           SizedBox(
             height: 2.h,
           ),
           CustomElevatedButton(
-            onPressed: () => context.goNamed(AppScreen.explore.routeName),
-            text: 'Add to Favorites',
+            onPressed: onPress,
+            text: label,
           ),
           const Spacer()
         ],

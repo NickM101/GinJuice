@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../routes/route_utils.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;

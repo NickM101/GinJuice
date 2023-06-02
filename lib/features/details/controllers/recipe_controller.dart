@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/common/models/cocktail_model.dart';
 
+import '../../../core/common/models/cocktail_model.dart';
 import '../../../core/data/ingredients_data.dart';
 
 final recipeProvider = Provider((ref) => RecipeController());

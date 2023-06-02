@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/common/controllers/theme_provider.dart';
-import 'package:ginjuice/features/profile/controller/profile_controller.dart';
+import 'package:fluttermoji/fluttermoji.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-import 'package:fluttermoji/fluttermoji.dart';
 
+import '../../../core/common/controllers/theme_provider.dart';
 import '../../../core/routes/route_utils.dart';
+import '../controller/profile_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

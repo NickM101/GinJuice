@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:ginjuice/features/favorite/widgets/empty_favorite_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
+import '../../../core/common/widgets/error_screen.dart';
+import '../../../core/routes/route_utils.dart';
 import '../controllers/favorite_controller.dart';
 import '../widgets/favorite_cocktail.dart';
 
@@ -33,8 +33,14 @@ class FavoriteScreen extends ConsumerWidget {
         children: [
           Visibility(
             visible: favorites.isEmpty,
-            child: const Center(
-              child: EmptyFavoriteWidget(),
+            child: Center(
+              child: ErrorScreen(
+                description:
+                    "It looks like your favorite cocktail list is empty. Start adding your beloved drinks and keep them close at hand!",
+                label: 'Add to Favorites',
+                onPress: () => context.goNamed(AppScreen.explore.routeName),
+                title: 'Create Your Dream Cocktail Collection!',
+              ),
             ),
           ),
           Visibility(
