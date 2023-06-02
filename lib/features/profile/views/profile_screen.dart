@@ -39,13 +39,16 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'johndoe@mail.com',
+                        'example@mail.com',
                         style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                      SizedBox(
+                        height: 1.h,
                       ),
                       FilledButton(
                         style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all<Size>(
-                            Size(60.w, 5.h),
+                            Size(50.w, 5.h),
                           ),
                         ),
                         onPressed: () {

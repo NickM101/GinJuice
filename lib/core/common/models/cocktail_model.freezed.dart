@@ -1083,7 +1083,7 @@ class _$_CocktailModel implements _CocktailModel {
       this,
     );
   }
-
+  
   @override
   String? getIngredient(int index) {
     return [

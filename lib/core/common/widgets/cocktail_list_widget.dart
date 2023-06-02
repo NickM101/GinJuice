@@ -19,6 +19,8 @@ class CocktailList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: items.length,
+      addAutomaticKeepAlives: false,
+      addRepaintBoundaries: false,
       itemBuilder: (context, index) {
         final cocktail = items[index];
         return Padding(

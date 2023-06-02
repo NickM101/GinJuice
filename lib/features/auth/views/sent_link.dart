@@ -25,7 +25,7 @@ class SentMagicLink extends StatelessWidget {
           child: Column(
             children: [
               const Image(
-                image: AssetImage('assets/images/email.png'),
+                image: AssetImage('assets/images/email.webp'),
               ),
               SizedBox(
                 height: 4.h,

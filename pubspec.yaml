@@ -22,15 +22,13 @@ dependencies:
   open_mail_app: ^0.4.5
   shared_preferences: ^2.1.1
   google_nav_bar: ^5.0.6
-  glass: ^1.0.1+1
   dio: ^5.1.2
-  pretty_dio_logger: ^1.3.1
+  # pretty_dio_logger: ^1.3.1
   freezed_annotation: ^2.2.0
   shimmer: ^3.0.0
   path_provider: ^2.0.15
   fluttermoji: ^1.0.2
   lottie: ^2.3.2
-  top_snackbar_flutter: ^3.0.0+1
   
 
 dev_dependencies:
@@ -52,21 +50,14 @@ flutter:
   assets:
     - assets/images/
     - assets/json/
-  #   - images/a_dot_ham.jpeg
-
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
 
 # Flutter Native Splash Screen Configuration
 flutter_native_splash:
   color: "#261d1d"
-  image: assets/images/logo.png
+  image: assets/images/logo.webp
+
+flutter_gen:
+  output: lib/core/utils
+
+  integrations:
+    lottie: true

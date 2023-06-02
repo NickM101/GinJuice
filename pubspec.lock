@@ -464,14 +464,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.5"
-  glass:
-    dependency: "direct main"
-    description:
-      name: glass
-      sha256: "21bc231f98f14be381f0022d99b56326075a3645122c59dc8124c9b8bd9ac337"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1+1"
   glob:
     dependency: transitive
     description:
@@ -784,14 +776,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
-  pretty_dio_logger:
-    dependency: "direct main"
-    description:
-      name: pretty_dio_logger
-      sha256: "00b80053063935cf9a6190da344c5373b9d0e92da4c944c878ff2fbef0ef6dc2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.1"
   process:
     dependency: transitive
     description:
@@ -1061,14 +1045,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  top_snackbar_flutter:
-    dependency: "direct main"
-    description:
-      name: top_snackbar_flutter
-      sha256: "7d4aa8f0031ad4a597c02487b4bb9b0dbb6a8d76ce1ab6e13e9565f865c1b70c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0+1"
   typed_data:
     dependency: transitive
     description:

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ginjuice/core/common/widgets/custom_elevated_button.dart';
+import 'package:ginjuice/core/routes/route_utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/common/widgets/text_logo_widget.dart';
@@ -19,7 +22,7 @@ class AboutScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                'assets/images/logo.png',
+                'assets/images/logo.webp',
                 height: 20.h,
               ),
               SizedBox(
@@ -35,26 +38,27 @@ class AboutScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               SizedBox(
-                height: 3.h,
+                height: 1.h,
               ),
-              SizedBox(
-                width: 85.w,
-                child: const Text(
-                  'Elevate your mixology game with Gin Juice. Discover a world of exquisite gin-based cocktails crafted to perfection. From classic gin and tonics to innovative creations, our extensive library of recipes offers something for every taste. Our user-friendly interface makes cocktail creation a breeze, allowing you to explore, mix, and master the art of mixology. Whether you\'re a seasoned bartender or a home enthusiast, Gin Juice is your go-to app for inspiration, guidance, and unforgettable cocktail experiences. Cheers to a world of gin-infused delight!',
-                  textAlign: TextAlign.center,
-                ),
+              Text(
+                'Elevate your mixology game with Gin Juice. Discover a world of exquisite gin-based cocktails crafted to perfection. From classic gin and tonics to innovative creations, our extensive library of recipes offers something for every taste. Our user-friendly interface makes cocktail creation a breeze, allowing you to explore, mix, and master the art of mixology. Whether you\'re a seasoned bartender or a home enthusiast, Gin Juice is your go-to app for inspiration, guidance, and unforgettable cocktail experiences. Cheers to a world of gin-infused delight!',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(
                 height: 2.h,
               ),
-              const Text(
+              Text(
                 'Have questions or feedback? Reach out to us at info@ginjuice.com or fill out the form below.',
                 textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const Spacer(),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Explore GinJuice'),
+              CustomElevatedButton(
+                onPressed: () {
+                  context.goNamed(AppScreen.explore.routeName);
+                },
+                text: 'Explore GinJuice',
               )
             ],
           )),

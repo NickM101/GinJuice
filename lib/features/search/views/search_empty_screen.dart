@@ -77,6 +77,8 @@ class SearchEmptyScreen extends StatelessWidget {
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: history.length,
+                        addAutomaticKeepAlives: false,
+                        addRepaintBoundaries: false,
                         itemBuilder: (context, index) {
                           final favorite = history[index];
                           return FavoriteCocktail(

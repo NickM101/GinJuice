@@ -65,6 +65,8 @@ class SearchScreen extends ConsumerWidget {
                 } else {
                   return ListView.builder(
                     itemCount: results.length,
+                    addAutomaticKeepAlives: false,
+                    addRepaintBoundaries: false,
                     itemBuilder: (context, index) {
                       final cocktail = results[index];
                       return Padding(

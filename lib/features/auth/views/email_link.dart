@@ -21,7 +21,8 @@ class EmailMagicLink extends StatelessWidget {
       ),
       body: Image(
         height: 60.h,
-        image: const AssetImage('assets/images/bar.png'),
+        width: double.infinity,
+        image: const AssetImage('assets/images/bar.webp'),
         fit: BoxFit.cover,
       ),
       bottomSheet: BottomSheet(

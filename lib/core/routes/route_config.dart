@@ -27,8 +27,8 @@ class AppRouter {
   final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   late final GoRouter _goRouter = GoRouter(
-    debugLogDiagnostics: true,
-    initialLocation: AppScreen.home.pathName,
+    // debugLogDiagnostics: true,
+    initialLocation: AppScreen.splash.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
       ShellRoute(
@@ -72,7 +72,7 @@ class AppRouter {
               path: AppScreen.search.pathName,
               name: AppScreen.search.routeName,
               pageBuilder: (context, state) =>
-                  NoTransitionPage(child: SearchScreen()),
+                  const NoTransitionPage(child: SearchScreen()),
             ),
             GoRoute(
               path: AppScreen.favorite.pathName,

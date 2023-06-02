@@ -37,6 +37,8 @@ class CocktailFeed extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: items.length,
+                addAutomaticKeepAlives: false,
+                addRepaintBoundaries: false,
                 itemBuilder: (context, index) {
                   final cocktail = items[index];
                   return InkWell(
