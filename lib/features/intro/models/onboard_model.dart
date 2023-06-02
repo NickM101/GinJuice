@@ -17,9 +17,9 @@ class Onboard {
 final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.cocktailGlass.image(
-      fit: BoxFit.cover,
-      height: 40.h,
-      width: 65.w,
+      fit: BoxFit.contain,
+      height: 45.h,
+      width: 80.w,
     ),
     title: 'Explore Limitless Possibilities',
     description:
@@ -28,8 +28,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.clinkingGlasses.image(
       fit: BoxFit.cover,
-      height: 40.h,
-      width: 65.w,
+      height: 45.h,
+      width: 85.w,
     ),
     title: 'Master Mixology',
     description:
@@ -38,8 +38,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.beatingHeart.image(
       fit: BoxFit.cover,
-      height: 40.h,
-      width: 65.w,
+      height: 45.h,
+      width: 85.w,
     ),
     title: 'Personalize Your Favorites',
     description:
@@ -48,8 +48,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.camera.image(
       fit: BoxFit.cover,
-      height: 40.h,
-      width: 65.w,
+      height: 45.h,
+      width: 85.w,
     ),
     title: 'Share Your Signature Sips',
     description:
@@ -58,8 +58,8 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.partyPopper.image(
       fit: BoxFit.cover,
-      height: 40.h,
-      width: 65.w,
+      height: 45.h,
+      width: 85.w,
     ),
     title: 'Ingredient Made Easy',
     description:

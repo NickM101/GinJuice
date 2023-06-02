@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
@@ -46,7 +47,7 @@ class CocktailFeed extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Card(
                             color: const Color(0xd9d9d9),
@@ -58,7 +59,7 @@ class CocktailFeed extends StatelessWidget {
                                 : _buildShimmerImage(),
                           ),
                           const SizedBox(height: 8),
-                          Text(
+                          AutoSizeText(
                             cocktail.strDrink ?? 'Drink Name',
                             style: Theme.of(context).textTheme.titleMedium,
                           ),

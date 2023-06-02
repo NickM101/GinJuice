@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../core/routes/route_utils.dart';
 import '../controller/indicator_controller.dart';
@@ -49,6 +50,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   child: const Text('Skip'))
             ],
           ),
+          SizedBox(
+            height: 2.h,
+          ),
           Expanded(
             flex: 1,
             child: PageView.builder(
@@ -63,35 +67,40 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
           ),
-          Row(
-            children: [
-              ...List.generate(
-                  onboardData.length,
-                  (index) => Padding(
-                        padding: const EdgeInsets.only(right: 4.0),
-                        child: DotIndicator(
-                          color: Theme.of(context).primaryColor,
-                          isActive: index == indicatorState,
-                        ),
-                      )),
-              const Spacer(),
-              Visibility(
-                visible: _isLastPage(indicatorState),
-                child: ArrowButton(
-                  onPress: () => {context.pushNamed(AppScreen.login.routeName)},
+          SizedBox(
+            height: 10.h,
+            width: 85.w,
+            child: Row(
+              children: [
+                ...List.generate(
+                    onboardData.length,
+                    (index) => Padding(
+                          padding: const EdgeInsets.only(right: 4.0),
+                          child: DotIndicator(
+                            color: Theme.of(context).primaryColor,
+                            isActive: index == indicatorState,
+                          ),
+                        )),
+                const Spacer(),
+                Visibility(
+                  visible: _isLastPage(indicatorState),
+                  child: ArrowButton(
+                    onPress: () =>
+                        {context.pushNamed(AppScreen.login.routeName)},
+                  ),
                 ),
-              ),
-              Visibility(
-                visible: !_isLastPage(indicatorState),
-                child: ArrowButton(
-                  onPress: () {
-                    _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.ease);
-                  },
+                Visibility(
+                  visible: !_isLastPage(indicatorState),
+                  child: ArrowButton(
+                    onPress: () {
+                      _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.ease);
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
