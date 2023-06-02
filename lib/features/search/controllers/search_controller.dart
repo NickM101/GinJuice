@@ -15,12 +15,12 @@ class SearchController extends StateNotifier<AsyncValue<List<CocktailModel>>> {
   final StateNotifierProviderRef<SearchController,
       AsyncValue<List<CocktailModel>>> searchRef;
   SearchController({required this.searchRef})
-      : super(const AsyncValue.loading());
+      : super(const AsyncValue.data([]));
 
   final List<CocktailModel> items = [];
-  late String search_query = '';
+  late String searchQuery = '';
 
-  void updateText(String text) => search_query = text;
+  void updateText(String text) => searchQuery = text;
 
   Future<void> performSearch(String query) async {
     try {
@@ -34,12 +34,11 @@ class SearchController extends StateNotifier<AsyncValue<List<CocktailModel>>> {
   }
 
   void clearSearch() {
-    search_query = '';
+    searchQuery = '';
     state = const AsyncValue.data([]);
   }
 
   void saveSelectedItem(CocktailModel item) {
-    print('Selected item: $item');
     items.add(item);
   }
 

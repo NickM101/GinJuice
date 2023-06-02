@@ -32,7 +32,7 @@ class CocktailDetail extends ConsumerWidget {
         children: [
           DetailCardImage(item: item),
           SizedBox(
-            height: 2.h,
+            height: 1.h,
           ),
           Expanded(
             flex: 2,
@@ -41,8 +41,8 @@ class CocktailDetail extends ConsumerWidget {
               shrinkWrap: true,
               padding: const EdgeInsets.all(8.0),
               mainAxisSpacing: 1.0,
-              crossAxisSpacing: 8.0,
-              childAspectRatio: 1.8,
+              crossAxisSpacing: 5.0,
+              childAspectRatio: 1.5,
               children: recipeController.processIngredients(item),
             ),
           ),

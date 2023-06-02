@@ -47,20 +47,27 @@ class RecipeController {
     categorizedIngredients.forEach((category, ingredients) {
       final categoryWidget = Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(category, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:
-                  ingredients.map((ingredient) => Text(ingredient)).toList(),
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(category,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    ingredients.map((ingredient) => Text(ingredient)).toList(),
+              ),
+            ],
+          ),
         ),
       );
-      categoryWidgets.add(categoryWidget);
+      if (category == 'Other') {
+        categoryWidgets.add(categoryWidget);
+      } else {
+        categoryWidgets.insert(0, categoryWidget);
+      }
     });
 
     return categoryWidgets;

@@ -17,7 +17,7 @@ class DetailCardImage extends StatelessWidget {
     return Card(
       elevation: 5,
       child: Container(
-        height: 50.h,
+        height: 45.h,
         width: 90.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),

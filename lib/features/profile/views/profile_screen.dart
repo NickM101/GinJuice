@@ -13,11 +13,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void editProfile() {
-      print('update');
-      context.pushNamed(AppScreen.updateAccount.routeName);
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -117,9 +112,10 @@ class ProfileScreen extends StatelessWidget {
               onTap: () => context.pushNamed(AppScreen.about.pathName),
               trailing: const Icon(Icons.arrow_right),
             ),
-            const ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Sign Out'),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Sign Out'),
+              onTap: () => context.replaceNamed(AppScreen.login.routeName),
             ),
           ],
         ),

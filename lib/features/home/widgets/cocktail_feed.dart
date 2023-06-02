@@ -80,8 +80,6 @@ class CocktailFeed extends StatelessWidget {
         );
       },
       error: (err, stack) {
-        print("$title Error ---- ${err.toString()}");
-        print("$title Error ---- ${stack.toString()}");
         return Text(
           'Error loading cocktails:',
           style: TextStyle(

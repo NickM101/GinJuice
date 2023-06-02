@@ -9,24 +9,8 @@ import '../../../core/common/widgets/custom_image.dart';
 import '../../../core/routes/route_utils.dart';
 import '../controllers/search_controller.dart';
 
-// class SearchScreen extends ConsumerStatefulWidget {
-//   const SearchScreen({super.key});
-
-//   @override
-//   ConsumerState<SearchScreen> createState() => SearchScreenState();
-// }
-
-// class SearchScreenState extends ConsumerState<SearchScreen> {
-//   final TextEditingController _searchController = TextEditingController();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final searchResult = ref.watch(searchResultProvider);
-
 class SearchScreen extends ConsumerWidget {
   SearchScreen({super.key});
-  final TextEditingController _searchController = TextEditingController();
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchController = ref.watch(searchControllerProvider);
@@ -42,9 +26,8 @@ class SearchScreen extends ConsumerWidget {
             child: TextField(
               keyboardType: TextInputType.text,
               controller: TextEditingController(
-                  text: ref
-                      .watch(searchControllerProvider.notifier)
-                      .search_query),
+                  text:
+                      ref.watch(searchControllerProvider.notifier).searchQuery),
               textInputAction: TextInputAction.search,
               onChanged: (value) =>
                   ref.read(searchControllerProvider.notifier).updateText(value),
@@ -61,7 +44,6 @@ class SearchScreen extends ConsumerWidget {
                 suffixIcon: IconButton(
                   onPressed: () {
                     // TODO: Store textfield value for history search feed
-                    _searchController.clear();
                     ref.read(searchControllerProvider.notifier).clearSearch();
                   },
                   icon: const Icon(Icons.clear),
@@ -74,9 +56,9 @@ class SearchScreen extends ConsumerWidget {
           ),
           Expanded(
             child: searchController.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
               error: (error, stackTrace) =>
                   Center(child: Text('Error: $error')),
+              loading: () => const Center(child: CircularProgressIndicator()),
               data: (results) {
                 if (results.isEmpty) {
                   return SearchEmptyScreen(history: historySearch);

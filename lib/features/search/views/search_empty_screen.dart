@@ -107,7 +107,6 @@ class SearchEmptyScreen extends StatelessWidget {
                             itemCount: history.length,
                             itemBuilder: (context, index) {
                               final favorite = history[index];
-                              print('favorite --- $favorite');
                               return FavoriteCocktail(
                                 item: favorite,
                               );
