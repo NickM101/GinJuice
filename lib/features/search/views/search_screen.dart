@@ -10,7 +10,7 @@ import '../../../core/routes/route_utils.dart';
 import '../controllers/search_controller.dart';
 
 class SearchScreen extends ConsumerWidget {
-  SearchScreen({super.key});
+  const SearchScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchController = ref.watch(searchControllerProvider);
@@ -34,7 +34,7 @@ class SearchScreen extends ConsumerWidget {
               onSubmitted: (value) {
                 ref
                     .read(searchControllerProvider.notifier)
-                    .performSearch(value);
+                    .performSearch(value, context);
               },
               decoration: InputDecoration(
                 label: const Text('Find Your Perfect Cocktail'),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
@@ -22,11 +23,11 @@ class SearchController extends StateNotifier<AsyncValue<List<CocktailModel>>> {
 
   void updateText(String text) => searchQuery = text;
 
-  Future<void> performSearch(String query) async {
+  Future<void> performSearch(String query, BuildContext context) async {
     try {
       final repository = searchRef.read(searchRepositoryProvider);
       state = const AsyncValue.loading();
-      final results = await repository.getSearchResult(query);
+      final results = await repository.getSearchResult(query, context);
       state = AsyncValue.data(results);
     } catch (error) {
       state = AsyncValue.error(error, StackTrace.current);
