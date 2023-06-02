@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ginjuice/features/search/controllers/search_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
@@ -75,53 +73,22 @@ class SearchEmptyScreen extends StatelessWidget {
                   ),
                   Visibility(
                     visible: history.isNotEmpty,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            const Spacer(),
-                            Consumer(
-                              builder: (BuildContext context, WidgetRef ref,
-                                  Widget? child) {
-                                return InkWell(
-                                  onTap: () => ref
-                                      .read(searchControllerProvider.notifier)
-                                      .clearSelectedItems(),
-                                  child: Text(
-                                    'Clear search results',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelSmall
-                                        ?.apply(
-                                            decoration:
-                                                TextDecoration.underline),
-                                  ),
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: history.length,
-                            itemBuilder: (context, index) {
-                              final favorite = history[index];
-                              return FavoriteCocktail(
-                                item: favorite,
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+                    child: Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: history.length,
+                        itemBuilder: (context, index) {
+                          final favorite = history[index];
+                          return FavoriteCocktail(
+                            item: favorite,
+                          );
+                        },
+                      ),
                     ),
                   )
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 4.h,
           ),
           const SearchOptions(),
         ],

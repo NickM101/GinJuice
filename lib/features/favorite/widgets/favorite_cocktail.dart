@@ -26,19 +26,21 @@ class FavoriteCocktail extends StatelessWidget {
             AppScreen.detail.routeName,
             extra: item,
           ),
-          child: Container(
-            margin: const EdgeInsets.all(3.0),
-            padding: const EdgeInsets.all(2.0),
-            height: 25.h,
-            width: 35.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16.0),
-              child: CustomImage(
-                src: item.strDrinkThumb,
-                id: item.idDrink,
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.all(3.0),
+              padding: const EdgeInsets.all(2.0),
+              height: 25.h,
+              width: 35.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: CustomImage(
+                  src: item.strDrinkThumb,
+                  id: item.idDrink,
+                ),
               ),
             ),
           ),

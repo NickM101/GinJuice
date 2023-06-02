@@ -55,7 +55,8 @@ class CustomImage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 100.0),
                 child: Text(
-                  'Error loading image',
+                  'Image not found',
+                  textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge?.apply(
                         color: themeMode ? Colors.grey.shade600 : Colors.black,
                         fontWeightDelta: 800,

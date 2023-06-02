@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/common/widgets/text_logo_widget.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../core/common/widgets/text_logo_widget.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});

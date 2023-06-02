@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ginjuice/features/favorite/controllers/favorite_controller.dart';
 import 'package:ginjuice/features/search/views/search_empty_screen.dart';
+import 'package:ginjuice/features/search/widgets/cocktail_not_found.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
@@ -56,8 +57,7 @@ class SearchScreen extends ConsumerWidget {
           ),
           Expanded(
             child: searchController.when(
-              error: (error, stackTrace) =>
-                  Center(child: Text('Error: $error')),
+              error: (error, stackTrace) => const CocktailNotFound(),
               loading: () => const Center(child: CircularProgressIndicator()),
               data: (results) {
                 if (results.isEmpty) {

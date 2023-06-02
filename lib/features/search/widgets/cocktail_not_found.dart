@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ginjuice/features/search/controllers/search_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,7 +16,7 @@ class CocktailNotFound extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          Lottie.asset('assets/json/empty.json', height: 40.h),
+          Lottie.asset('assets/json/turbine_empty.json', height: 40.h),
           Text(
             'Sorry, We Couldn\'t Find That Cocktail.',
             textAlign: TextAlign.center,
@@ -30,9 +32,15 @@ class CocktailNotFound extends StatelessWidget {
           SizedBox(
             height: 2.h,
           ),
-          CustomElevatedButton(
-            onPressed: () {},
-            text: 'Back to Search',
+          Consumer(
+            builder: (context, ref, child) {
+              return CustomElevatedButton(
+                onPressed: () {
+                  ref.read(searchControllerProvider.notifier).clearSearch();
+                },
+                text: 'Back to Search',
+              );
+            },
           ),
           const Spacer()
         ],
