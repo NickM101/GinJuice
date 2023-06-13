@@ -45,7 +45,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               const Spacer(),
               TextButton(
                   onPressed: () {
-                    context.pushNamed(AppScreen.login.routeName);
+                    context.goNamed(AppScreen.home.routeName);
                   },
                   child: const Text('Skip'))
             ],
@@ -84,8 +84,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 Visibility(
                   visible: _isLastPage(indicatorState),
                   child: ArrowButton(
-                    onPress: () =>
-                        {context.pushNamed(AppScreen.login.routeName)},
+                    onPress: () => {context.goNamed(AppScreen.home.routeName)},
                   ),
                 ),
                 Visibility(
