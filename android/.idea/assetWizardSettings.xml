@@ -62,6 +62,17 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="imagePath" value="C:\Users\nickm\Downloads\IconKitchen-Output\android\res\mipmap-xxxhdpi\ic_launcher_background.png" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundClipArt">
                                         <value>
                                           <PersistentState>
@@ -79,8 +90,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Projects\flutter\ginjuice\assets\images\logo.png" />
-                                                <entry key="scalingPercent" value="81" />
+                                                <entry key="imagePath" value="C:\Users\nickm\Downloads\IconKitchen-Output\android\res\mipmap-hdpi\ic_launcher_foreground.png" />
+                                                <entry key="scalingPercent" value="75" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -114,7 +125,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="261d1d" />
+                                      <entry key="backgroundColor" value="a35825" />
+                                      <entry key="previewDensity" value="HIGH" />
                                       <entry key="showGrid" value="true" />
                                     </map>
                                   </option>
@@ -283,6 +295,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="previewDensity" value="HIGH" />
                                       <entry key="showGrid" value="true" />
                                     </map>
                                   </option>
