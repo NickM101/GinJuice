@@ -18,18 +18,18 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.cocktail.image(
       fit: BoxFit.contain,
-      height: 40.h,
-      width: 70.w,
+      height: 45.h,
+      width: 80.w,
     ),
     title: 'Explore Limitless Possibilities',
     description:
-        'Step into a world of endless cocktail creativity! From timeless classics to bold and exotic blends, GinJuice opens the door to a universe of tantalizing flavors waiting to be discovered.',
+        'Step into a world of endless cocktail creativity! From timeless classics to bold and exotic blends, GinJuice opens the door to a universe of tantalizing flavors waiting to be discontained.',
   ),
   Onboard(
     image: Assets.images.fun.image(
-      fit: BoxFit.cover,
-      height: 40.h,
-      width: 70.w,
+      fit: BoxFit.contain,
+      height: 45.h,
+      width: 80.w,
     ),
     title: 'Master Mixology',
     description:
@@ -37,9 +37,9 @@ final List<Onboard> onboardData = [
   ),
   Onboard(
     image: Assets.images.favorite.image(
-      fit: BoxFit.cover,
-      height: 40.h,
-      width: 70.w,
+      fit: BoxFit.contain,
+      height: 45.h,
+      width: 80.w,
     ),
     title: 'Personalize Your Favorites',
     description:
@@ -47,9 +47,9 @@ final List<Onboard> onboardData = [
   ),
   Onboard(
     image: Assets.images.camera.image(
-      fit: BoxFit.cover,
-      height: 40.h,
-      width: 70.w,
+      fit: BoxFit.contain,
+      height: 45.h,
+      width: 80.w,
     ),
     title: 'Share Your Signature Sips',
     description:
@@ -57,9 +57,9 @@ final List<Onboard> onboardData = [
   ),
   Onboard(
     image: Assets.images.gift.image(
-      fit: BoxFit.cover,
-      height: 40.h,
-      width: 70.w,
+      fit: BoxFit.contain,
+      height: 45.h,
+      width: 80.w,
     ),
     title: 'Ingredient Made Easy',
     description:

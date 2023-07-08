@@ -67,39 +67,47 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-            child: Row(
-              children: [
-                ...List.generate(
-                    onboardData.length,
-                    (index) => Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: DotIndicator(
-                            color: Theme.of(context).primaryColor,
-                            isActive: index == indicatorState,
-                          ),
-                        )),
-                const Spacer(),
-                Visibility(
-                  visible: _isLastPage(indicatorState),
-                  child: ArrowButton(
-                    onPress: () => {context.goNamed(AppScreen.home.routeName)},
+          Visibility(
+            visible: !_isLastPage(indicatorState),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+              child: Row(
+                children: [
+                  ...List.generate(
+                      onboardData.length,
+                      (index) => Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: DotIndicator(
+                              color: Theme.of(context).primaryColor,
+                              isActive: index == indicatorState,
+                            ),
+                          )),
+                  const Spacer(),
+                  Visibility(
+                    visible: _isLastPage(indicatorState),
+                    child: ArrowButton(
+                      onPress: () =>
+                          {context.goNamed(AppScreen.home.routeName)},
+                    ),
                   ),
-                ),
-                Visibility(
-                  visible: !_isLastPage(indicatorState),
-                  child: ArrowButton(
-                    onPress: () {
-                      _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.ease);
-                    },
+                  Visibility(
+                    visible: !_isLastPage(indicatorState),
+                    child: ArrowButton(
+                      onPress: () {
+                        _pageController.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease);
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
+          Visibility(
+            visible: _isLastPage(indicatorState),
+            child: const GetStarted(),
+          )
         ],
       ),
     ));
@@ -125,6 +133,26 @@ class ArrowButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           shape: const CircleBorder(), minimumSize: const Size(60, 60)),
       child: const Icon(Icons.arrow_forward),
+    );
+  }
+}
+
+class GetStarted extends StatelessWidget {
+  const GetStarted({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            shape: const StadiumBorder(), minimumSize: Size(70.w, 7.h)),
+        onPressed: () {
+          context.goNamed(AppScreen.home.routeName);
+        },
+        child: const Text('Get Started'),
+      ),
     );
   }
 }

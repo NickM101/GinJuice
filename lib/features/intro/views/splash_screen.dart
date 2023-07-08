@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../core/routes/route_utils.dart';
 
@@ -79,8 +80,9 @@ class _SplashScreenState extends State<SplashScreen>
               position: _slideAnimation,
               child: Image.asset(
                 'assets/images/logo.png',
-                width: 100,
-                height: 100,
+                fit: BoxFit.cover,
+                width: 40.w,
+                height: 20.h,
               ),
             ),
             const SizedBox(height: 16),
