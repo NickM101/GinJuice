@@ -17,19 +17,18 @@ class $AssetsImagesGen {
   AssetGenImage get bar => const AssetGenImage('assets/images/bar.webp');
 
   /// File path: assets/images/beating_heart.webp
-  AssetGenImage get beatingHeart =>
-      const AssetGenImage('assets/images/beating_heart.webp');
+  AssetGenImage get favorite =>
+      const AssetGenImage('assets/images/favorite.png');
 
   /// File path: assets/images/camera.webp
-  AssetGenImage get camera => const AssetGenImage('assets/images/camera.webp');
+  AssetGenImage get camera => const AssetGenImage('assets/images/camera.png');
 
   /// File path: assets/images/clinking_glasses.webp
-  AssetGenImage get clinkingGlasses =>
-      const AssetGenImage('assets/images/clinking_glasses.webp');
+  AssetGenImage get cocktail =>
+      const AssetGenImage('assets/images/cocktail.png');
 
   /// File path: assets/images/cocktail_glass.webp
-  AssetGenImage get cocktailGlass =>
-      const AssetGenImage('assets/images/cocktail_glass.webp');
+  AssetGenImage get fun => const AssetGenImage('assets/images/fun.png');
 
   /// File path: assets/images/dark_placeholder.webp
   AssetGenImage get darkPlaceholder =>
@@ -43,11 +42,10 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/light_placeholder.webp');
 
   /// File path: assets/images/logo.webp
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.webp');
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/party_popper.webp
-  AssetGenImage get partyPopper =>
-      const AssetGenImage('assets/images/party_popper.webp');
+  AssetGenImage get gift => const AssetGenImage('assets/images/gift.png');
 
   /// File path: assets/images/playstore.png
   AssetGenImage get playstore =>
@@ -56,15 +54,15 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         bar,
-        beatingHeart,
+        favorite,
         camera,
-        clinkingGlasses,
-        cocktailGlass,
+        gift,
+        cocktail,
         darkPlaceholder,
         email,
         lightPlaceholder,
         logo,
-        partyPopper,
+        fun,
         playstore
       ];
 }

@@ -16,30 +16,30 @@ class Onboard {
 
 final List<Onboard> onboardData = [
   Onboard(
-    image: Assets.images.cocktailGlass.image(
+    image: Assets.images.cocktail.image(
       fit: BoxFit.contain,
-      height: 45.h,
-      width: 80.w,
+      height: 40.h,
+      width: 70.w,
     ),
     title: 'Explore Limitless Possibilities',
     description:
         'Step into a world of endless cocktail creativity! From timeless classics to bold and exotic blends, GinJuice opens the door to a universe of tantalizing flavors waiting to be discovered.',
   ),
   Onboard(
-    image: Assets.images.clinkingGlasses.image(
+    image: Assets.images.fun.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 85.w,
+      height: 40.h,
+      width: 70.w,
     ),
     title: 'Master Mixology',
     description:
         'Unleash your inner mixologist and become a true cocktail connoisseur. With GinJuice, you\'ll have access to expertly curated recipes that will transform you into the life of the party. Get ready to shake, stir, and sip your way to mixology mastery!',
   ),
   Onboard(
-    image: Assets.images.beatingHeart.image(
+    image: Assets.images.favorite.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 85.w,
+      height: 40.h,
+      width: 70.w,
     ),
     title: 'Personalize Your Favorites',
     description:
@@ -48,18 +48,18 @@ final List<Onboard> onboardData = [
   Onboard(
     image: Assets.images.camera.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 85.w,
+      height: 40.h,
+      width: 70.w,
     ),
     title: 'Share Your Signature Sips',
     description:
         'Ready to showcase your unique creations? Share your own cocktail masterpieces with the GinJuice community! Upload your custom mixtures and inspire others with your innovative concoctions.',
   ),
   Onboard(
-    image: Assets.images.partyPopper.image(
+    image: Assets.images.gift.image(
       fit: BoxFit.cover,
-      height: 45.h,
-      width: 85.w,
+      height: 40.h,
+      width: 70.w,
     ),
     title: 'Ingredient Made Easy',
     description:

@@ -22,7 +22,7 @@ class AboutScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                'assets/images/logo.webp',
+                'assets/images/logo.png',
                 height: 20.h,
               ),
               SizedBox(

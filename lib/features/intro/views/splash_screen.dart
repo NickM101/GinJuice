@@ -78,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen>
             SlideTransition(
               position: _slideAnimation,
               child: Image.asset(
-                'assets/images/logo.webp',
+                'assets/images/logo.png',
                 width: 100,
                 height: 100,
               ),

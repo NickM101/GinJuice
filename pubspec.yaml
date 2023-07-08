@@ -54,7 +54,7 @@ flutter:
 # Flutter Native Splash Screen Configuration
 flutter_native_splash:
   color: "#261d1d"
-  image: assets/images/logo.webp
+  image: assets/images/logo.png
 
 flutter_gen:
   output: lib/core/utils
