@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'text_theme.dart';
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.rosewood,
+  scheme: FlexScheme.greenM3,
   surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
   blendLevel: 15,
   appBarStyle: FlexAppBarStyle.background,

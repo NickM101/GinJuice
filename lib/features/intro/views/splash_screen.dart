@@ -82,10 +82,9 @@ class _SplashScreenState extends State<SplashScreen>
                 'assets/images/logo.png',
                 fit: BoxFit.cover,
                 width: 40.w,
-                height: 20.h,
+                height: 40.h,
               ),
             ),
-            const SizedBox(height: 16),
             SlideTransition(
               position: _slideAnimation,
               child: FadeTransition(
@@ -110,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen>
                                 style: TextStyle(
                                   fontSize: 24 * _growAnimation.value,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color(0xfff0576b),
+                                  color: const Color(0xff1E6010),
                                 ),
                               ),
                             ])));
