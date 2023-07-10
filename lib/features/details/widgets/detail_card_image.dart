@@ -21,7 +21,7 @@ class DetailCardImage extends StatelessWidget {
         height: 45.h,
         width: 90.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
             image: CachedNetworkImageProvider(item.strDrinkThumb),
             fit: BoxFit.cover,

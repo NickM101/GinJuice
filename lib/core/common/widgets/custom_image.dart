@@ -24,14 +24,15 @@ class CustomImage extends StatelessWidget {
         progressIndicatorBuilder: (context, url, progress) {
           return Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13),
+              borderRadius: BorderRadius.circular(10),
               color:
                   themeMode ? const Color(0xd9d9d9) : const Color(0x00000000),
               image: DecorationImage(
-                  image: themeMode
-                      ? const AssetImage('assets/images/light_placeholder.webp')
-                      : const AssetImage('assets/images/dark_placeholder.webp'),
-                  fit: BoxFit.cover),
+                image: themeMode
+                    ? const AssetImage('assets/images/light_placeholder.webp')
+                    : const AssetImage('assets/images/dark_placeholder.webp'),
+                fit: BoxFit.cover,
+              ),
             ),
             child: const Align(
               alignment: Alignment.bottomCenter,
@@ -45,11 +46,11 @@ class CustomImage extends StatelessWidget {
               color:
                   themeMode ? const Color(0x00000000) : const Color(0xd9d9d9),
               image: DecorationImage(
-                  image: themeMode
-                      ? const AssetImage('assets/images/dark_placeholder.webp')
-                      : const AssetImage(
-                          'assets/images/light_placeholder.webp'),
-                  fit: BoxFit.cover),
+                image: themeMode
+                    ? const AssetImage('assets/images/dark_placeholder.webp')
+                    : const AssetImage('assets/images/light_placeholder.webp'),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Align(
               alignment: Alignment.center,
