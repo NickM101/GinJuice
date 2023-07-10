@@ -56,7 +56,7 @@ class AboutScreen extends StatelessWidget {
               const Spacer(),
               CustomElevatedButton(
                 onPressed: () {
-                  context.goNamed(AppScreen.explore.routeName);
+                  context.goNamed(AppScreen.onboarding.routeName);
                 },
                 text: 'Explore GinJuice',
               )
