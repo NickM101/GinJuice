@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../core/common/models/cocktail_model.dart';
 
@@ -22,7 +23,7 @@ class DetailCardImage extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
-            image: NetworkImage(item.strDrinkThumb),
+            image: CachedNetworkImageProvider(item.strDrinkThumb),
             fit: BoxFit.cover,
           ),
           gradient: LinearGradient(
