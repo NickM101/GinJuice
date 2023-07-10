@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'text_theme.dart';
 
 final lightTheme = FlexThemeData.light(
-    scheme: FlexScheme.rosewood,
+    scheme: FlexScheme.green,
     surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
     blendLevel: 10,
     appBarStyle: FlexAppBarStyle.background,
