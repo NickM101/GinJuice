@@ -23,27 +23,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
     NavItems(
       initialLocation: AppScreen.home.pathName,
       icon: Icons.home,
-      text: 'Home',
+      // text: 'Home',
     ),
     NavItems(
       initialLocation: AppScreen.explore.pathName,
       icon: Icons.explore,
-      text: 'Explore',
+      // text: 'Explore',
     ),
     NavItems(
       initialLocation: AppScreen.search.pathName,
       icon: Icons.search,
-      text: 'Search',
+      // text: 'Search',
     ),
     NavItems(
       initialLocation: AppScreen.favorite.pathName,
       icon: Icons.favorite,
-      text: 'Favorite',
+      // text: 'Favorite',
     ),
     NavItems(
       initialLocation: AppScreen.account.pathName,
       icon: Icons.person,
-      text: 'Account',
+      // text: 'Account',
     ),
   ];
 
@@ -86,6 +86,9 @@ class NavItems extends GButton {
     super.key,
     required this.initialLocation,
     required IconData icon,
-    required String text,
-  }) : super(icon: icon, text: text);
+    // required String text,
+  }) : super(
+          icon: icon,
+          // text: text,
+        );
 }
