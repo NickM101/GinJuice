@@ -24,6 +24,7 @@ class CocktailFeed extends StatelessWidget {
       data: (items) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -36,49 +37,55 @@ class CocktailFeed extends StatelessWidget {
               height: 30.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
+                // padding: const EdgeInsets.only(top: 10),
                 itemCount: items.length,
                 addAutomaticKeepAlives: false,
                 addRepaintBoundaries: false,
                 itemBuilder: (context, index) {
                   final cocktail = items[index];
-                  return InkWell(
-                    onTap: () => context.pushNamed(
-                      AppScreen.detail.routeName,
-                      extra: cocktail,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Card(
-                            color: const Color(0xd9d9d9),
-                            child: cocktail.strDrinkThumb != null
-                                ? CustomImage(
-                                    src: cocktail.strDrinkThumb,
-                                    id: cocktail.idDrink,
-                                  )
-                                : _buildShimmerImage(),
-                          ),
-                          const SizedBox(height: 8),
-                          SizedBox(
-                            width: 18.h,
-                            child: Center(
-                              child: AutoSizeText(
-                                cocktail.strDrink,
-                                style: Theme.of(context).textTheme.titleSmall,
-                                textAlign: TextAlign.center,
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(10),
+                      onTap: () => context.pushNamed(
+                        AppScreen.detail.routeName,
+                        extra: cocktail,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Card(
+                              color: const Color(0xd9d9d9),
+                              child: cocktail.strDrinkThumb != null
+                                  ? CustomImage(
+                                      src: cocktail.strDrinkThumb,
+                                      id: cocktail.idDrink,
+                                    )
+                                  : _buildShimmerImage(),
+                            ),
+                            const SizedBox(height: 8),
+                            SizedBox(
+                              width: 18.h,
+                              child: Center(
+                                child: AutoSizeText(
+                                  cocktail.strDrink,
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
-                          ),
-                          Text(
-                            cocktail.strAlcoholic,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.apply(color: Theme.of(context).hintColor),
-                          ),
-                        ],
+                            Text(
+                              cocktail.strAlcoholic,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall
+                                  ?.apply(color: Theme.of(context).hintColor),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
