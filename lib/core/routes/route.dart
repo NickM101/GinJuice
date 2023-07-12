@@ -58,7 +58,8 @@ class AppRouter {
 
       // If not Initialized and not going to Initialized redirect to Splash
       if (!isInitialized && !isGoingToInit) {
-        return splashLocation;
+        // return splashLocation;
+        return homeLocation;
         // If not onboard and not going to onboard redirect to OnBoarding
       } else if (isInitialized && !isOnboarded && !isGoingToOnboard) {
         return onboardLocation;
@@ -75,7 +76,8 @@ class AppRouter {
         return homeLocation;
       } else {
         // Else Don't do anything
-        return null;
+        // return null;
+        return homeLocation;
       }
     },
   );

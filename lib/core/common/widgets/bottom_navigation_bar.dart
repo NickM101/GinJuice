@@ -68,9 +68,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: widget.child,
       bottomNavigationBar: GNav(
         selectedIndex: _currentIndex,
-        tabMargin: const EdgeInsets.all(10),
+        tabMargin: const EdgeInsets.all(5),
         tabBackgroundColor: Theme.of(context).focusColor,
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         gap: 2,
         onTabChange: (value) => _onTabChange(context, value),
         tabs: tabs,
