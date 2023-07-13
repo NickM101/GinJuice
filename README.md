@@ -18,7 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 
 [important]
 - Sticky header in home
-- Change Logo
 - On Notifications remove the tab, make it full screen
 - Introduce riverpod as sign in
 - Fix light and dark mode

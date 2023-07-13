@@ -60,7 +60,13 @@ class AppRouter {
                               CocktailModel item = state.extra as CocktailModel;
                               return CocktailSteps(item: item);
                             })
-                      ])
+                      ]),
+                  GoRoute(
+                    path: AppScreen.notification.pathName,
+                    name: AppScreen.notification.routeName,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    builder: (context, state) => const NotificationWidget(),
+                  ),
                 ]),
             GoRoute(
               path: AppScreen.explore.pathName,
@@ -113,11 +119,6 @@ class AppRouter {
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
         builder: (context, state) => const SplashScreen(),
-      ),
-      GoRoute(
-        path: AppScreen.notification.pathName,
-        name: AppScreen.notification.routeName,
-        builder: (context, state) => const NotificationWidget(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,

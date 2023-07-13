@@ -53,7 +53,7 @@ extension AppScreenExtension on AppScreen {
       case AppScreen.about:
         return 'about';
       case AppScreen.notification:
-        return '/notification';
+        return 'notification';
       default:
         return '/';
     }
