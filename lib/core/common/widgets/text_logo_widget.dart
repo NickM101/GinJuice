@@ -10,11 +10,15 @@ class TextLogoWidget extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: 'Gin',
-          style: typography,
+          style: typography?.apply(
+            color: Theme.of(context).unselectedWidgetColor,
+          ),
           children: [
             TextSpan(
               text: 'Juice',
-              style: typography?.apply(color: const Color(0xfff0576b)),
+              style: typography?.apply(
+                color: const Color(0xff1E6010),
+              ),
             ),
           ],
         ),

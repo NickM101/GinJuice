@@ -17,9 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 [important]
-- Remove the names in tab navigation
 - Sticky header in home
-- Center the row items in home 
 - Change Logo
 - On Notifications remove the tab, make it full screen
 - Introduce riverpod as sign in
