@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AppService with ChangeNotifier {
+class AppState with ChangeNotifier {
   late final SharedPreferences sharedPreferences;
 
   final StreamController<bool> _loginStateChange =
@@ -13,7 +13,7 @@ class AppService with ChangeNotifier {
   bool _initialized = false;
   bool _onboarding = false;
 
-  AppService(this.sharedPreferences);
+  AppState(this.sharedPreferences);
 
   bool get loginState => _loginState;
   bool get initialized => _initialized;
@@ -44,5 +44,13 @@ class AppService with ChangeNotifier {
 
     _initialized = true;
     notifyListeners();
+  }
+
+  Future<void> saveRoute(String routeName) async {
+    await sharedPreferences.setString('currentRoute', routeName);
+  }
+
+  Future<String?> getSavedRoute() async {
+    return sharedPreferences.getString('currentRoute');
   }
 }

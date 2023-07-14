@@ -1,19 +1,22 @@
-import 'package:ginjuice/core/common/widgets/notification_widget.dart';
-import 'package:ginjuice/core/routes/route_utils.dart';
-import 'package:ginjuice/core/services/app_services.dart';
-import 'package:ginjuice/features/auth/views/email_link.dart';
-import 'package:ginjuice/features/intro/views/splash_screen.dart';
-import 'package:ginjuice/features/profile/views/about_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/views/email_link.dart';
+import '../../features/intro/views/splash_screen.dart';
+import '../../features/profile/views/about_screen.dart';
+import '../common/widgets/notification_widget.dart';
+
+import 'app_state.dart';
+import 'route_utils.dart';
+
 class AppRouter {
-  late final AppService appService;
+  late final AppState appState;
+
   GoRouter get router => _goRouter;
 
-  AppRouter(this.appService);
+  AppRouter(this.appState);
 
   late final GoRouter _goRouter = GoRouter(
-    refreshListenable: appService,
+    refreshListenable: appState,
     initialLocation: AppScreen.splash.routeName,
     routes: <GoRoute>[
       GoRoute(
@@ -48,9 +51,9 @@ class AppRouter {
       final onboardLocation =
           state.namedLocation(AppScreen.onboarding.routeName);
 
-      final isLogedIn = appService.loginState;
-      final isInitialized = appService.initialized;
-      final isOnboarded = appService.onboarding;
+      final isLoggedIn = appState.loginState;
+      final isInitialized = appState.initialized;
+      final isOnboard = appState.onboarding;
 
       final isGoingToLogin = state.location == loginLocation;
       final isGoingToInit = state.location == splashLocation;
@@ -58,26 +61,21 @@ class AppRouter {
 
       // If not Initialized and not going to Initialized redirect to Splash
       if (!isInitialized && !isGoingToInit) {
-        // return splashLocation;
-        return homeLocation;
+        return splashLocation;
         // If not onboard and not going to onboard redirect to OnBoarding
-      } else if (isInitialized && !isOnboarded && !isGoingToOnboard) {
+      } else if (isInitialized && !isOnboard && !isGoingToOnboard) {
         return onboardLocation;
-        // If not logedin and not going to login redirect to Login
-      } else if (isInitialized &&
-          isOnboarded &&
-          !isLogedIn &&
-          !isGoingToLogin) {
+        // If not loggedin and not going to login redirect to Login
+      } else if (isInitialized && isOnboard && !isLoggedIn && !isGoingToLogin) {
         return loginLocation;
         // If all the scenarios are cleared but still going to any of that screen redirect to Home
-      } else if ((isLogedIn && isGoingToLogin) ||
+      } else if ((isLoggedIn && isGoingToLogin) ||
           (isInitialized && isGoingToInit) ||
-          (isOnboarded && isGoingToOnboard)) {
+          (isOnboard && isGoingToOnboard)) {
         return homeLocation;
       } else {
         // Else Don't do anything
-        // return null;
-        return homeLocation;
+        return null;
       }
     },
   );

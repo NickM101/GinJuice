@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/common/widgets/notification_widget.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
@@ -12,12 +11,14 @@ import '../../features/home/views/home_screen.dart';
 import '../../features/intro/views/onboarding_screen.dart';
 import '../../features/intro/views/splash_screen.dart';
 import '../../features/profile/views/about_screen.dart';
+import '../../features/profile/views/customize_avatar.dart';
 import '../../features/profile/views/privacy_screen.dart';
 import '../../features/profile/views/profile_screen.dart';
-import '../../features/profile/views/customize_avatar.dart';
 import '../../features/search/views/search_screen.dart';
 import '../common/models/cocktail_model.dart';
 import '../common/widgets/bottom_navigation_bar.dart';
+import '../common/widgets/notification_widget.dart';
+
 import 'route_utils.dart';
 
 class AppRouter {
