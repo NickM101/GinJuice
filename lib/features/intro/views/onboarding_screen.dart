@@ -137,18 +137,25 @@ class ArrowButton extends StatelessWidget {
   }
 }
 
-class GetStarted extends StatelessWidget {
+class GetStarted extends ConsumerWidget {
   const GetStarted({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final appService = ref.read();
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(), minimumSize: Size(70.w, 7.h)),
+          shape: const StadiumBorder(),
+          minimumSize: Size(
+            70.w,
+            7.h,
+          ),
+        ),
         onPressed: () {
+          // appService
           context.goNamed(AppScreen.home.routeName);
         },
         child: const Text('Get Started'),
