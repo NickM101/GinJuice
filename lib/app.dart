@@ -10,12 +10,11 @@ import 'core/routes/route.dart';
 import 'core/themes/themes.dart';
 
 class GinJuiceApp extends ConsumerWidget {
-  final sharedPreferencesProvider = Provider<Future<SharedPreferences>>((ref) {
-    return SharedPreferences.getInstance();
-  });
+  final AppState appState;
 
-  GinJuiceApp({
+  const GinJuiceApp({
     super.key,
+    required this.appState,
   });
 
   // This widget is the root of your application.
@@ -23,37 +22,17 @@ class GinJuiceApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themesProvider);
 
-    return FutureBuilder<SharedPreferences>(
-      future: ref.read(sharedPreferencesProvider),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          final sharedPreferences = snapshot.data!;
-          final appState =
-              AppState(sharedPreferences); // Pass the required argument
-
-          final appRouter = AppRouter(appState);
-
-          return ProviderScope(
-              overrides: [
-                sharedPreferencesProvider.overrideWithValue(
-                    sharedPreferences as Future<SharedPreferences>),
-              ],
-              child: Sizer(
-                builder: (context, orientation, deviceType) {
-                  return DismissKeyboard(
-                    child: MaterialApp.router(
-                      debugShowCheckedModeBanner: false,
-                      theme: lightTheme,
-                      darkTheme: darkTheme,
-                      themeMode: themeMode,
-                      routerConfig: appRouter.router,
-                    ),
-                  );
-                },
-              ));
-        } else {
-          return const CircularProgressIndicator();
-        }
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return DismissKeyboard(
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: themeMode,
+            routerConfig: AppRouter(appState).router,
+          ),
+        );
       },
     );
   }

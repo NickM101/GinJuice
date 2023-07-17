@@ -23,7 +23,7 @@ extension AppScreenExtension on AppScreen {
   String get pathName {
     switch (this) {
       case AppScreen.splash:
-        return '/splash';
+        return '/splash_logo';
       case AppScreen.onboarding:
         return '/start';
       case AppScreen.login:
@@ -31,7 +31,7 @@ extension AppScreenExtension on AppScreen {
       case AppScreen.checkEmail:
         return '/check_email';
       case AppScreen.home:
-        return '/';
+        return '/home';
       case AppScreen.explore:
         return '/explore';
       case AppScreen.search:
@@ -53,16 +53,16 @@ extension AppScreenExtension on AppScreen {
       case AppScreen.about:
         return 'about';
       case AppScreen.notification:
-        return 'notification';
+        return '/notification';
       default:
-        return '/';
+        return 'unknown';
     }
   }
 
   String get routeName {
     switch (this) {
       case AppScreen.splash:
-        return 'splash';
+        return 'splash_logo';
       case AppScreen.onboarding:
         return 'start';
       case AppScreen.login:
@@ -94,7 +94,7 @@ extension AppScreenExtension on AppScreen {
       case AppScreen.notification:
         return 'notification';
       default:
-        return 'home';
+        return 'unknown';
     }
   }
 }

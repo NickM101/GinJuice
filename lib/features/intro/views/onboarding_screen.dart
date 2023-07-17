@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../core/routes/app_state.dart';
 import '../../../core/routes/route_utils.dart';
 import '../controller/indicator_controller.dart';
 import '../models/onboard_model.dart';
@@ -137,14 +138,13 @@ class ArrowButton extends StatelessWidget {
   }
 }
 
-class GetStarted extends ConsumerWidget {
+class GetStarted extends StatelessWidget {
   const GetStarted({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // final appService = ref.read();
+  Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -155,7 +155,7 @@ class GetStarted extends ConsumerWidget {
           ),
         ),
         onPressed: () {
-          // appService
+          // appState.onboarding = true;
           context.goNamed(AppScreen.home.routeName);
         },
         child: const Text('Get Started'),

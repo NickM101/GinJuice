@@ -58,8 +58,12 @@ class _SplashScreenState extends State<SplashScreen>
       if (mounted) {
         _animationController.forward();
       }
-    }).then((value) => Future.delayed(const Duration(seconds: 3))).then(
-        (value) => {context.replaceNamed(AppScreen.onboarding.routeName)});
+    })
+        .then(
+          (value) => Future.delayed(const Duration(seconds: 3)),
+        )
+        .then(
+            (value) => {context.replaceNamed(AppScreen.onboarding.routeName)});
   }
 
   @override
