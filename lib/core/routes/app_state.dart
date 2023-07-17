@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../main.dart';
 
 class AppState with ChangeNotifier {
   late final SharedPreferences sharedPreferences;
@@ -54,3 +57,9 @@ class AppState with ChangeNotifier {
     return sharedPreferences.getString('currentRoute');
   }
 }
+
+final appStateProvider = ChangeNotifierProvider<AppState>((ref) {
+  final sharedPreferences = ref.watch(sharedPreferencesProvider);
+
+  return AppState(sharedPreferences as SharedPreferences);
+});

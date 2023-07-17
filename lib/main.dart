@@ -6,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'core/routes/app_state.dart';
 
+final sharedPreferencesProvider = Provider<Future<SharedPreferences>>((ref) {
+  return SharedPreferences.getInstance();
+});
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -14,15 +17,23 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  final sharedPreferences = await SharedPreferences.getInstance();
+  final container = ProviderContainer();
+
+  final sharedPreferences = await container.read(sharedPreferencesProvider);
   final appState = AppState(sharedPreferences);
   await appState.onAppStart();
 
   runApp(
     ProviderScope(
+      overrides: [
+        sharedPreferencesProvider
+            .overrideWithValue(sharedPreferences as Future<SharedPreferences>),
+      ],
       child: GinJuiceApp(
         appState: appState,
       ),
     ),
   );
+
+  container.dispose();
 }
