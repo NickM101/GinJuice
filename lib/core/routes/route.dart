@@ -23,9 +23,6 @@ import 'route_utils.dart';
 class AppRouter {
   GoRouter get router => _goRouter;
 
-  // final AppState appState;
-
-  // AppRouter(this.appState);
   AppRouter();
 
   final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -33,7 +30,7 @@ class AppRouter {
 
   late final GoRouter _goRouter = GoRouter(
     // debugLogDiagnostics: true,
-    // refreshListenable: appState,
+    // refreshListenable: __,
     initialLocation: AppScreen.splash.pathName,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[

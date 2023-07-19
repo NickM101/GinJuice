@@ -16,13 +16,15 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  final container = ProviderContainer();
+  final sharedPreferences = await SharedPreferences.getInstance();
 
   runApp(
-    const ProviderScope(
-      child: GinJuiceApp(),
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider
+            .overrideWithValue(sharedPreferences as Future<SharedPreferences>),
+      ],
+      child: const GinJuiceApp(),
     ),
   );
-
-  container.dispose();
 }
