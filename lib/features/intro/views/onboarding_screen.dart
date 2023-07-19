@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../core/routes/app_state.dart';
 import '../../../core/routes/route_utils.dart';
 import '../controller/indicator_controller.dart';
 import '../models/onboard_model.dart';
@@ -145,8 +144,6 @@ class GetStarted extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appState = ref.read(appStateProvider.notifier);
-
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -157,7 +154,6 @@ class GetStarted extends ConsumerWidget {
           ),
         ),
         onPressed: () {
-          appState.onboarding = true;
           context.goNamed(AppScreen.home.routeName);
         },
         child: const Text('Get Started'),

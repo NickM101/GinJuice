@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ginjuice/core/routes/app_state.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/views/email_link.dart';
@@ -24,9 +23,10 @@ import 'route_utils.dart';
 class AppRouter {
   GoRouter get router => _goRouter;
 
-  final AppState appState;
+  // final AppState appState;
 
-  AppRouter(this.appState);
+  // AppRouter(this.appState);
+  AppRouter();
 
   final _rootNavigatorKey = GlobalKey<NavigatorState>();
   final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -49,6 +49,12 @@ class AppRouter {
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: HomeScreen()),
                 routes: [
+                  GoRoute(
+                    path: AppScreen.notification.pathName,
+                    name: AppScreen.notification.routeName,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    builder: (context, state) => const NotificationWidget(),
+                  ),
                   GoRoute(
                       path: AppScreen.detail.pathName,
                       name: AppScreen.detail.routeName,
@@ -119,11 +125,6 @@ class AppRouter {
         path: AppScreen.splash.pathName,
         name: AppScreen.splash.routeName,
         builder: (context, state) => const SplashScreen(),
-      ),
-      GoRoute(
-        path: AppScreen.notification.pathName,
-        name: AppScreen.notification.routeName,
-        builder: (context, state) => const NotificationWidget(),
       ),
       GoRoute(
         path: AppScreen.onboarding.pathName,

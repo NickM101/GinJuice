@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 import 'core/common/controllers/theme_provider.dart';
 import 'core/common/widgets/dismiss_keyboard.dart';
-import 'core/routes/app_state.dart';
 import 'core/routes/route.dart';
 import 'core/themes/themes.dart';
 
 class GinJuiceApp extends ConsumerWidget {
-  final AppState appState;
-
   const GinJuiceApp({
     super.key,
-    required this.appState,
   });
 
   // This widget is the root of your application.
@@ -30,7 +25,7 @@ class GinJuiceApp extends ConsumerWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: themeMode,
-            routerConfig: AppRouter(appState).router,
+            routerConfig: AppRouter().router,
           ),
         );
       },
